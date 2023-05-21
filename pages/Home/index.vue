@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="text-red-400"> udhjdajk</span>
+    <span class="text-red-400"> Tell me more </span>
     test
   </div>
 </template>
