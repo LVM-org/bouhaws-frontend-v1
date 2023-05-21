@@ -1,12 +1,12 @@
 <template>
   <nav
-    class="w-screen text-neutral-800 bg-white mx-auto sticky z-40 top-0 -mt-0 shadow-xl"
+    class="w-screen text-neutral-800 bg-white mx-auto sticky z-40 top-0 -mt-0 shadow-md"
   >
     <div
       class="w-full flex container relative bg-white px-8 mx-auto items-center justify-between py-4"
     >
       <div class="flex-shrink-0 flex items-center justify-between">
-        <span class="text-2xl font-semibold text-bohwas-gray"> BOUHAWS </span>
+        <span class="text-2xl font-semibold text-bouhaws-gray"> BOUHAWS </span>
       </div>
 
       <div class="flex-1 flex pl-12 space-x-4 xl:space-x-8">
@@ -17,18 +17,18 @@
               class="py-2 capitalize text-sm space-x-3 px-6 rounded-lg flex items-center"
               :class="
                 navLink.route == activeRoute
-                  ? 'text-semi-blue'
-                  : ' text-bohwas-gray'
+                  ? 'text-bouhaws-blue-main'
+                  : 'text-bouhaws-gray'
               "
             >
               <span
                 :class="
                   navLink.route == activeRoute
-                    ? 'text-semi-blue'
-                    : ' text-bohwas-gray'
+                    ? 'text-bouhaws-blue-main'
+                    : 'text-bouhaws-gray'
                 "
               >
-                <TopBarIcons :title="navLink.title" />
+                <IconTopBar :title="navLink.title" />
               </span>
 
               <span class="font-bold">
@@ -40,8 +40,8 @@
       </div>
 
       <div class="space-x-5 flex items-center justify-center">
-        <span>
-          <TopBarIcons title="notifications" />
+        <span class="text-bouhaws-gray">
+          <IconTopBar title="notifications" />
         </span>
 
         <span class="h-14 w-14 border rounded-full">

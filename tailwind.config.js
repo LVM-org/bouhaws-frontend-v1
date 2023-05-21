@@ -12,6 +12,11 @@ module.exports = {
     extend: {
       colors: {
         'bouhaws-dark': '#111111',
+        'bouhaws-blue-main': '#336DFF',
+        'bouhaws-blue-dark': '#265EEC',
+        'bouhaws-green': '#27BA9E',
+        'bouhaws-purple': '#9747FF',
+        'bouhaws-gray': '#5A5B5B',
       },
     },
   },

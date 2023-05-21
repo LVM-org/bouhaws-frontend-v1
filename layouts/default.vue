@@ -1,11 +1,9 @@
 <template>
-  <div>
+  <div class="bg-[#E3E3D9]">
     <PartialsTopBar />
 
-    <div class="container mx-auto h-screen py-8 px-4 bg-red-500">
-      <div class="col-span-4">
-        <slot />
-      </div>
+    <div class="container mx-auto h-screen py-10 px-4">
+      <slot />
     </div>
   </div>
 </template>
