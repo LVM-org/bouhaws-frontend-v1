@@ -1,20 +1,14 @@
 <template>
   <button
     :type="type"
-    class="flex items-center px-3"
-    :class="{ hasBorder: hasBorder, isGray: isGray }"
-    :style="customStyles"
+    class="flex items-center text-white capitalize text-sm font-semibold py-4 px-6 rounded-lg"
     :disabled="disabled"
+    :class="customClass"
     @click="clickBtn"
   >
+    <!-- :class="{ hasBorder: hasBorder, isGray: isGray }"
+    :style="customStyles" -->
     <IconSpinner v-if="loading" class="animate-spin" />
-
-    <!-- button icons -->
-    <span v-if="hasIcon">
-      <IconExport v-if="iconName == 'export'" class="pr-1" />
-      <IconAdd v-if="iconName == 'add'" />
-      <IconSettings v-if="iconName == 'settings'" />
-    </span>
 
     <span :class="{ 'ml-2': hasIcon }" :style="{ fontSize: fontSize }">
       {{ loading ? "" : text }}
@@ -36,31 +30,7 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  fill: {
-    type: String,
-    default: "white",
-  },
   hasBorder: {
-    type: Boolean,
-    default: false,
-  },
-  customStyles: {
-    type: String,
-    default: "",
-  },
-  hasEye: {
-    type: Boolean,
-    default: false,
-  },
-  csv: {
-    type: Boolean,
-    default: false,
-  },
-  greenCsv: {
-    type: Boolean,
-    default: false,
-  },
-  isGreen: {
     type: Boolean,
     default: false,
   },
@@ -72,6 +42,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  customClass: {
+    type: Boolean,
+    default: false,
+  },
   loading: {
     type: Boolean,
     default: false,
@@ -79,10 +53,6 @@ const props = defineProps({
   fontSize: {
     type: String,
     default: "0.875rem",
-  },
-  iconName: {
-    type: String,
-    default: "",
   },
 });
 
@@ -95,12 +65,12 @@ const clickBtn = () => {
 
 <style lang="scss" scoped>
 button {
-  @apply flex w-[inherit] items-center justify-center rounded-lg    py-3 text-base font-semibold text-black;
+  @apply flex w-[inherit] items-center justify-center rounded-lg bg-bouhaws-blue-main text-base font-semibold text-white;
   box-shadow: 0px 2px 4px rgba(23, 206, 137, 0.07);
   font-family: "Poppins", sans-serif;
 
   &.hasBorder {
-    @apply border  bg-inherit font-medium;
+    @apply border bg-transparent font-medium;
   }
 
   &:disabled {
