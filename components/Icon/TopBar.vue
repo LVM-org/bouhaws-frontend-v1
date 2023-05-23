@@ -93,26 +93,22 @@
   </span>
 </template>
 
-<script lang="ts"> 
-import { defineComponent, ref } from "vue";
-
-export default defineComponent({
-  props: {
-    title: {
-      type: String,
-    },
-    width: {
-      type: Number,
-      default: 18,
-    },
-    height: {
-      type: Number,
-      default: 18,
-    },
-    isActive: {
-      type: Boolean,
-      default: false,
-    },
-  }
-}) 
+<script setup lang="ts">  
+const props = defineProps({
+  title: {
+    type: String,
+  },
+  width: {
+    type: Number,
+    default: 18,
+  },
+  height: {
+    type: Number,
+    default: 18,
+  },
+  isActive: {
+    type: Boolean,
+    default: false,
+  },
+},) 
 </script>

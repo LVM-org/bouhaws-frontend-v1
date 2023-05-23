@@ -12,11 +12,19 @@ module.exports = {
     extend: {
       colors: {
         'bouhaws-dark': '#111111',
+        'bouhaws-semi-dark': '#202128',
         'bouhaws-blue-main': '#336DFF',
+        'bouhaws-light': '#D9D9D9',
         'bouhaws-blue-dark': '#265EEC',
         'bouhaws-green': '#27BA9E',
+        'bouhaws-light-green': '#AEF4E9',
         'bouhaws-purple': '#9747FF',
         'bouhaws-gray': '#5A5B5B',
+        'bouhaws-light-gray': '#9E9E9E',
+      },
+
+      fontFamily: {
+        Kanit: ['Kanit', 'sans-serif'],
       },
     },
   },
