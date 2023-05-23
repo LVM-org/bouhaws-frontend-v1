@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Home />
+    <span class="text-red-400"> Tell me more </span>
+    test
   </div>
 </template>
 

@@ -44,8 +44,8 @@
           <IconTopBar title="notifications" />
         </span>
 
-        <span class="h-14 w-14 border rounded-full">
-          <img src="" alt="" />
+        <span class="h-12 w-12 border rounded-full">
+          <img src="~/assets/images/profile-picture.svg" />
         </span>
       </div>
     </div>
