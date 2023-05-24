@@ -6,13 +6,13 @@
       class="w-full flex container relative bg-white px-8 mx-auto items-center justify-between py-4"
     >
       <div class="flex-shrink-0 flex items-center justify-between">
-        <span class="text-2xl font-semibold text-bouhaws-gray"> BOUHAWS </span>
+        <span class="text-2xl font-medium text-bouhaws-gray"> BOUHAWS </span>
       </div>
 
       <div class="flex-1 flex pl-12 space-x-4 xl:space-x-8">
         <ul class="w-full h-auto flex items-center space-x-5">
           <li v-for="navLink in navLinks" :key="navLink.title">
-            <router-link
+            <nuxt-link
               :to="navLink.route"
               class="py-2 capitalize text-sm space-x-3 px-6 rounded-lg flex items-center"
               :class="
@@ -31,10 +31,10 @@
                 <IconTopBar :title="navLink.title" />
               </span>
 
-              <span class="font-bold">
+              <span class="font-medium">
                 {{ navLink.title }}
               </span>
-            </router-link>
+            </nuxt-link>
           </li>
         </ul>
       </div>

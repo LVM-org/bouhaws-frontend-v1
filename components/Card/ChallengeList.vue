@@ -17,11 +17,11 @@
         {{ challenge.title }}
       </h6>
 
-      <p class="font-light">
+      <p class="font-extralight">
         {{ challenge.instruction }}
       </p>
 
-      <p class="flex items-center font-light space-x-2">
+      <p class="flex items-center font-extralight space-x-2">
         <span>
           Reward: {{ formatNumber(challenge.reward) }}
           {{ challenge.reward > 1 ? "Points" : "Point" }}
