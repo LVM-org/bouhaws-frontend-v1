@@ -12,6 +12,9 @@
  </script>
 
 <style>
+* {
+  font-family: Kanit, Arial, Helvetica, sans-serif;
+}
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -21,5 +24,10 @@
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+
+/*  */
+.box-shadow {
+  box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);
 }
 </style>
