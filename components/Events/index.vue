@@ -61,52 +61,53 @@
       </section>
 
       <!-- main content -->
-      <section class="col-span-2 space-y-5">
-        <!--  -->
-        <div
-          class="flex justify-between items-center space-x-4 bg-bouhaws-blue-main text-white rounded-xl py-6 px-8"
-        >
-          <div class="flex flex-col flex-1">
-            <h4 class="text-2xl mb-2 font-medium">New events are here!</h4>
+      <section class="col-span-3 space-y-5">
+        <div class="grid grid-cols-3 gap-x-4">
+          <div
+            class="p-6 bg-opacity-20 text-white col-span-2 box-shadow rounded-lg bg-gradient-to-br from-[#8861DE90] via-[#8861DE90] to-[#E0B4F9]"
+          >
+            <h3 class="uppercase mb-4 text-shadow font-bold text-3xl">
+              INTERNATIONAL <br />
+              WOMEN’S DAY
+            </h3>
 
-            <p class="text-sm mb-2 font-extralight">
-              Participate in fun events going on right now. You’ll earn points,
-              badges and other rewards. Submit and entry today and stand the
+            <p class="font-light mb-5 text-sm w-3/5">
+              Show your support for all the women breaking the bias by joining
+              this event. Submit entries relating to the theme and stand a
               chance to get your work voted as the best.
             </p>
 
-            <span
-              class="px-6 inline-block w-fit py-2 font-medium text-sm mt-4 rounded-lg text-bouhaws-dark bg-white"
-            >
-              Get Started
-            </span>
+            <div class="flex font-light items-center space-x-8 text-sm">
+              <span>200 Entries submitted </span>
+              <span>Open until 20/03/23 </span>
+            </div>
           </div>
-
-          <div>
-            <IconSpinner :width="100" :height="100" />
-          </div>
-        </div>
-
-        <!--  -->
-        <div class="rounded-md p-6 bg-white box-shadow">
-          <h4 class="text-2xl font-medium mb-4">Projects you’re on</h4>
 
           <div
-            class="flex flex-col space-y-5 overflow-scroll no-scrollbar max-h-screen"
+            class="p-4 relative h-auto col-span-1 box-shadow rounded-lg bg-white"
           >
-            <CardProjectList v-for="x in 10" :key="x" />
+            <div
+              class="absolute right-0 top-0 rounded-md rounded-tl-none rounded-br-none bg-[#E3E3D9] pl-4 pb-4 pr-0.5 pt-0.5"
+            >
+              <Button
+                text="Create new event"
+                customClass="!font-light !px-4 !py-2"
+              />
+            </div>
           </div>
         </div>
-      </section>
 
-      <!-- right side  -->
-      <section class="col-span-1 bg-white box-shadow h-fit pb-3 rounded-xl">
-        <h4 class="p-4 border-b-2 font-medium border-b-[#EBEBE5] text-2xl mb-2">
-          Feedbacks
-        </h4>
-
-        <div class="overflow-scroll p-3 no-scrollbar space-y-3 max-h-screen">
-          <CardFeedbackList v-for="x in 10" :key="x" />
+        <!-- others -->
+        <div
+          class="grid grid-cols-3 max-h-screen overflow-scroll no-scrollbar gap-4"
+        >
+          <div
+            class="p-4 col-span-1 min-h-[12.5rem] bg-white box-shadow rounded-lg"
+            v-for="x in 16"
+            :key="x"
+          >
+            test {{ x }}
+          </div>
         </div>
       </section>
     </div>

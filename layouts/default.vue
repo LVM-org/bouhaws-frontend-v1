@@ -21,6 +21,9 @@
 * {
   font-family: Kanit, Arial, Helvetica, sans-serif;
 }
+.text-shadow {
+  text-shadow: 2.5px 2.5px 0px #4503a4;
+}
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
