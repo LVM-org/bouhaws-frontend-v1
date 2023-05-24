@@ -5,6 +5,12 @@
     <div class="container mx-auto min-h-screen py-10 px-4">
       <slot />
     </div>
+
+    <!-- <img
+        src="~/assets/images/profile-picture.svg"
+        :alt="challenge.title"
+        class="w-full h-full"
+      /> -->
   </div>
 </template>
 

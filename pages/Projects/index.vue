@@ -1,9 +1,7 @@
 <template>
   <div>
-    <span class="text-red-400"> udhjdajk</span>
-    test
+    <Projects />
   </div>
 </template>
 
-<script setup lang="ts">  
-</script>
+<script setup lang="ts">  </script>
