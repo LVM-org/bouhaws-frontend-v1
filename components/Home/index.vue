@@ -94,7 +94,7 @@
           <div
             class="flex flex-col space-y-5 overflow-scroll no-scrollbar max-h-screen"
           >
-            <CardProjectList v-for="x in 10" :key="x" />
+            <CardProjectList v-for="x in 8" :key="x" />
           </div>
         </div>
       </section>
@@ -106,15 +106,15 @@
         </h4>
 
         <div class="overflow-scroll p-3 no-scrollbar space-y-3 max-h-screen">
-          <CardFeedbackList v-for="x in 10" :key="x" />
+          <CardFeedbackList v-for="x in 8" :key="x" />
         </div>
       </section>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"> 
-import { getPercentageRatio, formatNumber } from "~/controllers/utils"
+<script setup lang="ts">
+import { getPercentageRatio, formatNumber } from "~/controllers/utils";
 
 const challenges = ref([
   {
@@ -122,7 +122,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 1,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -130,7 +130,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -138,7 +138,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -146,73 +146,25 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
-  },
-  {
-    id: "5",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: false,
-  },
-  {
-    id: "6",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: false,
   },
   {
     id: "7",
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: false,
   },
-  {
-    id: "8",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: true,
-  },
-  {
-    id: "9",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: false,
-  },
-  {
-    id: "10",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: true,
-  },
-  {
-    id: "11",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: true,
-  },
+
   {
     id: "12",
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: false,
   },
-])
+]);
 </script>
- 
