@@ -1,7 +1,6 @@
 <template>
   <div>
-    <span class="text-red-400"> udhjdajk</span>
-    test
+    <Exhibition />
   </div>
 </template>
 
