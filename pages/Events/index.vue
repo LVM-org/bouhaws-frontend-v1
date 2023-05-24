@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <Events />
-  </div>
+  <Events />
 </template>
 
-<script setup lang="ts">  
+<script setup lang="ts"> 
+definePageMeta({
+  layout: "challenges-dashboard"
+}); 
 </script>

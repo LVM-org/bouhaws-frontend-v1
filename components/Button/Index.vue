@@ -6,8 +6,6 @@
     :class="customClass"
     @click="clickBtn"
   >
-    <!-- :class="{ hasBorder: hasBorder, isGray: isGray }"
-    :style="customStyles" -->
     <IconSpinner v-if="loading" class="animate-spin" />
 
     <span :class="{ 'ml-2': hasIcon }" :style="{ fontSize: fontSize }">
@@ -43,8 +41,8 @@ const props = defineProps({
     default: false,
   },
   customClass: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: '',
   },
   loading: {
     type: Boolean,
