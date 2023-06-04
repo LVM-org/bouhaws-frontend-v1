@@ -1,28 +1,28 @@
 <template>
   <span>
     <svg
-      xmlns="http://www.w3.org/2000/svg"
       :height="height"
       :width="width"
+      viewBox="0 0 21 21"
       class="fill-current"
-      viewBox="0 0 448 512"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+        d="M2.5 20.5L0.5 18.5L8.5 10.5L0.5 2.5L2.5 0.5L10.5 8.5L18.5 0.5L20.5 2.5L12.5 10.5L20.5 18.5L18.5 20.5L10.5 12.5L2.5 20.5Z"
       />
     </svg>
   </span>
 </template>
   
-<script setup lang="ts">
+<script   setup lang="ts">
 const props = defineProps({
   width: {
     type: Number,
-    default: 15,
+    default: 16,
   },
   height: {
     type: Number,
-    default: 15,
+    default: 16,
   },
 },) 
 </script>

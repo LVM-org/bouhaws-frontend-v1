@@ -72,7 +72,7 @@ button {
   }
 
   &:disabled {
-    @apply cursor-not-allowed opacity-50;
+    @apply cursor-not-allowed   ;
   }
 
   &.isGray {
