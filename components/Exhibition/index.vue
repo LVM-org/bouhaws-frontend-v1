@@ -1,8 +1,10 @@
 <template>
   <div class="container grid grid-cols-4 gap-6 py-5 px-2">
-    <div v-for="exhibition in exhibitions" :key="exhibition">
-      <CardExhibitionList :exhibition="exhibition" />
-    </div>
+    <CardExhibition
+      v-for="exhibition in exhibitions"
+      :key="exhibition"
+      :exhibition="exhibition"
+    />
   </div>
 </template>
 

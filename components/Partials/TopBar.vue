@@ -6,7 +6,12 @@
       class="w-full flex container relative bg-white px-8 mx-auto items-center justify-between py-4"
     >
       <div class="flex-shrink-0 flex items-center justify-between">
-        <span class="text-2xl font-medium text-bouhaws-gray"> BOUHAWS </span>
+        <nuxt-link
+          to="/"
+          class="text-2xl select-none cursor-pointer font-medium text-bouhaws-gray"
+        >
+          BOUHAWS
+        </nuxt-link>
       </div>
 
       <div class="flex-1 flex pl-12 space-x-4 xl:space-x-8">

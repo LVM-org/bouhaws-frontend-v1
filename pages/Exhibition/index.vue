@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <Exhibition />
-  </div>
+  <Exhibition />
 </template>
 
-<script setup lang="ts">  
-</script>
+<script setup lang="ts">  </script>
