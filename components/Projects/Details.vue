@@ -30,13 +30,17 @@
           </li>
         </ul>
 
-        <div class="flex space-x-2.5 mt-4 overflow-auto no-scrollbar py-2 px-1">
-          <img
-            src="~/assets/images/art.svg"
-            class="!w-32 !h-32 rounded-xl shadow"
-            v-for="x in 9"
-            :key="x"
-          />
+        <div
+          class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+        >
+          <div class="flex flex-row space-x-3 py-2 pr-4">
+            <CardExhibition
+              v-for="exhibition in exhibitions"
+              :key="exhibition"
+              :exhibition="exhibition"
+              class="!h-40 !w-[230px]"
+            />
+          </div>
         </div>
       </div>
     </Modal>
@@ -150,7 +154,7 @@
             <Button
               text="View"
               @click="showProjectDetailsModal = true"
-              class="!py-2 !px-5 my-2 !font-extralight"
+              class="!py-2 !px-5 !pl-3 my-2 !font-extralight"
             />
           </div>
 
@@ -158,14 +162,17 @@
             Click View to see the more of the project details
           </p>
 
-          <div class="flex space-x-4 overflow-auto no-scrollbar py-2 px-1">
-            <img
-              src="~/assets/images/art.svg"
-              :alt="project.title"
-              class="!w-40 !h-40 rounded-xl shadow"
-              v-for="x in 9"
-              :key="x"
-            />
+          <div
+            class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+          >
+            <div class="flex flex-row space-x-3 py-2 pr-4">
+              <CardExhibition
+                v-for="exhibition in exhibitions"
+                :key="exhibition"
+                :exhibition="exhibition"
+                class="!h-40 !w-[230px]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -238,50 +245,122 @@
   </div>
 </template>
 
-<script setup lang="ts">  
-const router = useRouter()
+<script setup lang="ts">
+const router = useRouter();
 const project = ref({
   id: "1",
   title: `Project title`,
   username: "ArchyScript",
-  entryType: 'single',
-  entryRange: '1-4',
+  entryType: "single",
+  entryRange: "1-4",
   entry: {
-    type: 'multiple',
+    type: "multiple",
     range: {
       min: 1,
-      max: 6
-    }
+      max: 6,
+    },
   },
   points: {
     min: 200,
-    max: 500
+    max: 500,
   },
   dataPosted: `Posted 2h ago `,
   description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
   milestone: 2,
   memberOfTeam: 4,
   deadline: `20/23/2022`,
-  imagUrl: '~/assets/images/profile-picture.svg',
+  imagUrl: "~/assets/images/profile-picture.svg",
   completed: true,
-})
+});
 
-const showProjectDetailsModal = ref(false)
-
+const showProjectDetailsModal = ref(false);
 
 const requirements = ref([
   { title: "Project entries must be less than 5MB." },
   { title: "Images resolution should be at least 150 pixels." },
-])
+]);
 
 const payload = ref({
   title: "",
-  description: ""
-})
+  description: "",
+});
 
 const uploadForm = () => {
-  console.log(payload.value)
-}
+  console.log(payload.value);
+};
 
+const exhibitions = ref([
+  {
+    id: "1",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "2",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "3",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "4",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "5",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "6",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "7",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "8",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "9",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "10",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "11",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "12",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+]);
 </script>
- 
