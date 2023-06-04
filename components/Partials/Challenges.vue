@@ -1,5 +1,7 @@
 <template>
-  <section class="col-span-1 pb-3 border bg-bouhaws-semi-dark h-fit rounded-xl">
+  <section
+    class="col-span-1 pb-3 border bg-bouhaws-semi-dark h-fit rounded-xl sticky top-[13%]"
+  >
     <div
       class="px-3 pb-4 mb-2 border-b border-b-[#61656D] border-opacity-70 relative w-full"
     >

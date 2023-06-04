@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-[#E3E3D9]">
+  <div>
     <PartialsTopBar />
 
     <div
-      class="container mx-auto grid grid-cols-4 min-h-screen py-11 px-4 gap-6"
+      class="container mx-auto grid grid-cols-4 min-h-screen py-11 px-4 gap-6 relative"
     >
       <!--  challenges sidebar -->
       <PartialsLeatherboard />
@@ -16,8 +16,8 @@
   </div>
 </template>
 
-<script setup lang="ts">   </script>
- 
+<script setup lang="ts"></script>
+
 <style>
 * {
   font-family: Kanit, Arial, Helvetica, sans-serif;
@@ -39,5 +39,9 @@
 /*  */
 .box-shadow {
   box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  background: linear-gradient(287.56deg, #d8d8c7 0%, #ebebe5 100%);
 }
 </style>

@@ -27,79 +27,55 @@
   </section>
 </template>
 
-<script setup lang="ts" >   
+<script setup lang="ts">
 const users = ref([
   {
     id: "1",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "2",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "3",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "4",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "5",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "6",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "7",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "8",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
-  {
-    id: "9",
-    name: `Oluwatoyin Script`,
-    reward: 180,
-    imagUrl: '',
-  },
-  {
-    id: "10",
-    name: `Oluwatoyin Script`,
-    reward: 180,
-    imagUrl: '',
-  },
-  {
-    id: "11",
-    name: `Oluwatoyin Script`,
-    reward: 180,
-    imagUrl: '',
-  },
-  {
-    id: "12",
-    name: `Oluwatoyin Script`,
-    reward: 180,
-    imagUrl: '',
-  },
-])
+]);
 </script>

@@ -42,7 +42,7 @@ const props = defineProps({
   },
   customClass: {
     type: String,
-    default: '',
+    default: "",
   },
   loading: {
     type: Boolean,
@@ -72,7 +72,7 @@ button {
   }
 
   &:disabled {
-    @apply cursor-not-allowed   ;
+    @apply cursor-not-allowed;
   }
 
   &.isGray {

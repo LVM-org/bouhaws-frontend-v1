@@ -1,5 +1,5 @@
 <template>
-  <section class="pb-3 border h-fit rounded-xl bg-white">
+  <section class="pb-3 border h-fit rounded-xl bg-white sticky top-[13%]">
     <div
       class="flex justify-between text-sm rounded-t-xl bg-bouhaws-semi-dark items-center font-medium mb-4 w-full"
     >
@@ -40,81 +40,81 @@
   </section>
 </template>
 
-<script setup lang="ts" >  
-import { getPercentageRatio, formatNumber } from "~/controllers/utils"
-const activeTab = ref('leatherboard')
+<script setup lang="ts">
+import { getPercentageRatio, formatNumber } from "~/controllers/utils";
+const activeTab = ref("leatherboard");
 const users = ref([
   {
     id: "1",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "2",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "3",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "4",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "5",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "6",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "7",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "8",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "9",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "10",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "11",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
   {
     id: "12",
     name: `Oluwatoyin Script`,
     reward: 180,
-    imagUrl: '',
+    imagUrl: "",
   },
-])
+]);
 </script>
