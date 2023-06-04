@@ -27,10 +27,12 @@
         <div
           class="absolute right-0 top-0 rounded-md rounded-tl-none rounded-br-none bg-[#E3E3D9] pl-4 pb-4 pr-0.5 pt-0.5"
         >
-          <Button
-            text="Create new event"
-            customClass="!font-light !px-4 !py-2"
-          />
+          <nuxt-link to="events/create">
+            <Button
+              text="Create new event"
+              customClass="!font-light !px-4 !py-2"
+            />
+          </nuxt-link>
         </div>
       </div>
     </div>
@@ -39,13 +41,14 @@
     <div
       class="grid grid-cols-3 max-h-screen overflow-scroll no-scrollbar gap-4"
     >
-      <div
+      <nuxt-link
+        :to="`events/${x}`"
         class="p-4 col-span-1 min-h-[12.5rem] bg-white box-shadow rounded-lg"
         v-for="x in 16"
         :key="x"
       >
         test {{ x }}
-      </div>
+      </nuxt-link>
     </div>
   </section>
 </template>

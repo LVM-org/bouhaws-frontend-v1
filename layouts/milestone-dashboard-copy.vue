@@ -3,10 +3,12 @@
     <PartialsTopBar />
 
     <div
-      class="container mx-auto grid grid-cols-4 min-h-screen py-11 px-4 gap-6"
+      class="container mx-auto grid grid-cols-4 min-h-screen py-16 px-4 gap-6"
     >
       <!--  challenges sidebar -->
-      <PartialsLeatherboard />
+      <div>
+        <PartialsMilestone />
+      </div>
 
       <!-- page content -->
       <div class="col-span-3">

@@ -1,36 +1,23 @@
 <template>
-  <section class="pb-3 border h-fit rounded-xl bg-white">
+  <section class="pb-3 border h-fit rounded-xl p-2 bg-bouhaws-semi-dark">
     <div
-      class="flex justify-between text-sm rounded-t-xl bg-bouhaws-semi-dark items-center font-medium mb-4 w-full"
+      class="flex justify-between text-sm rounded-t-xl items-center font-medium mb-4 p-3 w-full"
     >
-      <span
-        class="flex-1 text-center p-4 cursor-pointer"
-        :class="
-          activeTab == 'leatherboard'
-            ? 'bg-white text-bouhaws-semi-dark rounded-tr-2xl'
-            : 'bg-transparent text-white'
-        "
-        @click="activeTab = 'leatherboard'"
-      >
-        Leatherboard
+      <span class="flex items-center space-x-2 text-white">
+        <IconTreasure title="diamond" :width="30" :height="21" />
+
+        <span>Milestone</span>
       </span>
 
       <span
-        class="flex-1 flex items-center justify-center space-x-3 text-center p-4 cursor-pointer"
-        :class="
-          activeTab == 'milestone'
-            ? 'bg-white text-bouhaws-semi-dark rounded-tl-2xl'
-            : 'bg-transparent text-white'
-        "
-        @click="activeTab = 'milestone'"
+        class="text-sm font-normal px-4 py-1.5 bg-white rounded-lg text-bouhaws-semi-dark"
       >
-        <IconTreasure title="diamond" />
-        <span> Milestone </span>
+        Edit
       </span>
     </div>
 
-    <div class="p-2 overflow-scroll no-scrollbar space-y-3 max-h-screen">
-      <CardLeatherboard
+    <div class="overflow-scroll no-scrollbar space-y-3 max-h-screen">
+      <CardMilestone
         v-for="(user, index) in users"
         :key="user.id"
         :index="+index + 1"
@@ -40,9 +27,7 @@
   </section>
 </template>
 
-<script setup lang="ts" >  
-import { getPercentageRatio, formatNumber } from "~/controllers/utils"
-const activeTab = ref('leatherboard')
+<script setup lang="ts" >   
 const users = ref([
   {
     id: "1",

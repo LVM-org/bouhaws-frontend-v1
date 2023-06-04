@@ -7,7 +7,7 @@
     >
       <div class="flex-shrink-0 flex items-center justify-between">
         <nuxt-link
-          to="/"
+          to="/home"
           class="text-2xl select-none cursor-pointer font-medium text-bouhaws-gray"
         >
           BOUHAWS
@@ -21,14 +21,14 @@
               :to="navLink.route"
               class="py-2 capitalize text-sm space-x-3 px-6 rounded-lg flex items-center"
               :class="
-                navLink.route == activeRoute
+                activeRoute.includes(navLink.route)
                   ? 'text-bouhaws-blue-main'
                   : 'text-bouhaws-gray'
               "
             >
               <span
                 :class="
-                  navLink.route == activeRoute
+                  activeRoute.includes(navLink.route)
                     ? 'text-bouhaws-blue-main'
                     : 'text-bouhaws-gray'
                 "
@@ -61,7 +61,7 @@
 const navLinks = ref([
   {
     title: 'home',
-    route: '/',
+    route: '/home',
   },
   {
     title: 'projects',

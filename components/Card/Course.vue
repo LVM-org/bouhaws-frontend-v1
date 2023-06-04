@@ -1,7 +1,9 @@
 <template>
   <div class="border px-5 py-3 box-shadow rounded-lg bg-white">
-    <h4 class="text-2xl mb-2">{{ course.courseCode }}</h4>
-    <h5 class="text-sm mb-8 font-normal">{{ course.title }}</h5>
+    <h4 class="text-2xl mb-2 text-[#9383FF]">{{ course.courseCode }}</h4>
+    <h5 class="text-sm mb-8 font-normal">
+      {{ course.title }}
+    </h5>
 
     <div class="flex items-center justify-between text-sm font-light">
       <span class="flex items-center space-x-2">

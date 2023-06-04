@@ -2,14 +2,14 @@
   <div class="bg-[#E3E3D9]">
     <PartialsTopBar />
 
-    <div
-      class="container mx-auto grid grid-cols-4 min-h-screen py-11 px-4 gap-6"
-    >
+    <div class="container mx-auto grid grid-cols-4 py-16 px-4 gap-6">
       <!--  challenges sidebar -->
-      <PartialsLeatherboard />
+      <div>
+        <PartialsMilestone />
+      </div>
 
       <!-- page content -->
-      <div class="col-span-3">
+      <div class="col-span-3 overflow-scroll no-scrollbar">
         <slot />
       </div>
     </div>

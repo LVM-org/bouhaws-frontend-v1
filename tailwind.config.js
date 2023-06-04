@@ -21,6 +21,7 @@ module.exports = {
         'bouhaws-purple': '#9747FF',
         'bouhaws-gray': '#5A5B5B',
         'bouhaws-light-gray': '#9E9E9E',
+        'bouhaws-light-gray-2': '#6F6F74',
       },
 
       fontFamily: {

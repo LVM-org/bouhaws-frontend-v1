@@ -1,5 +1,6 @@
 <template>
-  <div
+  <nuxt-link
+    :to="`projects/${project.id}`"
     class="flex flex-col border-b pt-2 pb-4 bg-white text-[#0E1011] space-x-2.5"
   >
     <h4 class="text-xl font-medium mb-3.5">
@@ -7,7 +8,7 @@
     </h4>
 
     <div class="flex items-center space-x-6 text-sm mb-3">
-      <span class="flex items-center space-x-2">
+      <span class="flex items-center space-x-3">
         <img
           src="~/assets/images/profile-picture.svg"
           :alt="project.title"
@@ -90,7 +91,7 @@
         </span>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script setup lang="ts"> 

@@ -16,7 +16,7 @@
           </p>
 
           <span
-            class="px-6 inline-block w-fit py-2 font-medium text-sm mt-4 rounded-lg text-bouhaws-dark bg-white"
+            class="px-6 inline-block cursor-pointer w-fit py-2 font-medium text-sm mt-4 rounded-lg text-bouhaws-dark bg-white"
           >
             Get Started
           </span>
