@@ -1,7 +1,9 @@
 <template>
-  <div
+  <nuxt-link
+    :to="`exhibition/test`"
     class="relative rounded-md box-shadow h-[12.5rem] w-full bg-[url('~/assets/images/art.svg')] bg-no-repeat bg-cover"
   >
+    <!-- :to="`exhibition/${project.id}`" -->
     <div
       class="relative h-full w-full cursor-pointer top-0 left-0 bg-bouhaws-dark bg-opacity-70 hover:bg-opacity-50 rounded-lg"
       @click="seeDetails('res')"
@@ -18,7 +20,7 @@
         </span>
       </div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 
 <script setup lang="ts">  

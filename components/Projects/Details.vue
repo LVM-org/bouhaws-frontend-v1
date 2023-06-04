@@ -46,8 +46,14 @@
       <section class="col-span-2 space-y-6 w-full">
         <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-7">
           <div class="flex justify-between items-center">
-            <h4 class="flex items-center text-2xl space-x-4 font-normal">
-              <IconArrow type="left" class="text-bouhaws-blue-main" />
+            <h4
+              class="flex items-center cursor-pointer text-2xl space-x-4 font-normal"
+            >
+              <IconArrow
+                type="left"
+                @click="router.go(-1)"
+                class="text-bouhaws-blue-main"
+              />
               <span> {{ project?.title }} </span>
             </h4>
 
@@ -172,7 +178,7 @@
           <div
             class="px-5 py-8 mb-2 border-b-2 border-[#EBEBE5] flex space-x-4 justify-center items-center"
           >
-            <span class="p-2 rounded-lg bg-bouhaws-blue-main">
+            <span class="p-2 rounded-lg bg-bouhaws-blue-main text-white">
               <IconAdd :width="16" :height="16" />
             </span>
 
@@ -233,6 +239,7 @@
 </template>
 
 <script setup lang="ts">  
+const router = useRouter()
 const project = ref({
   id: "1",
   title: `Project title`,

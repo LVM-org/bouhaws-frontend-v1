@@ -1,8 +1,9 @@
 <template>
-  <div class="mx-auto flex flex-col space-y-6">
+  <div>
+    <!-- Modals here -->
     <Modal
-      title="Project details"
-      id="project-details"
+      title="Event details"
+      id="event-details"
       v-if="showEventDetailsModal"
       @close="showEventDetailsModal = false"
     >
@@ -40,182 +41,207 @@
       </div>
     </Modal>
 
-    <div class="flex justify-end">
-      <Button
-        text="Save Event details"
-        @click="showEventDetailsModal = true"
-        customClass="!font-normal"
-      />
-    </div>
+    <!--  -->
+    <div class="grid grid-cols-3 gap-x-6 mx-auto">
+      <section class="col-span-2 space-y-6 w-full">
+        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-7">
+          <div class="flex justify-between items-center">
+            <h4 class="flex items-center text-2xl space-x-4 font-normal">
+              <IconArrow
+                type="left"
+                @click="router.go(-1)"
+                class="text-bouhaws-blue-main cursor-pointer"
+              />
+              <span> Event Title </span>
+            </h4>
 
-    <div class="grid grid-cols-3 gap-x-6">
-      <section
-        class="w-full col-span-2 py-32px-6 bg-white rounded-lg box-shadow space-y-7"
-      >
-        <div>
-          <h4 class="flex items-center text-2xl space-x-4 font-normal">
-            <IconArrow type="left" class="text-bouhaws-blue-main" />
+            <span class="font-light text-xs"> Posted 18h ago </span>
+          </div>
 
-            <input
-              id="Comments"
-              class="border-0 resize-none w-3/4 text-2xl text-[#B4BAC9] placeholder:text-[#B4BAC9] bg-transparent placeholder:text-2xl overflow-auto font-light mt-1 py-1.5 px-2 outline-none"
-              placeholder="Event Title"
-              v-model="payload.title"
-            />
-          </h4>
+          <p class="text-sm font-light w-5/6">
+            Short description of the event and different techniques they used to
+            create the entry. Also anything they think would be helpful.
+          </p>
 
-          <div>
-            <textarea
-              id="description"
-              class="border-0 resize-none w-full text-[#B4BAC9] placeholder:text-[#B4BAC9] placeholder:text-sm placeholder:font-light overflow-auto font-normal mt-1 py-2 px-0.5 text-sm outline-none"
-              placeholder="Enter a short description of the project"
-              column="4"
-              v-model="payload.description"
-            ></textarea>
+          <div class="flex items-center space-x-6 text-xs">
+            <span
+              class="flex flex-1 space-x-2 bg-[#FFE2C6] text-[#844200] items-center px-3 py-2 rounded-md"
+            >
+              <IconUser
+                :title="event?.entry?.type == 'single' ? 'user' : 'users'"
+              />
+
+              <span>
+                {{
+                  event?.entry?.type == "single"
+                    ? "Individual entries"
+                    : `Teams of ${
+                        event?.entry?.range?.max - event?.entry?.range?.min
+                      } members`
+                }}
+              </span>
+            </span>
+
+            <span
+              class="flex flex-1 space-x-2 bg-[#ECE0FF] text-[#0C006C] items-center px-3 py-2 rounded-md"
+            >
+              <IconImagePlus />
+
+              <span>
+                {{
+                  event?.entry?.type == "single"
+                    ? "1 Entry allowed"
+                    : `${event?.entry?.range?.min} - ${event?.entry?.range?.max}   entries allowed`
+                }}
+              </span>
+            </span>
+
+            <span
+              class="flex flex-1 space-x-2 bg-[#DBE7FF] text-[#02176B] items-center px-3 py-2 rounded-md"
+            >
+              <span> Deadline: </span>
+              <span> {{ event?.deadline }} </span>
+            </span>
+          </div>
+
+          <div class="flex items-center space-x-6">
+            <span class="flex flex-1 items-center text-sm space-x-2">
+              <img
+                src="~/assets/images/profile-picture.svg"
+                :alt="event.title"
+                class="!h-7 !w-7 rounded-full"
+              />
+
+              <span>
+                {{ event.username }}
+              </span>
+            </span>
+
+            <span
+              class="relative flex-1 text-xs space-x-2 bg-[#ECE0FF] text-[#0C006C] items-center py-1.5 rounded-md"
+            >
+              <IconTreasure
+                title="diamond"
+                :height="40"
+                :width="36"
+                class="absolute -left-2 -top-2"
+              />
+
+              <span class="pl-8">
+                {{
+                  event?.points?.min > 1
+                    ? `${event?.points?.min}/${event?.points?.max} Points`
+                    : `${event?.points?.min}/${event?.points?.max} Points`
+                }}
+              </span>
+            </span>
+
+            <span class="flex flex-1"> </span>
           </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-6 text-xs flex-wrap">
-          <span
-            class="flex flex-1 truncate space-x-2 bg-[#EBEBE5] text-bouhaws-semi-dark items-center px-3 py-2 rounded-md"
-          >
-            <IconUser
-              title="user"
-              class="text-[#A0A1A3]"
-              :width="16"
-              :height="18"
+        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
+          <div class="flex justify-between items-center">
+            <h4 class="flex items-center text-2xl space-x-4 font-normal">
+              <span> Event Details </span>
+            </h4>
+
+            <Button
+              text="View"
+              @click="showEventDetailsModal = true"
+              class="!py-2 !px-5 my-2 !font-extralight"
             />
+          </div>
 
-            <select
-              class="border-0 text-bouhaws-dark truncate bg-transparent py-1 px-2 outline-none"
-              placeholder="Event Title"
-            >
-              <option value="1">Individual entries</option>
-              <option value="2">Multiple entries</option>
-            </select>
-          </span>
+          <p class="text-sm font-light w-5/6">
+            Click View to see the more of the event details
+          </p>
 
-          <span
-            class="flex flex-1 space-x-3 truncate bg-[#EBEBE5] text-bouhaws-semi-dark items-center px-3 py-2 rounded-md"
-          >
-            <IconImagePlus class="text-[#A0A1A3]" :width="16" :height="18" />
-
-            <input
-              type="number"
-              class="border-0 text-bouhaws-dark border-b truncate font-normal border-bouhaws-dark w-9 bg-transparent overflow-auto py-1 outline-none"
-              v-model="payload.no_of_entries"
-            />
-
-            <span class="truncate">
-              {{
-                payload.no_of_entries < 1 ? "Entry allowed" : `Entries allowed`
-              }}
-            </span>
-          </span>
-
-          <span
-            class="flex flex-1 space-x-2 bg-[#EBEBE5] truncate text-bouhaws-semi-dark items-center px-3 py-2 rounded-md"
-          >
-            <span> Deadline: </span>
-
-            <IconCalendar class="text-[#A0A1A3]" :width="14" :height="16" />
-
-            <input
-              type="date"
-              class="border-0 text-bouhaws-dark w-fit truncate font-normal border-bouhaws-dark bg-transparent overflow-auto py-1 outline-none"
-              min="2018-01-01"
-              max="2018-12-31"
-              v-model="payload.deadline"
-            />
-          </span>
-        </div>
-
-        <div class="flex items-center space-x-6">
-          <span class="flex items-center text-sm space-x-2">
+          <div class="flex space-x-4 overflow-auto no-scrollbar py-2 px-1">
             <img
-              src="~/assets/images/profile-picture.svg"
+              src="~/assets/images/art.svg"
               :alt="event.title"
-              class="!h-7 !w-7 rounded-full"
+              class="!w-40 !h-40 rounded-xl shadow"
+              v-for="x in 9"
+              :key="x"
             />
+          </div>
+        </div>
+      </section>
 
-            <span>
-              {{ event.username }}
+      <section class="col-span-1 w-full space-y-6">
+        <form
+          @submit.prevent="uploadForm"
+          class="rounded-lg box-shadow bg-white"
+        >
+          <div
+            class="px-5 py-8 mb-2 border-b-2 border-[#EBEBE5] flex space-x-4 justify-center items-center"
+          >
+            <span class="p-2 rounded-lg bg-bouhaws-blue-main text-white">
+              <IconAdd :width="16" :height="16" />
             </span>
-          </span>
+
+            <h5 class="text-xl">Upload entry</h5>
+          </div>
+
+          <div class="px-6 py-2 space-y-2 border-b-2 border-[#EBEBE5]">
+            <div>
+              <input
+                type="text"
+                id="title"
+                class="border-0 w-full placeholder:text-bouhaws-dark placeholder:text-sm placeholder:font-extralight font-light py-2 px-0.5 text-sm border-b border-[#EBEBE5] outline-none"
+                placeholder="Title"
+                v-model="payload.title"
+              />
+            </div>
+
+            <div>
+              <textarea
+                id="description"
+                v-model="payload.description"
+                class="border-0 resize-none w-full placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light mt-1 py-2 px-0.5 text-sm outline-none"
+                placeholder="Short description (optional)"
+                column="4"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="p-7">
+            <Button
+              type="submit"
+              text="Submit"
+              class="!w-full flex-1 !py-2.5 !px-6 my-2"
+              customClass="!bg-[#D6D6D6]  !text-bouhaws-dark !text-white"
+            />
+          </div>
+        </form>
+
+        <div class="rounded-lg box-shadow p-2 pb-4 bg-white">
+          <h5 class="text-xl mb-3 p-3">Submission requirements</h5>
+
+          <div class="flex flex-col space-y-2 text-sm">
+            <p
+              v-for="requirement in requirements"
+              :key="requirement.title"
+              class="flex space-x-3 items-center font-light py-1 px-2"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-purple"></span>
+              <span>
+                {{ requirement.title }}
+              </span>
+            </p>
+          </div>
         </div>
-      </section>
-
-      <section
-        class="w-full h-fit py-4 px-6 bg-white text-sm rounded-lg box-shadow space-y-4"
-      >
-        <h4 class="text-2xl">Recent entries</h4>
-
-        <p class="font-light">
-          Here you’ll see how many students from your school have submitted
-          entries
-        </p>
-
-        <p class="!mb-10">
-          <span>0</span>
-
-          <span> Entries submitted </span>
-        </p>
-
-        <span
-          class="flex space-x-3 items-center justify-center !w-full flex-1 !py-2.5 !px-6 my-2 bg-[#D6D6D6] !text-white rounded-lg"
-        >
-          <span> View submitted entries </span>
-
-          <IconArrow type="right" />
-        </span>
-      </section>
-    </div>
-
-    <div class="grid grid-cols-2 gap-x-6">
-      <section
-        class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-3"
-      >
-        <h4 class="text-2xl">Event details</h4>
-
-        <div>
-          <textarea
-            id="description"
-            class="border-0 resize-none w-full placeholder:font-light placeholder:text-sm placeholder:text-bouhaws-semi-dark overflow-auto font-normal mt-1 py-2 px-0.5 text-sm outline-none"
-            placeholder="Enter a short description of the project"
-            column="3"
-          ></textarea>
-        </div>
-
-        <p
-          class="flex items-center space-x-2 text-bouhaws-blue-main text-sm font-light"
-        >
-          <IconAdd />
-
-          <span>Add project details</span>
-        </p>
-      </section>
-
-      <section
-        class="w-full rounded-lg py-4 px-6 rounded-tl-none box-shadow flex flex-col justify-between space-y-4 p-2 pb-4 bg-white"
-      >
-        <h5 class="text-xl">Submission requirements</h5>
-
-        <p
-          class="flex items-center space-x-2 text-bouhaws-blue-main text-sm font-light"
-        >
-          <IconAdd />
-
-          <span>Add project details</span>
-        </p>
       </section>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">  
+const router = useRouter()
 const event = ref({
   id: "1",
-  title: `Event title`,
+  title: `Project title`,
   username: "ArchyScript",
   entryType: 'single',
   entryRange: '1-4',
@@ -247,24 +273,13 @@ const requirements = ref([
 
 const payload = ref({
   title: "",
-  description: "",
-  deadline: "",
-  no_of_entries: 0
+  description: ""
 })
-
-const showEventDetailsModal = ref(false)
 
 const uploadForm = () => {
   console.log(payload.value)
 }
 
+const showEventDetailsModal = ref(false)
 </script>
-
-<style scoped>
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
-}
-</style>
  
