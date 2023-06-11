@@ -1,25 +1,21 @@
 <template>
   <div class="flex flex-col mx-auto max-w-xl w-3/5">
     <div class="mb-4">
-      <h1 class="mb-1.5 pb-1 relative">
-        <span class="text-5xl font-medium">Log In</span>
+      <h1 class="mb-2 pb-1 -ml-7 flex items-center space-x-3">
+        <IconArrow
+          type="left"
+          @click="router.go(-1)"
+          class="text-bouhaws-blue-main mt-1 p-1.5"
+        />
 
-        <span
-          class="absolute text-bouhaws-blue-main left-0 bottom-1/2 h-full flex justify-center -m-8"
-        >
-          <IconArrow
-            type="left"
-            @click="router.go(-1)"
-            class="flex justify-center w-full h-full items-center"
-          />
-        </span>
+        <span class="text-5xl font-semibold leading-8">Log In</span>
       </h1>
 
-      <p class="text-base">Welcome back!</p>
+      <p class="font-normal opacity-90">Welcome back!</p>
     </div>
 
     <div class="w-full mt-1">
-      <form class="space-y-5" @submit.prevent="login">
+      <form class="space-y-6" @submit.prevent="login">
         <div>
           <input
             id="email"
@@ -42,7 +38,7 @@
           />
         </div>
 
-        <div class="flex flex-col mt-8">
+        <div class="flex flex-col pt-4">
           <Button type="submit" text="Login" />
         </div>
       </form>
@@ -58,9 +54,7 @@
 </template>
 
 <script setup lang="ts">  
-definePageMeta({
-  layout: "auth",
-});
+definePageMeta({ layout: "auth" });
 const router = useRouter()
 
 const payload = ref({
@@ -73,3 +67,9 @@ const login = () => {
 }
 
 </script>
+
+<style scoped>
+input {
+  @apply opacity-80;
+}
+</style>

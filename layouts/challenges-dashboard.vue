@@ -1,15 +1,18 @@
 <template>
-  <div class="bg-[#E3E3D9]">
+  <div class="bg-[#E3E3D9] h-screen font-Kanit">
     <PartialsTopBar />
 
+    <!-- class="container mx-auto grid grid-cols-4 overflow-hidden no-scrollbar max-h-screen py-11 px-4 gap-6" -->
     <div
-      class="container mx-auto grid grid-cols-4 min-h-screen py-11 px-4 gap-6"
+      class="container mx-auto flex h-[90vh] overflow-hidden no-scrollbar py-11 px-4 space-x-6"
     >
       <!--  challenges sidebar -->
-      <PartialsChallenges />
+      <div class="w-72 h-full overflow-hidden py-6 pb-0">
+        <PartialsChallenges class="h-full" />
+      </div>
 
       <!-- page content -->
-      <div class="col-span-3">
+      <div class="flex-1 ml-72 overflow-scroll no-scrollbar">
         <slot />
       </div>
     </div>
@@ -35,7 +38,6 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
-
 /*  */
 .box-shadow {
   box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);

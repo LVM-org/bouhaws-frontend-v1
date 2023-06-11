@@ -1,21 +1,20 @@
 <template>
   <div
-    class="max-w-sm m-auto text-white p-20 flex flex-col px-8 justify-center space-y-6 items-center bg-gradient-to-b from-[#16120F] to-[#292F33] rounded-3xl rounded-tl-none"
+    class="max-w-md m-auto text-white p-20 flex flex-col px-8 justify-center space-y-6 items-center bg-gradient-to-b from-[#16120F] to-[#292F33] rounded-3xl rounded-tl-none"
   >
-    <div class="flex justify-center items-center">
-      <div class="w-32 h-28 relative bg-[#16120F] rounded-2xl rounded-tl-none">
+    <div class="flex justify-center mb-6 items-center">
+      <div class="w-40 h-32 bg-[#16120F] rounded-2xl rounded-tl-none">
         <!--  -->
-        <span
-          class="w-28 h-28 rounded-full bg-[#E6D6FF] absolute bottom-1/4 right-1/3"
-        >
-        </span>
+        <div class="w-32 h-32 rounded-full bg-[#E6D6FF] -mt-12 -ml-12"></div>
       </div>
     </div>
 
-    <div class="text-white pt-5 font-medium text-sm mx-auto">
+    <div class="text-white pt-5 mx-auto">
       <p>“{{ quotes[0].quote }}</p>
 
-      <span class="flex justify-end"> ~ {{ quotes[0].author }} </span>
+      <span class="flex justify-end font-medium">
+        ~ {{ quotes[0].author }}
+      </span>
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#E3E3D9]">
+  <div class="bg-[#E3E3D9] font-Kanit">
     <PartialsTopBar />
 
     <div class="container mx-auto grid grid-cols-4 py-16 px-4 gap-6">

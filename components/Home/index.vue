@@ -28,12 +28,10 @@
       </div>
 
       <!--  -->
-      <div class="rounded-md p-6 bg-white box-shadow">
+      <div class="rounded-md p-6 bg-white">
         <h4 class="text-2xl font-medium mb-4">Projects you’re on</h4>
 
-        <div
-          class="flex flex-col space-y-5 overflow-scroll no-scrollbar max-h-screen"
-        >
+        <div class="flex flex-col space-y-5">
           <ListProject v-for="x in 10" :key="x" />
         </div>
       </div>

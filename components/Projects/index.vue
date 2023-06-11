@@ -2,9 +2,7 @@
   <section class="col-span-3 py-6 px-8 bg-white box-shadow rounded-xl">
     <h4 class="text-2xl font-medium mb-3">Active projects</h4>
 
-    <div
-      class="flex flex-col space-y-5 overflow-scroll no-scrollbar max-h-screen"
-    >
+    <div class="flex flex-col space-y-5">
       <CardProjectDetails
         v-for="project in projects"
         :key="project.id"
