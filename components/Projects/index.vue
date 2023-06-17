@@ -1,6 +1,17 @@
 <template>
   <section class="col-span-3 py-6 px-8 bg-white box-shadow rounded-xl">
-    <h4 class="text-2xl font-medium mb-3">Active projects</h4>
+    <div class=" flex justify-between items-center">
+      <h4 class="text-2xl font-medium mb-3">Projects</h4>
+
+      <div  class="flex items-center bg-[#EBEBE5]  rounded-lg">
+        <span v-for="filterOption in filterOptions" class="px-4 py-2 text-sm cursor-pointer text-[#61656D] rounded-lg font-light"
+          :class="activeOption == filterOption.title ? 'bg-bouhaws-semi-dark text-white ' : ''"
+          @click="activeOption = filterOption.title"
+        >
+          {{filterOption.title}}
+        </span>
+      </div>
+    </div>
 
     <div class="flex flex-col space-y-5">
       <CardProjectDetails
@@ -13,6 +24,14 @@
 </template>
 
 <script setup lang="ts">
+const activeOption = ref("all")
+const filterOptions =  ref([
+  {title: 'all'},
+  {title: 'class'},
+  {title: 'challenge'},
+  {title: 'active'},
+  {title: 'completed'},
+])
 const projects = ref([
   {
     id: "1",

@@ -1,14 +1,51 @@
 <template>
-  <div class="container grid grid-cols-4 gap-6 py-5 px-2">
-    <CardExhibition
-      v-for="exhibition in exhibitions"
-      :key="exhibition"
-      :exhibition="exhibition"
-    />
+  <div class="container  py-5 px-2">
+    <div class="flex flex-col items-center mb-6 justify-center p-6 space-y-5 rounded-2xl bg-bouhaws-blue-main">
+      <h4 class="text-white text-3xl">
+       Explore projects by students in the community
+      </h4>
+
+      <div class="w-2/5 mx-auto text-[#61656D] flex items-center space-x-4 px-5 bg-white rounded-xl">
+        <IconSearch/>
+
+        <input type="search" placeholder="Search" class="flex-1 w-full text-sm py-3 bg-transparent outline-none" />
+      </div>
+    </div>
+
+    <div class="flex items-center my-8 space-x-4 justify-between ">
+      <span class="px-4 py-2 btn-box-shadow text-sm cursor-pointer text-[#61656D] rounded-lg font-light">Popular</span>
+
+      <div class="flex   space-x-3 items-center justify-between ">
+        <span v-for="filterOption in filterOptions" class="px-4 py-2 btn-box-shadow text-sm cursor-pointer   text-[#61656D] rounded-lg font-light"
+          :class="activeOption == filterOption.title ? 'bg-bouhaws-semi-dark text-white ' : ''"
+          @click="activeOption = filterOption.title"
+        >
+          {{filterOption.title}}
+        </span>
+      </div>
+      
+      <span class="px-4 py-2 btn-box-shadow text-sm cursor-pointer text-[#61656D] rounded-lg font-light">Filter</span>
+    </div>
+    
+    <div class="grid grid-cols-4 gap-6">
+      <CardExhibition
+        v-for="exhibition in exhibitions"
+        :key="exhibition"
+        :exhibition="exhibition"
+      />
+    </div>
   </div>
 </template>
 
-<script setup lang="ts">  
+<script setup lang="ts"> 
+const activeOption = ref("all") 
+const filterOptions =  ref([
+  {title: 'all'},
+  {title: 'class'},
+  {title: 'challenge'},
+  {title: 'active'},
+  {title: 'completed'},
+]) 
 const exhibitions = ref([
   {
     id: "1",
@@ -85,3 +122,8 @@ const exhibitions = ref([
 ])
 </script>
  
+ <style>
+  .btn-box-shadow {
+    box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);
+  }
+ </style>

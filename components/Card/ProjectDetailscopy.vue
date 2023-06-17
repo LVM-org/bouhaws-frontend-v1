@@ -3,11 +3,11 @@
     :to="`projects/${project.id}`"
     class="flex space-x-4 border-b pt-2 pb-4 bg-white text-[#0E1011] space-x-2.5"
   >
-    <span class="h-36 w-36 border  rounded-lg">
+    <span class="h-36 w-36">
       <img
-        src="~/assets/images/art.svg"
+        src="~/assets/images/profile-picture.svg"
         :alt="project.title"
-        class="!w-full !h-full object-cover rounded-lg"
+        class="w-full h-full"
       /> 
     </span>
 
@@ -17,10 +17,6 @@
       </h4> 
   
       <div class="flex items-center space-x-6 text-sm mb-3">
-        <span  class="px-4 py-1.5 bg-bouhaws-purple text-white rounded-md font-light">
-          class
-        </span>
-        
         <span class="flex items-center space-x-3">
           <img
             src="~/assets/images/profile-picture.svg"
@@ -46,24 +42,6 @@
       </p>
 
       <div class="flex items-center space-x-5 text-sm mb-3">
-        <span class="flex items-center space-x-1.5">
-          <IconCheckbox
-            :width="16"
-            :height="16"
-            v-for="x in 5"
-            :class="
-              x <= project?.milestone
-                ? 'text-bouhaws-green'
-                : 'text-bouhaws-light-gray'
-            "
-          />
-        </span>
-
-        <span>
-          {{project?.milestone}} / 5 milestones reached
-        </span>
-      </div>
-      <!-- <div class="flex items-center space-x-5 text-sm mb-3">
         <span> Project milestones </span>
 
         <span class="flex items-center space-x-1.5">
@@ -121,7 +99,7 @@
             <span> {{ project?.deadline }} </span>
           </span>
         </div>
-      </div> -->
+      </div>
     </div>
   </nuxt-link>
 </template>

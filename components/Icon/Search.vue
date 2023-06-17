@@ -1,0 +1,26 @@
+<template>
+  <span> 
+
+    <svg  :height="height"
+      :width="width"
+      class="fill-current" viewBox="0 0 23 23"   xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11 2.25C6.16751 2.25 2.25 6.16751 2.25 11C2.25 15.8325 6.16751 19.75 11 19.75C15.8325 19.75 19.75 15.8325 19.75 11C19.75 6.16751 15.8325 2.25 11 2.25ZM0.75 11C0.75 5.33908 5.33908 0.75 11 0.75C16.6609 0.75 21.25 5.33908 21.25 11C21.25 13.5605 20.3111 15.9017 18.7589 17.6982L22.0303 20.9697C22.3232 21.2626 22.3232 21.7374 22.0303 22.0303C21.7374 22.3232 21.2626 22.3232 20.9697 22.0303L17.6982 18.7589C15.9017 20.3111 13.5605 21.25 11 21.25C5.33908 21.25 0.75 16.6609 0.75 11Z"  />
+</svg>
+
+  </span>
+</template>
+  
+<script setup lang="ts">
+const props = defineProps({
+  width: {
+    type: Number,
+    default: 18,
+  },
+  height: {
+    type: Number,
+    default: 18,
+  },
+},) 
+</script>
+
+<style lang="scss" scoped></style>
