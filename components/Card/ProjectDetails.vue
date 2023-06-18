@@ -1,136 +1,84 @@
 <template>
   <nuxt-link
     :to="`projects/${project.id}`"
-    class="flex space-x-4 border-b pt-2 pb-4 bg-white text-[#0E1011] space-x-2.5"
+    class="flex px-3 py-3 flex-row items-center w-full space-x-4"
   >
-    <span class="h-36 w-36 border  rounded-lg">
-      <img
-        src="~/assets/images/art.svg"
-        :alt="project.title"
-        class="!w-full !h-full object-cover rounded-lg"
-      /> 
-    </span>
+    <div class="w-[170px] flex flex-col">
+      <ImageLoader
+        :photoUrl="project.image_url"
+        :customClass="'h-[160px] w-[170px] rounded-[10px]'"
+      />
+    </div>
 
-    <div class="flex flex-col flex-1">
-      <h4 class="text-xl font-medium mb-3.5">
+    <div class="flex flex-col space-y-3 w-full">
+      <TypoHeaderText :size="'xl'" :customClass="'!font-normal'">
         {{ project.title }}
-      </h4> 
-  
-      <div class="flex items-center space-x-6 text-sm mb-3">
-        <span  class="px-4 py-1.5 bg-bouhaws-purple text-white rounded-md font-light">
-          class
-        </span>
-        
-        <span class="flex items-center space-x-3">
-          <img
-            src="~/assets/images/profile-picture.svg"
-            :alt="project.title"
-            class="!h-7 !w-7 rounded-full"
-          />
+      </TypoHeaderText>
 
-          <span>
-            {{ project.username }}
-          </span>
-        </span>
+      <div class="flex items-center space-x-6 flex-row w-full">
+        <TypoNormalText
+          v-if="project.type"
+          :customClass="`px-4 py-1 capitalize rounded-[5px] ${
+            project.type == 'challenge'
+              ? 'bg-bouhaws-purple'
+              : 'bg-bouhaws-orange'
+          }`"
+          :color="'text-white'"
+        >
+          {{ project.type }}
+        </TypoNormalText>
 
-        <span>
-          {{ project.numberOfEntries > 1 ? "Entries" : "Entry" }}
-          submitted
+        <span class="flex items-center space-x-1">
+          <Avatar :photoUrl="project.user.photo_url" :size="'20'"></Avatar>
+          <TypoNormalText :customClass="'!font-normal'">
+            {{ project.user.name }}
+          </TypoNormalText>
         </span>
 
-        <span class="font-light"> {{ project.dataPosted }} </span>
+        <TypoNormalText>
+          {{ project.dataPosted }}
+        </TypoNormalText>
+
+        <TypoNormalText>
+          {{ project.deadline }}
+        </TypoNormalText>
       </div>
 
-      <p class="font-light text-sm w-3/4 mb-3">
+      <TypoNormalText :customClass="'!text-left'">
         {{ project.description }}
-      </p>
+      </TypoNormalText>
 
-      <div class="flex items-center space-x-5 text-sm mb-3">
-        <span class="flex items-center space-x-1.5">
-          <IconCheckbox
-            :width="16"
-            :height="16"
-            v-for="x in 5"
-            :class="
-              x <= project?.milestone
-                ? 'text-bouhaws-green'
-                : 'text-bouhaws-light-gray'
-            "
-          />
-        </span>
-
-        <span>
-          {{project?.milestone}} / 5 milestones reached
-        </span>
-      </div>
-      <!-- <div class="flex items-center space-x-5 text-sm mb-3">
-        <span> Project milestones </span>
-
-        <span class="flex items-center space-x-1.5">
-          <IconCheckbox
-            :width="16"
-            :height="16"
-            v-for="x in 5"
-            :class="
-              x <= project?.milestone
-                ? 'text-bouhaws-green'
-                : 'text-bouhaws-light-gray'
-            "
-          />
-        </span>
-
-        <div class="flex items-center space-x-5 text-sm">
-          <span
-            class="flex space-x-3 bg-[#FFE2C6] text-[#844200] items-center px-3 py-2 rounded-md"
+      <div class="flex items-center flex-row space-x-2 w-full">
+        <div class="flex flex-row items-center space-x-1 pt-1">
+          <template
+            v-for="(milestone, index) in project.milestones.total"
+            :key="index"
           >
-            <span>
-              <IconUser
-                :title="project?.entry?.type == 'single' ? 'user' : 'users'"
-              />
-            </span>
-
-            <span>
-              {{
-                project?.entry?.type == "single"
-                  ? "Individual entries"
-                  : `Teams of ${
-                      project?.entry?.range?.max - project?.entry?.range?.min
-                    } members`
-              }}
-            </span>
-          </span>
-
-          <span
-            class="flex space-x-3 bg-[#ECE0FF] text-[#0C006C] items-center px-3 py-2 rounded-md"
-          >
-            <span> <IconImagePlus /> </span>
-
-            <span>
-              {{
-                project?.entry?.type == "single"
-                  ? "1 Entry allowed"
-                  : `${project?.entry?.range?.min} - ${project?.entry?.range?.max}   entries allowed`
-              }}
-            </span>
-          </span>
-
-          <span
-            class="flex space-x-3 bg-[#DBE7FF] text-[#02176B] items-center px-3 py-2 rounded-md"
-          >
-            <span> Deadline: </span>
-            <span> {{ project?.deadline }} </span>
-          </span>
+            <IconLoader
+              :name="`${
+                index < project.milestones.current
+                  ? 'completed-milestone'
+                  : 'pending-milestone-gray'
+              }`"
+              :customClass="'h-[16px]'"
+            />
+          </template>
         </div>
-      </div> -->
+
+        <TypoNormalText>
+          {{ project.milestones.current }}/{{ project.milestones.total }}
+          milestones reached
+        </TypoNormalText>
+      </div>
     </div>
   </nuxt-link>
 </template>
 
-<script setup lang="ts"> 
+<script setup lang="ts">
 const props = defineProps({
   project: {
     type: Object,
-    default: () => { }
-  }
-})
+    default: () => {},
+  },
+});
 </script>

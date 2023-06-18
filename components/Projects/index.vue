@@ -1,15 +1,27 @@
 <template>
-  <section class="col-span-3 py-6 px-8 bg-white box-shadow rounded-xl">
-    <div class=" flex justify-between items-center">
-      <h4 class="text-2xl font-medium mb-3">Projects</h4>
+  <section
+    class="col-span-3 py-6 px-6 bg-white box-shadow rounded-[10px] flex flex-col space-y-3"
+  >
+    <div class="flex flex-row justify-between items-center">
+      <TypoHeaderText :custom-class="'!text-2xl !font-normal'">
+        Projects
+      </TypoHeaderText>
 
-      <div  class="flex items-center bg-[#EBEBE5]  rounded-lg">
-        <span v-for="filterOption in filterOptions" class="px-4 py-2 text-sm cursor-pointer text-[#61656D] rounded-lg font-light"
-          :class="activeOption == filterOption.title ? 'bg-bouhaws-semi-dark text-white ' : ''"
+      <div class="flex items-center flex-row bg-[#EBEBE5] rounded-[5px]">
+        <TypoNormalText
+          v-for="filterOption in filterOptions"
+          :custom-class="`capitalize !px-4 py-2 text-sm cursor-pointer text-[#61656D] rounded-[5px] ${
+            activeOption == filterOption.title ? 'bg-bouhaws-semi-dark' : ''
+          }`"
+          :color="`${
+            activeOption == filterOption.title
+              ? 'text-white '
+              : 'text-bouhaws-text-black'
+          }`"
           @click="activeOption = filterOption.title"
         >
-          {{filterOption.title}}
-        </span>
+          {{ filterOption.title }}
+        </TypoNormalText>
       </div>
     </div>
 
@@ -21,102 +33,90 @@
       />
     </div>
   </section>
+  <div class="h-[100px]"></div>
 </template>
 
 <script setup lang="ts">
-const activeOption = ref("all")
-const filterOptions =  ref([
-  {title: 'all'},
-  {title: 'class'},
-  {title: 'challenge'},
-  {title: 'active'},
-  {title: 'completed'},
-])
+const activeOption = ref("all");
+const filterOptions = reactive([
+  { title: "all" },
+  { title: "class" },
+  { title: "challenge" },
+  { title: "active" },
+  { title: "completed" },
+]);
 const projects = ref([
   {
     id: "1",
     title: `Project title`,
-    username: "ArchyScript",
-    entryType: 'single',
-    entryRange: '1-4',
-    entry: {
-      type: 'multiple',
-      range: {
-        min: 1,
-        max: 6
-      }
+    type: "class",
+    dataPosted: `Posted 2 hours ago`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+    milestones: {
+      total: 5,
+      current: 3,
     },
-    dataPosted: `Posted 2h ago `,
-    description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
-    milestone: 2,
-    memberOfTeam: 4,
-    deadline: `20/23/2022`,
-    imagUrl: '~/assets/images/profile-picture.svg',
+    deadline: `Deadline in 15 days`,
+    user: {
+      name: "Teacher",
+      photo_url: "/images/avatar-2.png",
+    },
+    image_url: "/images/gallery-project-1.png",
     completed: true,
   },
   {
-    id: "2",
+    id: "1",
     title: `Project title`,
-    username: "Archy Script",
-    entryType: 'single',
-    entryRange: '1-4',
-    entry: {
-      type: 'single',
-      range: {
-        min: 1,
-        max: 6
-      }
+    type: "class",
+    dataPosted: `Posted 2 hours ago`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+    milestones: {
+      total: 5,
+      current: 3,
     },
-    dataPosted: `Posted 2h ago`,
-    description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
-    milestone: 2,
-    memberOfTeam: 1,
-    deadline: `20/23/2022`,
-    imagUrl: '~/assets/images/profile-picture.svg',
+    deadline: `Deadline in 15 days`,
+    user: {
+      name: "Brand",
+      photo_url: "/images/avatar-5.png",
+    },
+    image_url: "/images/gallery-project-2.png",
     completed: true,
   },
   {
-    id: "3",
+    id: "1",
     title: `Project title`,
-    username: "ArchyScript",
-    entryType: 'multiple',
-    entryRange: '1-4',
-    entry: {
-      type: 'single',
-      range: {
-        min: 1,
-        max: 6
-      }
+    type: "class",
+    dataPosted: `Posted 2 hours ago`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+    milestones: {
+      total: 5,
+      current: 3,
     },
-    dataPosted: `Posted 2h ago`,
-    description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
-    milestone: 1,
-    memberOfTeam: 3,
-    deadline: `20/23/2022`,
-    imagUrl: '~/assets/images/profile-picture.svg',
+    deadline: `Deadline in 15 days`,
+    user: {
+      name: "Teacher",
+      photo_url: "/images/avatar-3.png",
+    },
+    image_url: "/images/gallery-project-3.png",
     completed: true,
   },
   {
-    id: "4",
+    id: "1",
     title: `Project title`,
-    username: "ArchyScript",
-    entryType: 'multiple',
-    entryRange: '1-4',
-    entry: {
-      type: 'multiple',
-      range: {
-        min: 1,
-        max: 6
-      }
+    type: "class",
+    dataPosted: `Posted 2 hours ago`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+    milestones: {
+      total: 5,
+      current: 3,
     },
-    dataPosted: `Posted 2h ago`,
-    description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
-    milestone: 4,
-    memberOfTeam: 4,
-    deadline: `20/23/2022`,
-    imagUrl: '~/assets/images/profile-picture.svg',
+    deadline: `Deadline in 15 days`,
+    user: {
+      name: "Brand",
+      photo_url: "/images/avatar-4.png",
+    },
+    image_url: "/images/event-gallery.png",
     completed: true,
   },
-])
+]);
 </script>
- 

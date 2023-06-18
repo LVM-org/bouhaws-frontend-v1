@@ -46,103 +46,101 @@ import { CardChallenge } from '../../.nuxt/components';
       </div>
     </Modal>
 
-    <!--  -->
-    <div class="grid grid-cols-3 gap-x-6 mx-auto">
+    <!-- Project info  -->
+    <div class="grid grid-cols-3 gap-x-5 mx-auto relative">
       <section class="col-span-2 space-y-6 w-full">
-        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
+        <div class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4">
           <div class="flex justify-between items-center">
-            <h4
-              class="flex items-center cursor-pointer text-2xl space-x-4 font-normal"
-            >
-              <span> {{ project?.title }} </span>
-            </h4>
+            <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+              {{ project?.title }}
+            </TypoHeaderText>
           </div>
 
-          <div class="flex items-center space-x-6 text-sm mb-3">
-            <span
-              class="px-4 py-1.5 bg-[#FF9900] text-white rounded-md font-light"
+          <div class="flex items-center flex-row space-x-5 text-sm">
+            <TypoNormalText
+              v-if="project.type"
+              :customClass="`px-4 py-1 capitalize rounded-[5px] ${
+                project.type == 'challenge'
+                  ? 'bg-bouhaws-purple'
+                  : 'bg-bouhaws-orange'
+              }`"
+              :color="'text-white'"
             >
-              challenge
+              {{ project.type }}
+            </TypoNormalText>
+
+            <span class="flex items-center space-x-2">
+              <Avatar :photoUrl="project.user.photo_url" :size="'20'"></Avatar>
+              <TypoNormalText :customClass="'!font-normal'">
+                {{ project.user.name }}
+              </TypoNormalText>
             </span>
 
-            <span class="flex items-center space-x-3">
-              <img
-                src="~/assets/images/profile-picture.svg"
-                :alt="project.title"
-                class="!h-7 !w-7 rounded-full"
-              />
+            <TypoNormalText>
+              {{ project.dataPosted }}
+            </TypoNormalText>
 
-              <span>
-                {{ project.brand }}
-              </span>
-            </span>
-
-            <span class="font-light"> {{ project.dataPosted }} </span>
-
-            <span class="font-light text-red-500"> Deadline in 15 days </span>
+            <TypoNormalText :color="'text-[#FF3333]'">
+              {{ project.deadline }}
+            </TypoNormalText>
           </div>
 
-          <p class="text-sm font-light w-5/6">
-            {{ project?.description }}
-          </p>
-
-          <div class="flex space-x-4 mt-4 overflow-auto no-scrollbar py-2 px-1">
-            <img
-              src="~/assets/images/art.svg"
-              :alt="project.title"
-              class="!w-40 !h-40 rounded-xl shadow"
-              v-for="x in 9"
-              :key="x"
-            />
-          </div>
+          <TypoNormalText :customClass="'!text-left !leading-relaxed'">
+            {{ project.description }}
+          </TypoNormalText>
         </div>
 
-        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-3">
-          <h4 class="flex items-center text-2xl space-x-4 font-normal">
-            <span> Requirements </span>
-          </h4>
+        <div
+          class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
+        >
+          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+            Requirements
+          </TypoHeaderText>
 
           <div class="flex flex-col space-y-1 text-sm">
-            <p
+            <div
               v-for="requirement in requirements"
               :key="requirement.title"
               class="flex space-x-3 items-center font-light py-1 px-2"
             >
-              <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-purple"></span>
-              <span>
+              <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-dark"></span>
+              <TypoNormalText>
                 {{ requirement.title }}
-              </span>
-            </p>
+              </TypoNormalText>
+            </div>
           </div>
         </div>
 
-        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
-          <h4 class="flex items-center text-2xl space-x-4 font-normal">
-            Entries (8)
-          </h4>
+        <div
+          class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
+        >
+          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+            Entries ({{ exhibitions.length }})
+          </TypoHeaderText>
 
-          <div class="grid grid-cols-4 gap-3">
+          <div class="grid grid-cols-3 gap-3">
             <CardImgUser
-              v-for="exhibition in 8"
-              :key="exhibition"
-              class="h-[8.5rem]"
+              v-for="(exhibition, index) in exhibitions"
+              :key="index"
+              :item="exhibition"
             />
           </div>
         </div>
       </section>
 
       <!-- section 2 -->
-      <section class="col-span-1 w-full space-y-6">
+      <section class="col-span-1 w-full space-y-5 relative">
         <form
           @submit.prevent="uploadForm"
-          class="rounded-lg box-shadow bg-white p-6"
+          class="rounded-[10px] box-shadow bg-white px-5 py-5 flex flex-col space-y-3 sticky top-0"
         >
-          <h4 class="text-2xl mb-3 font-normal">Submit Entry</h4>
+          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+            Submit entry
+          </TypoHeaderText>
 
           <div class="py-2 space-y-2.5 border-b-2 border-[#EBEBE5]">
             <div>
               <label for="title" class="font-light"> Title </label>
-
               <input
                 type="text"
                 id="title"
@@ -165,61 +163,77 @@ import { CardChallenge } from '../../.nuxt/components';
             </div>
           </div>
 
-          <div class="mt-6">
-            <div>
-              <h6>Milestone 1</h6>
+          <div class="w-full flex flex-col space-y-2">
+            <TypoHeaderText :customClass="'!font-normal'">
+              Milestone 1
+            </TypoHeaderText>
 
-              <div
-                class="flex space-x-1 mt-1 overflow-auto no-scrollbar py-2 px-1"
-              >
-                <img
-                  src="~/assets/images/art.svg"
-                  :alt="project.title"
-                  class="!w-16 !h-16 rounded shadow"
-                  v-for="x in 9"
+            <div
+              class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+            >
+              <div class="flex flex-row space-x-3 py-2 pr-4">
+                <ImageLoader
+                  v-for="x in 4"
                   :key="x"
-                />
+                  :photoUrl="'/images/add-image.png'"
+                  :customClass="'h-[90px] w-[90px] rounded-[7px] relative'"
+                >
+                  <span class="absolute top-0 right-0">
+                    <IconLoader
+                      :name="'remove-image'"
+                      :customClass="'h-[25px]'"
+                    />
+                  </span>
+                </ImageLoader>
               </div>
+            </div>
 
-              <div
-                class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
-              >
-                <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
-                  <IconAdd :width="14" :height="14" />
-                </span>
+            <div
+              class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light"
+            >
+              <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                <IconAdd :width="14" :height="14" />
+              </span>
 
-                <span> Add entry </span>
-              </div>
+              <TypoNormalText> Add entry</TypoNormalText>
             </div>
           </div>
 
-          <div class="mt-6">
-            <div>
-              <h6>Milestone 2</h6>
+          <div class="w-full flex flex-col space-y-4 pt-3">
+            <TypoHeaderText :customClass="'!font-normal'">
+              Milestone 1
+            </TypoHeaderText>
 
-              <div
-                class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
-              >
-                <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
-                  <IconAdd :width="14" :height="14" />
-                </span>
+            <div
+              class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
+            >
+              <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                <IconAdd :width="14" :height="14" />
+              </span>
 
-                <span> Add entry </span>
-              </div>
+              <span> Add entry </span>
             </div>
           </div>
 
-          <div class="pt-4">
+          <div class="w-full pt-4 flex flex-col">
             <Button
               type="submit"
               text="Submit"
-              class="!w-full flex-1 !py-2.5 !px-6 my-2"
-              customClass="!bg-[#D6D6D6]  !text-bouhaws-dark !text-white"
-            />
+              customClass="!bg-bouhaws-blue-main text-white w-full"
+              :useSlot="true"
+              :padding="'py-3'"
+            >
+              <TypoNormalText
+                :custom-class="'!font-normal'"
+                :color="'text-white'"
+                >Submit</TypoNormalText
+              >
+            </Button>
           </div>
         </form>
       </section>
     </div>
+    <div class="h-[100px]"></div>
   </div>
 </template>
 
@@ -227,8 +241,12 @@ import { CardChallenge } from '../../.nuxt/components';
 const router = useRouter();
 const project = ref({
   id: "1",
-  title: `Project title`,
-  brand: "ArchyScript",
+  title: `Mother’s Day`,
+  type: "challenge",
+  user: {
+    name: "Brand",
+    photo_url: "/images/avatar-3.png",
+  },
   entryType: "single",
   entryRange: "1-4",
   entry: {
@@ -242,12 +260,11 @@ const project = ref({
     min: 200,
     max: 500,
   },
-  dataPosted: `Posted 2h ago `,
-  description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
+  dataPosted: `Posted 2 hours ago`,
+  description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
   milestone: 2,
   memberOfTeam: 4,
-  deadline: `20/23/2022`,
-  imagUrl: "~/assets/images/profile-picture.svg",
+  deadline: `Deadline in 15 days`,
   completed: true,
 });
 
@@ -270,75 +287,67 @@ const uploadForm = () => {
 const exhibitions = ref([
   {
     id: "1",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-1.png",
+    },
+    image_url: `/images/entry-1.png`,
   },
   {
     id: "2",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-2.png",
+    },
+    image_url: `/images/entry-2.png`,
   },
   {
     id: "3",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-3.png",
+    },
+    image_url: `/images/entry-3.png`,
   },
   {
     id: "4",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-4.png",
+    },
+    image_url: `/images/entry-4.png`,
   },
   {
     id: "5",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-5.png",
+    },
+    image_url: `/images/entry-5.png`,
   },
   {
     id: "6",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-1.png",
+    },
+    image_url: `/images/entry-6.png`,
   },
   {
     id: "7",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-2.png",
+    },
+    image_url: `/images/entry-7.png`,
   },
   {
     id: "8",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
-  },
-  {
-    id: "9",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
-  },
-  {
-    id: "10",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
-  },
-  {
-    id: "11",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
-  },
-  {
-    id: "12",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-3.png",
+    },
+    image_url: `/images/entry-8.png`,
   },
 ]);
 </script>

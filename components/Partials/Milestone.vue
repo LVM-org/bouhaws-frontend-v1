@@ -1,5 +1,5 @@
 <template>
-  <section class="pb-3 border h-fit rounded-xl p-2 bg-bouhaws-semi-dark">
+  <section class="pb-3 border h-full rounded-xl p-2 bg-bouhaws-semi-dark">
     <div
       class="flex justify-between text-sm rounded-t-xl items-center font-medium mb-4 p-3 w-full"
     >
