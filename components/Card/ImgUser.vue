@@ -8,14 +8,14 @@
       @click="seeDetails('res')"
     >
       <div class="absolute bottom-0 left-0">
-        <span class="flex items-center p-2 space-x-2">
+        <span class="flex items-center p-2 text-xs space-x-2">
           <img
             src="~/assets/images/profile-picture.svg"
             alt=""
-            class="!h-8 !w-8 rounded-full"
+            class="!h-6 !w-6 rounded-full"
           />
 
-          <span class="text-white"> Username </span>
+          <span class="text-white font-light"> {{exhibition.username}} </span>
         </span>
       </div>
     </div>

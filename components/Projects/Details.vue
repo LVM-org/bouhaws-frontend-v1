@@ -120,7 +120,7 @@ import { CardChallenge } from '../../.nuxt/components';
           </h4> 
 
           <div class=" grid grid-cols-4 gap-3">
-           <CardExhibition
+           <CardImgUser
               v-for="exhibition in 8"
               :key="exhibition" class="h-[8.5rem]"
             />

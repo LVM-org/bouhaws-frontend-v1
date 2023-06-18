@@ -1,14 +1,14 @@
 <template>
   <button
     :type="type"
-    class="flex items-center text-white capitalize text-sm font-semibold py-4 px-6 rounded-lg"
+    class="flex items-center space-x-4 text-white capitalize text-sm font-semibold py-4 px-6 rounded-lg"
     :disabled="disabled"
     :class="customClass"
     @click="clickBtn"
   >
     <IconSpinner v-if="loading" class="animate-spin" />
 
-    <span :class="{ 'ml-2': hasIcon }" :style="{ fontSize: fontSize }">
+    <span :style="{ fontSize: fontSize }">
       {{ loading ? "" : text }}
     </span>
   </button>

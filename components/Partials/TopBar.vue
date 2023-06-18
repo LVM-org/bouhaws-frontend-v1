@@ -15,11 +15,11 @@
       </div>
 
       <div class="flex-1 flex pl-12 space-x-4 xl:space-x-8">
-        <ul class="w-full h-auto flex items-center space-x-5">
+        <ul class="w-full h-auto flex items-center space-x-3">
           <li v-for="navLink in navLinks" :key="navLink.title">
             <nuxt-link
               :to="navLink.route"
-              class="py-2 capitalize text-sm space-x-3 px-6 rounded-lg flex items-center"
+              class="py-2 capitalize text-sm space-x-2 px-4 rounded-lg flex items-center"
               :class="
                 activeRoute.includes(navLink.route)
                   ? 'text-bouhaws-blue-main'
@@ -44,7 +44,9 @@
         </ul>
       </div>
 
-      <div class="space-x-5 flex items-center justify-center">
+      <div class="space-x-6 flex items-center justify-center">
+        <Button text="Share your art" customClass="h-9 !px-4 !font-normal text-center"/>
+        
         <span class="text-bouhaws-gray">
           <IconTopBar title="notifications" />
         </span>
@@ -78,6 +80,10 @@ const navLinks = ref([
   {
     title: 'courses',
     route: '/courses',
+  },
+  {
+    title: 'challenges',
+    route: '/challenges',
   },
 ])
 

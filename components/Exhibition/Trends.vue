@@ -12,9 +12,7 @@
       </div>
     </div>
 
-    <div class="flex items-center my-8 space-x-4 justify-between ">
-      <span class="px-4 py-2 btn-box-shadow text-sm cursor-pointer bg-white text-[#61656D] rounded-lg font-light">Popular</span>
-
+    <div class="flex items-center my-8 space-x-4 justify-between "> 
       <div class="flex   space-x-3 items-center justify-between ">
         <span v-for="filterOption in filterOptions" class="px-4 py-2 btn-box-shadow text-sm cursor-pointer   text-[#61656D] rounded-lg font-light"
           :class="activeOption == filterOption.title ? 'bg-bouhaws-semi-dark text-white ' : 'bg-white'"
@@ -23,28 +21,60 @@
           {{filterOption.title}}
         </span>
       </div>
-      
-      <span class="px-4 py-2 btn-box-shadow bg-white text-sm cursor-pointer text-[#61656D] rounded-lg font-light">Filter</span>
+
+      <div class="flex   items-center justify-between bg-white rounded-lg">
+        <span v-for="filterType in filterTypes" class="px-4 py-2 text-sm cursor-pointer   text-[#61656D] rounded-lg font-light"
+          :class="activeType == filterType.title ? 'bg-bouhaws-semi-dark text-white  btn-box-shadow' : 'bg-transparent'"
+          @click="activeType = filterType.title"
+        >
+          {{filterType.title}}
+        </span>
+      </div>
     </div>
     
-    <div class="grid grid-cols-4 gap-6">
-      <CardExhibition
-        v-for="exhibition in exhibitions"
-        :key="exhibition"
-        :exhibition="exhibition"
-      />
+    
+    <div>
+      <div class="mb-6">
+        <div class="grid grid-cols-3 gap-6">
+          <CardExhibitionTypeA
+            v-for="exhibition in 3"
+            :key="exhibition"
+            :exhibition="exhibition" 
+          />
+        </div>
+      </div>
+      
+      <div>
+        <h4>
+          Trending in paintings
+        </h4>
+        
+        <div class="grid grid-cols-4 gap-6">
+          <CardExhibitionTypeA
+            v-for="exhibition in exhibitions"
+            :key="exhibition"
+            :exhibition="exhibition"
+            :hasSection="true"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts"> 
 const activeOption = ref("all") 
+const activeType = ref("popular") 
 const filterOptions =  ref([
   {title: 'all'},
   {title: 'class'},
   {title: 'challenge'},
   {title: 'active'},
   {title: 'completed'},
+]) 
+const filterTypes =  ref([
+  {title: 'popular'},
+  {title: 'recent'}, 
 ]) 
 const exhibitions = ref([
   {
