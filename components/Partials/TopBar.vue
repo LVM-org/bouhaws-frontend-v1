@@ -45,9 +45,14 @@
 
       <div class="space-x-6 flex items-center justify-center">
         <Button
-          text="Share your art"
+          text=""
+          :use-slot="true"
           customClass="h-9 !px-4 !font-normal text-center"
-        />
+        >
+          <TypoNormalText :customClass="'!text-white'">
+            Share your art
+          </TypoNormalText>
+        </Button>
 
         <span class="text-bouhaws-gray">
           <IconTopBar title="notifications" />

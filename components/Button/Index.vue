@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="`flex items-center space-x-4 text-white capitalize text-sm font-semibold ${padding} ${customClass} rounded-[7px] focus:outline-none`"
+    :class="`flex items-center space-x-4 text-white  text-sm font-semibold ${padding} ${customClass} rounded-[7px] focus:outline-none`"
     :disabled="disabled"
     @click="clickBtn"
   >
@@ -11,7 +11,7 @@
         {{ loading ? "" : text }}
       </span>
     </template>
-    
+
     <template v-else>
       <slot />
     </template>
