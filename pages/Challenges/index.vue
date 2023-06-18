@@ -1,5 +1,5 @@
 <template>
-  <Exhibition />
+  <Challenges />
 </template>
 
 <script setup lang="ts">  </script>

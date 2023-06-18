@@ -2,7 +2,7 @@
   <div>
     <PartialsTopBar />
 
-    <div class="container mx-auto min-h-screen py-10 px-4">
+    <div class=" min-h-screen ">
       <slot />
     </div>
   </div>

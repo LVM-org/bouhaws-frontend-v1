@@ -49,7 +49,7 @@
         </div>
 
         <div
-          class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+          class="w-full flex no-scrollbar flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
         >
           <div class="flex flex-row space-x-3 py-2 pr-4">
             <div
@@ -75,7 +75,7 @@
         </div>
 
         <div
-          class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+          class="w-full flex no-scrollbar flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
         >
           <div class="flex flex-row space-x-3 py-2 pr-4">
             <div

@@ -1,49 +1,70 @@
 <template>
   <nuxt-link
-    :to="`exhibition/test`"
+    :to="`challenges`"
     class="relative rounded-md box-shadow border h-auto  w-full "
   > 
+    
+    <ImageLoader
+      :photoUrl="challenge.picture"
+      customClass="w-full h-[18rem] rounded-[10px] flex flex-col justify-between item-start"
+    >
+      <div class="h-full space-y-2.5 text-white bg-[#0E1011] bg-opacity-80 hover:bg-opacity-70 rounded-lg p-6">
+        <TypoHeaderText :custom-class="'!font-medium !text-white'" :size="'3xl'">
+          {{ challenge.title }}
+        </TypoHeaderText>
 
-  <div :class="!hasSection ? 'rounded-lg h-[15rem]' : ' h-[12.5rem]' " class="relative bg-[url('~/assets/images/art.svg')] bg-no-repeat bg-cover" > 
-    <div
-      class="absolute w-full h-full rounded-md  flex justify-end flex-col p-3  text-white cursor-pointer bottom-0 left-0 bg-bouhaws-dark bg-opacity-70 hover:bg-opacity-50 rounded-lg"
-    > 
-      test 
-    </div> 
-  </div>
+        <div class="flex space-x-6 items-center">  
+          <span class="flex space-x-3 items-center">
+            <IconLoader name="message"/>
+            
+            <TypoHeaderText :custom-class="'!font-normal !text-white'" :size="'base'">
+              {{challenge.brandName}}
+            </TypoHeaderText> 
+          </span>
 
-  
-  <div v-if="hasSection" class="w-full flex items-center justify-between space-x-2 p-3 bg-white">
-      <span class="flex items-center  space-x-2"> 
-         <img
-              src="~/assets/images/profile-picture.svg"
-              alt=""
-              class="!h-6 !w-6 rounded-full"
-            />
+           <TypoHeaderText :custom-class="'!font-light !text-white'" :size="'base'">
+              {{challenge.deadline}}
+            </TypoHeaderText> 
+            
+           <TypoHeaderText :custom-class="'!font-light !text-white'" :size="'base'">
+              {{challenge.posted}}
+            </TypoHeaderText> 
+            
+           <TypoHeaderText :custom-class="'!font-light !text-white'" :size="'base'">
+              {{challenge.milestone}} milestones
+            </TypoHeaderText> 
+        </div>
+ 
+        <TypoHeaderText :custom-class="'!font-light !text-white leading-5'" :size="'base'">
+          {{ challenge.description }}
+        </TypoHeaderText> 
+        
+        <span class="flex space-x-2 items-center">
+          <IconLoader name="gift"/>
 
-        <span class="text-bouhaws-gray text-sm"> feerererer </span>
-      </span>
-
-      <div class="flex items-center justify-end text-xs font-light flex-1 text-[#61656D]  space-x-2">
-        <span class="flex items-center space-x-1">
-          <IconHeart  :isOutlined="false"/>
-          <span>457</span>
+          <TypoHeaderText :custom-class="'!font-light !text-white'" :size="'lg'">
+            ${{ challenge.gift }}
+          </TypoHeaderText> 
         </span>
 
-        <span class="flex items-center space-x-1">
-          <IconMessage :isOutlined="false" class="text-bouhaws-gray bg-white"  />
-          <span>64</span>
-        </span>    
 
-          <IconBookmark :isOutlined="false" /> 
-      </div> 
-    </div>
+        <Button
+          class="!w-auto !text-black !bg-white !mt-5 btn-box-shadow"
+          :use-slot="true"
+          :padding="'py-2.5 px-7'" 
+        > 
+           <TypoNormalText :custom-class="`!font-normal text-[#61656D]`" >
+            Join
+          </TypoNormalText>
+        </Button>
+      </div>
+    </ImageLoader>
   </nuxt-link>
 </template>
 
 <script setup lang="ts">  
 const props = defineProps({
-  exhibition: {
+  challenge: {
     type: Object,
     default: {
       profilePicture: "",
@@ -57,6 +78,6 @@ const props = defineProps({
 })
 
 const seeDetails = (id: any) => {
-  useRouter().push(`/exhibition/${id}`)
+  useRouter().push(`/challenge/${id}`)
 }
 </script>
