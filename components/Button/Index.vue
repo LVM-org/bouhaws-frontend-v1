@@ -11,6 +11,7 @@
         {{ loading ? "" : text }}
       </span>
     </template>
+    
     <template v-else>
       <slot />
     </template>

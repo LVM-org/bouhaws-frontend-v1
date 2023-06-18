@@ -35,7 +35,7 @@
     
     <div>
       <div class="mb-6">
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-3  gap-6">
           <CardExhibitionTypeA
             v-for="exhibition in 3"
             :key="exhibition"
@@ -45,9 +45,9 @@
       </div>
       
       <div>
-        <h4>
-          Trending in paintings
-        </h4>
+        <h4 class="my-4 text-2xl">
+       Explore projects by students in the community
+      </h4>
         
         <div class="grid grid-cols-4 gap-6">
           <CardExhibitionTypeA

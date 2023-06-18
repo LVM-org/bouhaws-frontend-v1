@@ -1,9 +1,9 @@
 <template>
-  <div class="container  py-5 px-2">
-    <div class="flex flex-col items-center mb-6 justify-center p-6 space-y-5 rounded-2xl bg-bouhaws-blue-main">
-      <h4 class="text-white text-3xl">
-       Explore projects by students in the community
-      </h4>
+  <div class="">
+    <div class="flex flex-col items-center mb-6 sticky top-20 z-40 justify-center p-6 space-y-5  bg-bouhaws-blue-main"> 
+      <TypoHeaderText :custom-class="'!font-normal !text-white'" :size="'3xl'">
+      Explore projects by students in the community
+        </TypoHeaderText>
 
       <div class="w-2/5 mx-auto text-[#61656D] flex items-center space-x-4 px-5 bg-white rounded-xl">
         <IconSearch/>
@@ -12,118 +12,157 @@
       </div>
     </div>
 
-    <div class="flex items-center my-8 space-x-4 justify-between ">
-      <span class="px-4 py-2 btn-box-shadow text-sm cursor-pointer bg-white text-[#61656D] rounded-lg font-light">Popular</span>
-
-      <div class="flex   space-x-3 items-center justify-between ">
-        <span v-for="filterOption in filterOptions" class="px-4 py-2 btn-box-shadow text-sm cursor-pointer   text-[#61656D] rounded-lg font-light"
-          :class="activeOption == filterOption.title ? 'bg-bouhaws-semi-dark text-white ' : 'bg-white'"
-          @click="activeOption = filterOption.title"
-        >
-          {{filterOption.title}}
-        </span>
+    <div class="mx-auto container">
+      <div class=" flex items-center my-8 space-x-4 justify-between "> 
+        <Tabs :tabs="filterOptions1" :activeTab="activeOption1" @selectTab="selectTab1" />
+        
+        <Tabs :isSpaced="false" :tabs="filterOptions2" :activeTab="activeOption2" @selectTab="selectTab2" />
       </div>
       
-      <span class="px-4 py-2 btn-box-shadow bg-white text-sm cursor-pointer text-[#61656D] rounded-lg font-light">Filter</span>
+      <div class="grid grid-cols-3 gap-6 my-6">
+          <CardExhibitionTypeA
+            v-for="index in 3"
+            :key="index"
+            :exhibition="exhibitions[index]" 
+          />
+        </div>
+      
+      <div>
+       <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
+          Trending in paintings
+        </TypoHeaderText>
+
+      <div class="grid grid-cols-4 gap-6 mt-4 pb-16">
+         <CardExhibitionTypeA
+            v-for="exhibition in exhibitions"
+            :key="exhibition"
+            :exhibition="exhibition"
+            :hasSection="true"
+          />
+      </div>
     </div>
-    
-    <div class="grid grid-cols-4 gap-6">
-      <CardExhibition
-        v-for="exhibition in exhibitions"
-        :key="exhibition"
-        :exhibition="exhibition"
-      />
-    </div>
+  </div>
   </div>
 </template>
 
 <script setup lang="ts"> 
-const activeOption = ref("all") 
-const filterOptions =  ref([
+const activeOption1 = ref("all") 
+const activeOption2 = ref("popular") 
+const filterOptions1 =  ref([
   {title: 'all'},
   {title: 'class'},
   {title: 'challenge'},
   {title: 'active'},
   {title: 'completed'},
 ]) 
+const filterOptions2 =  ref([
+  {title: 'popular'},
+  {title: 'recent'}, 
+]) 
 const exhibitions = ref([
   {
     id: "1",
     username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-2.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Script is LIFE',
   },
   {
     id: "2",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-1.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'You like Script',
   },
   {
     id: "3",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-2.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "4",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-3.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "5",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-5.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "6",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-2.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "7",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-1.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "8",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-2.png`, 
+    noOfLikes: '23',
+    noOfComments: '32',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "9",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-1.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "10",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-3.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "11",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-4.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
   {
     id: "12",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``
+    profilePicture: `/images/gallery-project-2.png`, 
+    noOfLikes: '23',
+    noOfComments: '456',
+    title: 'Test me ',
+    artist: 'Tou like Script',
   },
 ])
-</script>
- 
- <style>
-  .btn-box-shadow {
-    box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);
-  }
- </style>
+
+const selectTab1 = (activeTab: string) => {
+  activeOption1.value = activeTab 
+}
+const selectTab2 = (activeTab: string) => {
+  activeOption2.value = activeTab 
+}
+</script> 

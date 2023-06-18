@@ -16,6 +16,7 @@
         {{ project.type }}
       </TypoNormalText>
     </div>
+
     <div
       class="w-full px-4 py-4 bg-gradient-to-t from-black rounded-b-[10px] flex flex-col space-y-1"
     >
@@ -36,6 +37,7 @@
           {{ project.deadline }}
         </TypoNormalText>
       </div>
+      
       <div class="w-full flex flex-row items-center space-x-1 pt-1">
         <template
           v-for="(milestone, index) in project.total_milestone"
