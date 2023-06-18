@@ -56,9 +56,7 @@
             />
           </div>
 
-          <div
-            class="max-h-[16rem] mt-4 py-2 space-y-6 overflow-scroll no-scrollbar"
-          >
+          <div class="max-h-[16rem] mt-4 py-2 space-y-6">
             <CardComment
               v-for="comment in comments"
               :key="comment.id"
@@ -73,7 +71,7 @@
       <h5 class="text-2xl text-center">More like this</h5>
 
       <div
-        class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+        class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto no-scrollbar"
       >
         <div class="flex flex-row space-x-3 py-2 pr-4">
           <CardExhibition

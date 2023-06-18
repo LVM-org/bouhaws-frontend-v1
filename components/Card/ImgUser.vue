@@ -2,21 +2,20 @@
   <nuxt-link
     :to="`/exhibition/test`"
     class="relative rounded-md box-shadow h-[12.5rem] w-full bg-[url('~/assets/images/art.svg')] bg-no-repeat bg-cover"
-  >
-    <!-- :to="`exhibition/${project.id}`" -->
+  > 
     <div
       class="relative h-full w-full cursor-pointer top-0 left-0 bg-bouhaws-dark bg-opacity-70 hover:bg-opacity-50 rounded-lg"
       @click="seeDetails('res')"
     >
       <div class="absolute bottom-0 left-0">
-        <span class="flex items-center p-4 space-x-3">
+        <span class="flex items-center p-2 text-xs space-x-2">
           <img
             src="~/assets/images/profile-picture.svg"
             alt=""
-            class="!h-8 !w-8 rounded-full"
+            class="!h-6 !w-6 rounded-full"
           />
 
-          <span class="text-white"> Username </span>
+          <span class="text-white font-light"> {{exhibition.username}} </span>
         </span>
       </div>
     </div>

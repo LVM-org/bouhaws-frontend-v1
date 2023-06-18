@@ -1,7 +1,7 @@
 <template>
-  <section class="pb-3 border h-fit rounded-xl bg-white sticky top-[13%]">
+  <section class="pb-3 relative border h-full rounded-t-xl bg-white">
     <div
-      class="flex justify-between text-sm rounded-t-xl bg-bouhaws-semi-dark items-center font-medium mb-4 w-full"
+      class="flex justify-between text-sm rounded-t-xl bg-bouhaws-semi-dark items-center font-medium mb-1 w-full"
     >
       <span
         class="flex-1 text-center p-4 cursor-pointer"
@@ -29,14 +29,18 @@
       </span>
     </div>
 
-    <div class="p-2 overflow-scroll no-scrollbar space-y-3 max-h-screen">
+    <div class="p-2 h-full overflow-scroll no-scrollbar space-y-3">
       <CardLeatherboard
         v-for="(user, index) in users"
         :key="user.id"
         :index="+index + 1"
         :user="user"
       />
+
+      <div class="h-12"></div>
     </div>
+
+    <div class="h-14 absolute rounded-b-xl w-full -bottom-12 left-0"></div>
   </section>
 </template>
 

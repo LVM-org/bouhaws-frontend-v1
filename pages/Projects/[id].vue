@@ -3,8 +3,5 @@
 </template>
 
 <script setup lang="ts"> 
-definePageMeta({ layout: "leatherboard-dashboard" });
-
-
-
+definePageMeta({ layout: "milestone-dashboard" }); 
 </script>

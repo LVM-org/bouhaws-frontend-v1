@@ -1,3 +1,4 @@
+import { CardChallenge } from '../../.nuxt/components';
 <template>
   <div>
     <!-- Modals here -->
@@ -48,69 +49,23 @@
     <!--  -->
     <div class="grid grid-cols-3 gap-x-6 mx-auto">
       <section class="col-span-2 space-y-6 w-full">
-        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-7">
+        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
           <div class="flex justify-between items-center">
             <h4
               class="flex items-center cursor-pointer text-2xl space-x-4 font-normal"
             >
-              <IconArrow
-                type="left"
-                @click="router.go(-1)"
-                class="text-bouhaws-blue-main"
-              />
               <span> {{ project?.title }} </span>
             </h4>
-
-            <span class="font-light text-xs"> {{ project?.datePosted }} </span>
           </div>
 
-          <p class="text-sm font-light w-5/6">
-            {{ project?.description }}
-          </p>
-
-          <div class="flex items-center space-x-6 text-xs">
+          <div class="flex items-center space-x-6 text-sm mb-3">
             <span
-              class="flex flex-1 space-x-2 bg-[#FFE2C6] text-[#844200] items-center px-3 py-2 rounded-md"
+              class="px-4 py-1.5 bg-[#FF9900] text-white rounded-md font-light"
             >
-              <IconUser
-                :title="project?.entry?.type == 'single' ? 'user' : 'users'"
-              />
-
-              <span>
-                {{
-                  project?.entry?.type == "single"
-                    ? "Individual entries"
-                    : `Teams of ${
-                        project?.entry?.range?.max - project?.entry?.range?.min
-                      } members`
-                }}
-              </span>
+              challenge
             </span>
 
-            <span
-              class="flex flex-1 space-x-2 bg-[#ECE0FF] text-[#0C006C] items-center px-3 py-2 rounded-md"
-            >
-              <IconImagePlus />
-
-              <span>
-                {{
-                  project?.entry?.type == "single"
-                    ? "1 Entry allowed"
-                    : `${project?.entry?.range?.min} - ${project?.entry?.range?.max}   entries allowed`
-                }}
-              </span>
-            </span>
-
-            <span
-              class="flex flex-1 space-x-2 bg-[#DBE7FF] text-[#02176B] items-center px-3 py-2 rounded-md"
-            >
-              <span> Deadline: </span>
-              <span> {{ project?.deadline }} </span>
-            </span>
-          </div>
-
-          <div class="flex items-center space-x-6">
-            <span class="flex flex-1 items-center text-sm space-x-2">
+            <span class="flex items-center space-x-3">
               <img
                 src="~/assets/images/profile-picture.svg"
                 :alt="project.title"
@@ -118,116 +73,36 @@
               />
 
               <span>
-                {{ project.username }}
+                {{ project.brand }}
               </span>
             </span>
 
-            <span
-              class="relative flex-1 text-xs space-x-2 bg-[#ECE0FF] text-[#0C006C] items-center py-1.5 rounded-md"
-            >
-              <IconTreasure
-                title="diamond"
-                :height="40"
-                :width="36"
-                class="absolute -left-2 -top-2"
-              />
+            <span class="font-light"> {{ project.dataPosted }} </span>
 
-              <span class="pl-8">
-                {{
-                  project?.points?.min > 1
-                    ? `${project?.points?.min}/${project?.points?.max} Points`
-                    : `${project?.points?.min}/${project?.points?.max} Points`
-                }}
-              </span>
-            </span>
-
-            <span class="flex flex-1"> </span>
-          </div>
-        </div>
-
-        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
-          <div class="flex justify-between items-center">
-            <h4 class="flex items-center text-2xl space-x-4 font-normal">
-              <span> Project Details </span>
-            </h4>
-
-            <Button
-              text="View"
-              @click="showProjectDetailsModal = true"
-              class="!py-2 !px-5 !pl-3 my-2 !font-extralight"
-            />
+            <span class="font-light text-red-500"> Deadline in 15 days </span>
           </div>
 
           <p class="text-sm font-light w-5/6">
-            Click View to see the more of the project details
+            {{ project?.description }}
           </p>
 
-          <div
-            class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
-          >
-            <div class="flex flex-row space-x-3 py-2 pr-4">
-              <CardExhibition
-                v-for="exhibition in exhibitions"
-                :key="exhibition"
-                :exhibition="exhibition"
-                class="!h-40 !w-[230px]"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="col-span-1 w-full space-y-6">
-        <form
-          @submit.prevent="uploadForm"
-          class="rounded-lg box-shadow bg-white"
-        >
-          <div
-            class="px-5 py-8 mb-2 border-b-2 border-[#EBEBE5] flex space-x-4 justify-center items-center"
-          >
-            <span class="p-2 rounded-lg bg-bouhaws-blue-main text-white">
-              <IconAdd :width="16" :height="16" />
-            </span>
-
-            <h5 class="text-xl">Upload entry</h5>
-          </div>
-
-          <div class="px-6 py-2 space-y-2 border-b-2 border-[#EBEBE5]">
-            <div>
-              <input
-                type="text"
-                id="title"
-                class="border-0 w-full placeholder:text-bouhaws-dark placeholder:text-sm placeholder:font-extralight font-light py-2 px-0.5 text-sm border-b border-[#EBEBE5] outline-none"
-                placeholder="Title"
-                v-model="payload.title"
-              />
-            </div>
-
-            <div>
-              <textarea
-                id="description"
-                v-model="payload.description"
-                class="border-0 resize-none w-full placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light mt-1 py-2 px-0.5 text-sm outline-none"
-                placeholder="Short description (optional)"
-                column="4"
-              ></textarea>
-            </div>
-          </div>
-
-          <div class="p-7">
-            <Button
-              type="submit"
-              text="Submit"
-              class="!w-full flex-1 !py-2.5 !px-6 my-2"
-              customClass="!bg-[#D6D6D6]  !text-bouhaws-dark !text-white"
+          <div class="flex space-x-4 mt-4 overflow-auto no-scrollbar py-2 px-1">
+            <img
+              src="~/assets/images/art.svg"
+              :alt="project.title"
+              class="!w-40 !h-40 rounded-xl shadow"
+              v-for="x in 9"
+              :key="x"
             />
           </div>
-        </form>
+        </div>
 
-        <div class="rounded-lg box-shadow p-2 pb-4 bg-white">
-          <h5 class="text-xl mb-3 p-3">Submission requirements</h5>
+        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-3">
+          <h4 class="flex items-center text-2xl space-x-4 font-normal">
+            <span> Requirements </span>
+          </h4>
 
-          <div class="flex flex-col space-y-2 text-sm">
+          <div class="flex flex-col space-y-1 text-sm">
             <p
               v-for="requirement in requirements"
               :key="requirement.title"
@@ -240,6 +115,109 @@
             </p>
           </div>
         </div>
+
+        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
+          <h4 class="flex items-center text-2xl space-x-4 font-normal">
+            Entries (8)
+          </h4>
+
+          <div class="grid grid-cols-4 gap-3">
+            <CardImgUser
+              v-for="exhibition in 8"
+              :key="exhibition"
+              class="h-[8.5rem]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- section 2 -->
+      <section class="col-span-1 w-full space-y-6">
+        <form
+          @submit.prevent="uploadForm"
+          class="rounded-lg box-shadow bg-white p-6"
+        >
+          <h4 class="text-2xl mb-3 font-normal">Submit Entry</h4>
+
+          <div class="py-2 space-y-2.5 border-b-2 border-[#EBEBE5]">
+            <div>
+              <label for="title" class="font-light"> Title </label>
+
+              <input
+                type="text"
+                id="title"
+                class="border-0 w-full placeholder:text-bouhaws-dark placeholder:text-sm placeholder:font-extralight font-light py-2 px-0.5 text-sm border-b border-[#EBEBE5] outline-none"
+                placeholder="Name your entry"
+                v-model="payload.title"
+              />
+            </div>
+
+            <div>
+              <label for="description" class="font-light"> Description </label>
+
+              <textarea
+                id="description"
+                v-model="payload.description"
+                class="border-0 resize-none w-full placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light py-2 px-0.5 text-sm outline-none"
+                placeholder="Give a short description"
+                rows="2"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div>
+              <h6>Milestone 1</h6>
+
+              <div
+                class="flex space-x-1 mt-1 overflow-auto no-scrollbar py-2 px-1"
+              >
+                <img
+                  src="~/assets/images/art.svg"
+                  :alt="project.title"
+                  class="!w-16 !h-16 rounded shadow"
+                  v-for="x in 9"
+                  :key="x"
+                />
+              </div>
+
+              <div
+                class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
+              >
+                <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                  <IconAdd :width="14" :height="14" />
+                </span>
+
+                <span> Add entry </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <div>
+              <h6>Milestone 2</h6>
+
+              <div
+                class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
+              >
+                <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                  <IconAdd :width="14" :height="14" />
+                </span>
+
+                <span> Add entry </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <Button
+              type="submit"
+              text="Submit"
+              class="!w-full flex-1 !py-2.5 !px-6 my-2"
+              customClass="!bg-[#D6D6D6]  !text-bouhaws-dark !text-white"
+            />
+          </div>
+        </form>
       </section>
     </div>
   </div>
@@ -250,7 +228,7 @@ const router = useRouter();
 const project = ref({
   id: "1",
   title: `Project title`,
-  username: "ArchyScript",
+  brand: "ArchyScript",
   entryType: "single",
   entryRange: "1-4",
   entry: {

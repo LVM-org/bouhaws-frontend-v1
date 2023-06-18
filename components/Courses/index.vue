@@ -11,9 +11,7 @@
       </p>
     </div>
 
-    <div
-      class="grid grid-cols-3 p-2 max-h-screen overflow-scroll no-scrollbar gap-4"
-    >
+    <div class="grid grid-cols-3 p-2 max-h-screen gap-4">
       <div v-for="course in courses" :key="course.id">
         <CardCourse :course="course" />
       </div>

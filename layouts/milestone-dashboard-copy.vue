@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-[#E3E3D9] font-Kanit">
     <PartialsTopBar />
 
     <div

@@ -2,6 +2,8 @@
   <Home />
 </template>
 
-<script setup lang="ts">     
-definePageMeta({ layout: "challenges-dashboard" });
+<script setup lang="ts">      
+onBeforeMount(() => {
+  useRouter().push("/auth/login")
+})
 </script> 
