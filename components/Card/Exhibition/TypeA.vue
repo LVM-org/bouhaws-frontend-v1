@@ -19,16 +19,16 @@ import { IconArrow } from '../../.nuxt/components';
         <span class="text-bouhaws-gray text-sm"> feerererer </span>
       </span>
 
-      <div class="flex items-center justify-end text-xs font-light flex-1   space-x-2 text-white">
-        <span class="flex items-center space-x-1">
-          <IconHeart class="  bg-bouhaws-gray" />
+      <div class="flex items-center justify-end text-xs font-light flex-1   space-x-2">
+        <span class="flex items-center space-x-1 text-bouhaws-gray">
+          <IconHeart class="  bg-bouhaws-gray  text-white" />
           <span>457</span>
         </span>
           <span class="flex items-center space-x-1">
-          <IconMessage />
+          <IconMessage class="  bg-bouhaws-gray text-white" />
           <span>64</span>
         </span>
-          <IconBookmark /> 
+          <IconBookmark class="  bg-bouhaws-gray text-white"  /> 
       </div> 
     </div>
   </nuxt-link>
