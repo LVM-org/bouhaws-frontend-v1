@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="`exhibition/test`"
+    :to="`/exhibition/test`"
     class="relative rounded-md box-shadow h-[12.5rem] w-full bg-[url('~/assets/images/art.svg')] bg-no-repeat bg-cover"
   > 
     <div
@@ -22,18 +22,18 @@
   </nuxt-link>
 </template>
 
-<script setup lang="ts">  
+<script setup lang="ts">
 const props = defineProps({
   exhibition: {
     type: Object,
     default: {
       profilePicture: "",
       name: "Daniel Regha",
-    }
-  }
-})
+    },
+  },
+});
 
 const seeDetails = (id: any) => {
-  useRouter().push(`/exhibition/${id}`)
-}
+  useRouter().push(`/exhibition/${id}`);
+};
 </script>

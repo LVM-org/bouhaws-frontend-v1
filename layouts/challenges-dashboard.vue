@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-[#E3E3D9] h-screen relative  font-Kanit">
-    <PartialsTopBar /> 
+  <div class="bg-[#E3E3D9] h-screen relative font-Kanit">
+    <PartialsTopBar />
 
     <!-- class="container mx-auto grid grid-cols-4 overflow-hidden no-scrollbar max-h-screen py-11 px-4 gap-6" -->
     <div
@@ -16,12 +16,11 @@
         <slot />
       </div>
     </div>
-
   </div>
 </template>
 
-<script setup lang="ts">   </script>
- 
+<script setup lang="ts"></script>
+
 <style>
 * {
   font-family: Kanit, Arial, Helvetica, sans-serif;
@@ -42,5 +41,9 @@
 /*  */
 .box-shadow {
   box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  background: linear-gradient(287.56deg, #d8d8c7 0%, #ebebe5 100%);
 }
 </style>

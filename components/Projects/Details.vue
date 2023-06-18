@@ -31,13 +31,17 @@ import { CardChallenge } from '../../.nuxt/components';
           </li>
         </ul>
 
-        <div class="flex space-x-2.5 mt-4 overflow-auto no-scrollbar py-2 px-1">
-          <img
-            src="~/assets/images/art.svg"
-            class="!w-32 !h-32 rounded-xl shadow"
-            v-for="x in 9"
-            :key="x"
-          />
+        <div
+          class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+        >
+          <div class="flex flex-row space-x-3 py-2 pr-4">
+            <CardExhibition
+              v-for="exhibition in exhibitions"
+              :key="exhibition"
+              :exhibition="exhibition"
+              class="!h-40 !w-[230px]"
+            />
+          </div>
         </div>
       </div>
     </Modal>
@@ -49,40 +53,38 @@ import { CardChallenge } from '../../.nuxt/components';
           <div class="flex justify-between items-center">
             <h4
               class="flex items-center cursor-pointer text-2xl space-x-4 font-normal"
-            > 
+            >
               <span> {{ project?.title }} </span>
             </h4>
           </div>
 
-          
-      <div class="flex items-center space-x-6 text-sm mb-3">
-        <span  class="px-4 py-1.5 bg-[#FF9900] text-white rounded-md font-light">
-          challenge
-        </span>
-        
-        <span class="flex items-center space-x-3">
-          <img
-            src="~/assets/images/profile-picture.svg"
-            :alt="project.title"
-            class="!h-7 !w-7 rounded-full"
-          />
+          <div class="flex items-center space-x-6 text-sm mb-3">
+            <span
+              class="px-4 py-1.5 bg-[#FF9900] text-white rounded-md font-light"
+            >
+              challenge
+            </span>
 
-          <span>
-            {{ project.brand }}
-          </span>
-        </span>
+            <span class="flex items-center space-x-3">
+              <img
+                src="~/assets/images/profile-picture.svg"
+                :alt="project.title"
+                class="!h-7 !w-7 rounded-full"
+              />
 
-        <span class="font-light"> {{ project.dataPosted }} </span>
+              <span>
+                {{ project.brand }}
+              </span>
+            </span>
 
-        <span class="font-light text-red-500"> 
-          Deadline in 15 days
-        </span>
-      </div>
+            <span class="font-light"> {{ project.dataPosted }} </span>
+
+            <span class="font-light text-red-500"> Deadline in 15 days </span>
+          </div>
 
           <p class="text-sm font-light w-5/6">
             {{ project?.description }}
           </p>
-
 
           <div class="flex space-x-4 mt-4 overflow-auto no-scrollbar py-2 px-1">
             <img
@@ -98,7 +100,7 @@ import { CardChallenge } from '../../.nuxt/components';
         <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-3">
           <h4 class="flex items-center text-2xl space-x-4 font-normal">
             <span> Requirements </span>
-          </h4> 
+          </h4>
 
           <div class="flex flex-col space-y-1 text-sm">
             <p
@@ -111,39 +113,35 @@ import { CardChallenge } from '../../.nuxt/components';
                 {{ requirement.title }}
               </span>
             </p>
-          </div> 
+          </div>
         </div>
 
-         <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
+        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
           <h4 class="flex items-center text-2xl space-x-4 font-normal">
-             Entries (8) 
-          </h4> 
+            Entries (8)
+          </h4>
 
-          <div class=" grid grid-cols-4 gap-3">
-           <CardImgUser
+          <div class="grid grid-cols-4 gap-3">
+            <CardImgUser
               v-for="exhibition in 8"
-              :key="exhibition" class="h-[8.5rem]"
+              :key="exhibition"
+              class="h-[8.5rem]"
             />
-          </div> 
+          </div>
         </div>
       </section>
 
-
-<!-- section 2 -->
+      <!-- section 2 -->
       <section class="col-span-1 w-full space-y-6">
         <form
           @submit.prevent="uploadForm"
-          class="rounded-lg box-shadow bg-white p-6 "
-        > 
-        <h4 class="text-2xl mb-3  font-normal">
-            Submit Entry
-          </h4> 
- 
+          class="rounded-lg box-shadow bg-white p-6"
+        >
+          <h4 class="text-2xl mb-3 font-normal">Submit Entry</h4>
+
           <div class="py-2 space-y-2.5 border-b-2 border-[#EBEBE5]">
             <div>
-              <label for="title" class=" font-light">
-                Title
-              </label>
+              <label for="title" class="font-light"> Title </label>
 
               <input
                 type="text"
@@ -155,15 +153,13 @@ import { CardChallenge } from '../../.nuxt/components';
             </div>
 
             <div>
-              <label for="description" class=" font-light">
-                Description
-              </label>
+              <label for="description" class="font-light"> Description </label>
 
               <textarea
                 id="description"
                 v-model="payload.description"
                 class="border-0 resize-none w-full placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light py-2 px-0.5 text-sm outline-none"
-                placeholder="Give a short description" 
+                placeholder="Give a short description"
                 rows="2"
               ></textarea>
             </div>
@@ -173,7 +169,9 @@ import { CardChallenge } from '../../.nuxt/components';
             <div>
               <h6>Milestone 1</h6>
 
-               <div class="flex space-x-1 mt-1 overflow-auto no-scrollbar py-2 px-1">
+              <div
+                class="flex space-x-1 mt-1 overflow-auto no-scrollbar py-2 px-1"
+              >
                 <img
                   src="~/assets/images/art.svg"
                   :alt="project.title"
@@ -183,14 +181,14 @@ import { CardChallenge } from '../../.nuxt/components';
                 />
               </div>
 
-              <div class=" flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3">
-                <span class=" p-1 bg-bouhaws-blue-main text-white rounded-md">
-                  <IconAdd :width="14" :height="14"/>
+              <div
+                class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
+              >
+                <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                  <IconAdd :width="14" :height="14" />
                 </span>
 
-                <span>
-                  Add entry
-                </span>
+                <span> Add entry </span>
               </div>
             </div>
           </div>
@@ -199,19 +197,17 @@ import { CardChallenge } from '../../.nuxt/components';
             <div>
               <h6>Milestone 2</h6>
 
-              
-              <div class=" flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3">
-                <span class=" p-1 bg-bouhaws-blue-main text-white rounded-md">
-                  <IconAdd :width="14" :height="14"/>
+              <div
+                class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
+              >
+                <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                  <IconAdd :width="14" :height="14" />
                 </span>
 
-                <span>
-                  Add entry
-                </span>
+                <span> Add entry </span>
               </div>
             </div>
           </div>
-
 
           <div class="pt-4">
             <Button
@@ -221,55 +217,128 @@ import { CardChallenge } from '../../.nuxt/components';
               customClass="!bg-[#D6D6D6]  !text-bouhaws-dark !text-white"
             />
           </div>
-        </form> 
+        </form>
       </section>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">  
-const router = useRouter()
+<script setup lang="ts">
+const router = useRouter();
 const project = ref({
   id: "1",
   title: `Project title`,
   brand: "ArchyScript",
-  entryType: 'single',
-  entryRange: '1-4',
+  entryType: "single",
+  entryRange: "1-4",
   entry: {
-    type: 'multiple',
+    type: "multiple",
     range: {
       min: 1,
-      max: 6
-    }
+      max: 6,
+    },
   },
   points: {
     min: 200,
-    max: 500
+    max: 500,
   },
   dataPosted: `Posted 2h ago `,
   description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
   milestone: 2,
   memberOfTeam: 4,
   deadline: `20/23/2022`,
-  imagUrl: '~/assets/images/profile-picture.svg',
+  imagUrl: "~/assets/images/profile-picture.svg",
   completed: true,
-}) 
+});
 
-const showProjectDetailsModal = ref(false) 
+const showProjectDetailsModal = ref(false);
 
 const requirements = ref([
   { title: "Project entries must be less than 5MB." },
   { title: "Images resolution should be at least 150 pixels." },
-])
+]);
 
 const payload = ref({
   title: "",
-  description: ""
-})
+  description: "",
+});
 
 const uploadForm = () => {
-  console.log(payload.value)
-}
+  console.log(payload.value);
+};
 
+const exhibitions = ref([
+  {
+    id: "1",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "2",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "3",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "4",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "5",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "6",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "7",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "8",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "9",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "10",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "11",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+  {
+    id: "12",
+    username: `ArchyScript`,
+    profilePicture: ``,
+    artWork: ``,
+  },
+]);
 </script>
- 

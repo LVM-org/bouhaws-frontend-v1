@@ -1,16 +1,19 @@
 <template>
   <button
-    :type="type"
-    class="flex items-center space-x-4 text-white capitalize text-sm font-semibold py-4 px-6 rounded-lg"
+    :class="`flex items-center space-x-4 text-white capitalize text-sm font-semibold ${padding} ${customClass} rounded-[7px] focus:outline-none`"
     :disabled="disabled"
-    :class="customClass"
     @click="clickBtn"
   >
-    <IconSpinner v-if="loading" class="animate-spin" />
+    <template v-if="!useSlot">
+      <IconSpinner v-if="loading" class="animate-spin" />
 
-    <span :style="{ fontSize: fontSize }">
-      {{ loading ? "" : text }}
-    </span>
+      <span :style="{ fontSize: fontSize }">
+        {{ loading ? "" : text }}
+      </span>
+    </template>
+    <template v-else>
+      <slot />
+    </template>
   </button>
 </template>
 
@@ -42,7 +45,7 @@ const props = defineProps({
   },
   customClass: {
     type: String,
-    default: '',
+    default: "",
   },
   loading: {
     type: Boolean,
@@ -51,6 +54,14 @@ const props = defineProps({
   fontSize: {
     type: String,
     default: "0.875rem",
+  },
+  useSlot: {
+    type: Boolean,
+    default: false,
+  },
+  padding: {
+    type: String,
+    default: "py-4 px-6",
   },
 });
 
@@ -72,7 +83,7 @@ button {
   }
 
   &:disabled {
-    @apply cursor-not-allowed   ;
+    @apply cursor-not-allowed;
   }
 
   &.isGray {
