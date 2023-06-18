@@ -2,6 +2,6 @@
   <Home />
 </template>
 
-<script setup lang="ts"> 
-definePageMeta({ layout: "challenges-dashboard" });
+<script setup lang="ts">
+definePageMeta({ layout: "dashboard" });
 </script>

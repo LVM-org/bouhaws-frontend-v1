@@ -2,8 +2,9 @@
   <Home />
 </template>
 
-<script setup lang="ts">      
+<script setup lang="ts">
+definePageMeta({ layout: "dashboard" });
 onBeforeMount(() => {
-  useRouter().push("/auth/login")
-})
-</script> 
+  // useRouter().push("/auth/login")
+});
+</script>
