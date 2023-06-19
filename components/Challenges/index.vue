@@ -20,7 +20,7 @@
       </div>
         
       <div class="grid grid-cols-2 gap-4 mt-6 pb-16">
-        <CardChallengeTypeA
+        <CardChallengeTypeA 
           v-for="challenge in challenges"
           :key="challenge"
           :challenge="challenge"
@@ -71,7 +71,7 @@ const challenges = ref([
   {
     id: "2", 
     brandName: "Brand",
-    picture: `/images/gallery-project-4.png`, 
+    picture: `/images/gallery-project-2.png`, 
     deadline: 'Deadline in 15 days',
     posted: 'Posted 2 hours ago',
     milestone: 1,
