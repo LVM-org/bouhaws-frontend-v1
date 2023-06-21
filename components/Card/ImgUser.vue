@@ -1,39 +1,27 @@
 <template>
-  <nuxt-link
-    :to="`/exhibition/test`"
-    class="relative rounded-md box-shadow h-[12.5rem] w-full bg-[url('~/assets/images/art.svg')] bg-no-repeat bg-cover"
-  > 
+  <ImageLoader
+    :photoUrl="item.image_url"
+    :customClass="`col-span-1 h-[240px] rounded-[10px] flex flex-col justify-between item-start`"
+  >
+    <div class="w-full flex flex-row px-4 py-4"></div>
     <div
-      class="relative h-full w-full cursor-pointer top-0 left-0 bg-bouhaws-dark bg-opacity-70 hover:bg-opacity-50 rounded-lg"
-      @click="seeDetails('res')"
+      class="w-full px-4 py-4 bg-gradient-to-t from-black rounded-b-[10px] flex flex-col space-y-1"
     >
-      <div class="absolute bottom-0 left-0">
-        <span class="flex items-center p-2 text-xs space-x-2">
-          <img
-            src="~/assets/images/profile-picture.svg"
-            alt=""
-            class="!h-6 !w-6 rounded-full"
-          />
-
-          <span class="text-white font-light"> {{exhibition.username}} </span>
-        </span>
+      <div class="flex items-center flex-row space-x-2 w-full">
+        <Avatar :photoUrl="item.user.photo_url" :size="'24'"></Avatar>
+        <TypoNormalText :customClass="'!font-normal'" :color="'text-white'">
+          {{ item.user.name }}
+        </TypoNormalText>
       </div>
     </div>
-  </nuxt-link>
+  </ImageLoader>
 </template>
 
 <script setup lang="ts">
 const props = defineProps({
-  exhibition: {
+  item: {
     type: Object,
-    default: {
-      profilePicture: "",
-      name: "Daniel Regha",
-    },
+    default: () => {},
   },
 });
-
-const seeDetails = (id: any) => {
-  useRouter().push(`/exhibition/${id}`);
-};
 </script>

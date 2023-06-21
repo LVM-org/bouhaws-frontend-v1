@@ -1,49 +1,51 @@
-import { Style } from '../../.nuxt/components';
 <template>
-  <div class="flex items-center"
-  :class="isSpaced ? 'space-x-3 bg-transparent' : 'bg-white rounded-md' "
+  <div
+    :class="`flex items-center ${
+      isSpaced ? 'space-x-3 bg-transparent' : '-space-x-2'
+    }`"
   >
-    <Button
-      v-for="(tab, index) in tabs" :key="index"
-      class="!w-auto !bg-white btn-box-shadow"
-      :custom-class="activeTab == tab.title && '!bg-bouhaws-semi-dark'"
-      :use-slot="true"
-      :padding="'py-2 px-5'" 
+    <TypoNormalText
+      v-for="(tab, index) in tabs"
+      :key="index" 
+      :custom-class="`${
+        activeTab == tab.title ? 'bg-bouhaws-semi-dark z-10' : 'bg-white'
+      } ${isFullSpan && 'flex-1'} ${isBtnLarge ? 'py-3 px-6 font-medium' : 'py-2 px-5'}  shadow-custom  rounded-[10px] capitalize cursor-pointer`"
+      :color="`${
+        activeTab == tab.title ? 'text-white' : 'text-bouhaws-text-black'
+      }`" 
       @click="selectTab(tab.title)"
     >
-      <TypoNormalText :custom-class="`!font-normal ${activeTab == tab.title ? '!text-white' : ' !text-[#61656D]'} `" >
-         {{tab.title}}
-      </TypoNormalText>
-    </Button>
+      {{ tab.title }}
+    </TypoNormalText>
   </div>
 </template>
 
-
-<script setup lang="ts"> 
-const props = defineProps({ 
+<script setup lang="ts">
+const props = defineProps({
   tabs: {
-    type: String,
+    type: Object,
     required: true,
   },
   activeTab: {
     type: String,
-    default: 'all'
+    default: "all",
   },
   isSpaced: {
     type: Boolean,
-    default: true
+    default: true,
+  },
+  isFullSpan: {
+    type: Boolean,
+    default: false
+  },
+   isBtnLarge: {
+    type: Boolean,
+    default: false
   }
-})  
+});
 
 const emit = defineEmits(["selectTab"]);
 const selectTab = (active_tab: string) => {
   emit("selectTab", active_tab);
 };
 </script>
-
-
-<style lang="scss">
-  .btn-box-shadow  {
-    box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);
-  }
-</style>
