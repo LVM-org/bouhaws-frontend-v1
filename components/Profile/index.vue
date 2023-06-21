@@ -1,6 +1,6 @@
 <template>
-  <div > 
-    <div class="border"> 
+  <div class="px-4"> 
+    <div class="mb-6"> 
       <Tabs 
         :tabs="navs"
         :activeTab="activeNav"
@@ -10,15 +10,19 @@
       />
     </div>
 
-    <div>
-
-    </div>
-  esee
+    <div class="my-2">
+      <ProfileAbout v-if="activeNav == 'about'" /> 
+      <ProfileCourses v-if="activeNav == 'courses'" /> 
+      <ProfileExhibition v-if="activeNav == 'exhibition'" /> 
+      <ProfileAchievements v-if="activeNav == 'achievements'" /> 
+      <ProfileWallet v-if="activeNav == 'wallet'" /> 
+      <ProfileSettings v-if="activeNav == 'settings'" /> 
+    </div> 
   </div>
 </template>
 
 <script   setup lang="ts">  
-const activeNav = ref("all");
+const activeNav = ref("about");
 const navs = ref([
   { title: "about" },
   { title: "courses" },

@@ -10,8 +10,7 @@
           <TypoHeaderText
             :color="'text-white'"
             :custom-class="'!text-2xl !font-normal'"
-            >New challenges are here!</TypoHeaderText
-          >
+            > New challenges are here! </TypoHeaderText>
 
           <TypoNormalText :color="'text-white'" :custom-class="'!text-left'">
             Participate in fun events going on right now. You’ll earn points,
