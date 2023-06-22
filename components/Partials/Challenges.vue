@@ -1,5 +1,7 @@
 <template>
-  <section class="col-span-1 pb-3 border bg-bouhaws-semi-dark h-fit rounded-xl">
+  <section
+    class="pb-3 border relative bg-bouhaws-semi-dark h-full rounded-t-xl"
+  >
     <div
       class="px-3 pb-4 mb-2 border-b border-b-[#61656D] border-opacity-70 relative w-full"
     >
@@ -42,18 +44,24 @@
       </div>
     </div>
 
-    <div class="p-3 overflow-scroll no-scrollbar space-y-3 max-h-screen">
+    <div class="px-3 h-full overflow-scroll pb-20 no-scrollbar space-y-3">
       <CardChallenge
         v-for="challenge in challenges"
         :key="challenge.id"
         :challenge="challenge"
       />
+
+      <div class="h-12"></div>
     </div>
+
+    <div
+      class="h-14 absolute rounded-b-xl bg-bouhaws-semi-dark w-full -bottom-12 left-0"
+    ></div>
   </section>
 </template>
 
-<script setup lang="ts" >  
-import { getPercentageRatio, formatNumber } from "~/controllers/utils"
+<script setup lang="ts">
+import { getPercentageRatio, formatNumber } from "~/controllers/utils";
 
 const challenges = ref([
   {
@@ -61,7 +69,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 1,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -69,7 +77,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -77,7 +85,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -85,55 +93,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: true,
-  },
-  {
-    id: "5",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: false,
-  },
-  {
-    id: "6",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: false,
-  },
-  {
-    id: "7",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: false,
-  },
-  {
-    id: "8",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: true,
-  },
-  {
-    id: "9",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
-    completed: false,
-  },
-  {
-    id: "10",
-    title: `Challenge title`,
-    reward: 500,
-    instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -141,7 +101,7 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: true,
   },
   {
@@ -149,8 +109,104 @@ const challenges = ref([
     title: `Challenge title`,
     reward: 500,
     instruction: `Challenge instruction`,
-    imagUrl: '',
+    imagUrl: "",
     completed: false,
   },
-])
+  {
+    id: "3",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "4",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "11",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "12",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: false,
+  },
+  {
+    id: "3",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "4",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "11",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "12",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: false,
+  },
+  {
+    id: "3",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "4",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "11",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: true,
+  },
+  {
+    id: "12",
+    title: `Challenge title`,
+    reward: 500,
+    instruction: `Challenge instruction`,
+    imagUrl: "",
+    completed: false,
+  },
+]);
 </script>

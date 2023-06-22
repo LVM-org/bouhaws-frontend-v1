@@ -1,3 +1,4 @@
+import { CardChallenge } from '../../.nuxt/components';
 <template>
   <div>
     <!-- Modals here -->
@@ -30,258 +31,323 @@
           </li>
         </ul>
 
-        <div class="flex space-x-2.5 mt-4 overflow-auto no-scrollbar py-2 px-1">
-          <img
-            src="~/assets/images/art.svg"
-            class="!w-32 !h-32 rounded-xl shadow"
-            v-for="x in 9"
-            :key="x"
-          />
+        <div
+          class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+        >
+          <div class="flex flex-row space-x-3 py-2 pr-4">
+            <CardExhibition
+              v-for="exhibition in exhibitions"
+              :key="exhibition"
+              :exhibition="exhibition"
+              class="!h-40 !w-[230px]"
+            />
+          </div>
         </div>
       </div>
     </Modal>
 
-    <!--  -->
-    <div class="grid grid-cols-3 gap-x-6 mx-auto">
+    <!-- Project info  -->
+    <div class="grid grid-cols-3 gap-x-5 mx-auto relative">
       <section class="col-span-2 space-y-6 w-full">
-        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-7">
+        <div class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4">
           <div class="flex justify-between items-center">
-            <h4
-              class="flex items-center cursor-pointer text-2xl space-x-4 font-normal"
-            >
-              <IconArrow
-                type="left"
-                @click="router.go(-1)"
-                class="text-bouhaws-blue-main"
-              />
-              <span> {{ project?.title }} </span>
-            </h4>
-
-            <span class="font-light text-xs"> {{ project?.datePosted }} </span>
+            <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+              {{ project?.title }}
+            </TypoHeaderText>
           </div>
 
-          <p class="text-sm font-light w-5/6">
-            {{ project?.description }}
-          </p>
-
-          <div class="flex items-center space-x-6 text-xs">
-            <span
-              class="flex flex-1 space-x-2 bg-[#FFE2C6] text-[#844200] items-center px-3 py-2 rounded-md"
+          <div class="flex items-center flex-row space-x-5 text-sm">
+            <TypoNormalText
+              v-if="project.type"
+              :customClass="`px-4 py-1 capitalize rounded-[5px] ${
+                project.type == 'challenge'
+                  ? 'bg-bouhaws-purple'
+                  : 'bg-bouhaws-orange'
+              }`"
+              :color="'text-white'"
             >
-              <IconUser
-                :title="project?.entry?.type == 'single' ? 'user' : 'users'"
-              />
+              {{ project.type }}
+            </TypoNormalText>
 
-              <span>
-                {{
-                  project?.entry?.type == "single"
-                    ? "Individual entries"
-                    : `Teams of ${
-                        project?.entry?.range?.max - project?.entry?.range?.min
-                      } members`
-                }}
-              </span>
+            <span class="flex items-center space-x-2">
+              <Avatar :photoUrl="project.user.photo_url" :size="'20'"></Avatar>
+              <TypoNormalText :customClass="'!font-normal'">
+                {{ project.user.name }}
+              </TypoNormalText>
             </span>
 
-            <span
-              class="flex flex-1 space-x-2 bg-[#ECE0FF] text-[#0C006C] items-center px-3 py-2 rounded-md"
-            >
-              <IconImagePlus />
+            <TypoNormalText>
+              {{ project.dataPosted }}
+            </TypoNormalText>
 
-              <span>
-                {{
-                  project?.entry?.type == "single"
-                    ? "1 Entry allowed"
-                    : `${project?.entry?.range?.min} - ${project?.entry?.range?.max}   entries allowed`
-                }}
-              </span>
-            </span>
-
-            <span
-              class="flex flex-1 space-x-2 bg-[#DBE7FF] text-[#02176B] items-center px-3 py-2 rounded-md"
-            >
-              <span> Deadline: </span>
-              <span> {{ project?.deadline }} </span>
-            </span>
+            <TypoNormalText :color="'text-[#FF3333]'">
+              {{ project.deadline }}
+            </TypoNormalText>
           </div>
 
-          <div class="flex items-center space-x-6">
-            <span class="flex flex-1 items-center text-sm space-x-2">
-              <img
-                src="~/assets/images/profile-picture.svg"
-                :alt="project.title"
-                class="!h-7 !w-7 rounded-full"
-              />
+          <TypoNormalText :customClass="'!text-left !leading-relaxed'">
+            {{ project.description }}
+          </TypoNormalText>
+        </div>
 
-              <span>
-                {{ project.username }}
-              </span>
-            </span>
+        <div
+          class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
+        >
+          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+            Requirements
+          </TypoHeaderText>
 
-            <span
-              class="relative flex-1 text-xs space-x-2 bg-[#ECE0FF] text-[#0C006C] items-center py-1.5 rounded-md"
+          <div class="flex flex-col space-y-1 text-sm">
+            <div
+              v-for="requirement in requirements"
+              :key="requirement.title"
+              class="flex space-x-3 items-center font-light py-1 px-2"
             >
-              <IconTreasure
-                title="diamond"
-                :height="40"
-                :width="36"
-                class="absolute -left-2 -top-2"
-              />
-
-              <span class="pl-8">
-                {{
-                  project?.points?.min > 1
-                    ? `${project?.points?.min}/${project?.points?.max} Points`
-                    : `${project?.points?.min}/${project?.points?.max} Points`
-                }}
-              </span>
-            </span>
-
-            <span class="flex flex-1"> </span>
+              <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-dark"></span>
+              <TypoNormalText>
+                {{ requirement.title }}
+              </TypoNormalText>
+            </div>
           </div>
         </div>
 
-        <div class="w-full py-4 px-6 bg-white rounded-lg box-shadow space-y-4">
-          <div class="flex justify-between items-center">
-            <h4 class="flex items-center text-2xl space-x-4 font-normal">
-              <span> Project Details </span>
-            </h4>
+        <div
+          class="w-full py-5 px-5 bg-white rounded-[10px] box-shadow space-y-3"
+        >
+          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+            Entries ({{ exhibitions.length }})
+          </TypoHeaderText>
 
-            <Button
-              text="View"
-              @click="showProjectDetailsModal = true"
-              class="!py-2 !px-5 my-2 !font-extralight"
-            />
-          </div>
-
-          <p class="text-sm font-light w-5/6">
-            Click View to see the more of the project details
-          </p>
-
-          <div class="flex space-x-4 overflow-auto no-scrollbar py-2 px-1">
-            <img
-              src="~/assets/images/art.svg"
-              :alt="project.title"
-              class="!w-40 !h-40 rounded-xl shadow"
-              v-for="x in 9"
-              :key="x"
+          <div class="grid grid-cols-3 gap-3">
+            <CardImgUser
+              v-for="(exhibition, index) in exhibitions"
+              :key="index"
+              :item="exhibition"
             />
           </div>
         </div>
       </section>
 
-      <section class="col-span-1 w-full space-y-6">
+      <!-- section 2 -->
+      <section class="col-span-1 w-full space-y-5 relative">
         <form
           @submit.prevent="uploadForm"
-          class="rounded-lg box-shadow bg-white"
+          class="rounded-[10px] box-shadow bg-white px-5 py-5 flex flex-col space-y-3 sticky top-0"
         >
-          <div
-            class="px-5 py-8 mb-2 border-b-2 border-[#EBEBE5] flex space-x-4 justify-center items-center"
-          >
-            <span class="p-2 rounded-lg bg-bouhaws-blue-main text-white">
-              <IconAdd :width="16" :height="16" />
-            </span>
+          <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
+            Submit entry
+          </TypoHeaderText>
 
-            <h5 class="text-xl">Upload entry</h5>
-          </div>
-
-          <div class="px-6 py-2 space-y-2 border-b-2 border-[#EBEBE5]">
+          <div class="py-2 space-y-2.5 border-b-2 border-[#EBEBE5]">
             <div>
+              <label for="title" class="font-light"> Title </label>
               <input
                 type="text"
                 id="title"
                 class="border-0 w-full placeholder:text-bouhaws-dark placeholder:text-sm placeholder:font-extralight font-light py-2 px-0.5 text-sm border-b border-[#EBEBE5] outline-none"
-                placeholder="Title"
+                placeholder="Name your entry"
                 v-model="payload.title"
               />
             </div>
 
             <div>
+              <label for="description" class="font-light"> Description </label>
+
               <textarea
                 id="description"
                 v-model="payload.description"
-                class="border-0 resize-none w-full placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light mt-1 py-2 px-0.5 text-sm outline-none"
-                placeholder="Short description (optional)"
-                column="4"
+                class="border-0 resize-none w-full placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light py-2 px-0.5 text-sm outline-none"
+                placeholder="Give a short description"
+                rows="2"
               ></textarea>
             </div>
           </div>
 
-          <div class="p-7">
+          <div class="w-full flex flex-col space-y-2">
+            <TypoHeaderText :customClass="'!font-normal'">
+              Milestone 1
+            </TypoHeaderText>
+
+            <div
+              class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+            >
+              <div class="flex flex-row space-x-3 py-2 pr-4">
+                <ImageLoader
+                  v-for="x in 4"
+                  :key="x"
+                  :photoUrl="'/images/add-image.png'"
+                  :customClass="'h-[90px] w-[90px] rounded-[7px] relative'"
+                >
+                  <span class="absolute top-0 right-0">
+                    <IconLoader
+                      :name="'remove-image'"
+                      :customClass="'h-[25px]'"
+                    />
+                  </span>
+                </ImageLoader>
+              </div>
+            </div>
+
+            <div
+              class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light"
+            >
+              <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                <IconAdd :width="14" :height="14" />
+              </span>
+
+              <TypoNormalText> Add entry</TypoNormalText>
+            </div>
+          </div>
+
+          <div class="w-full flex flex-col space-y-4 pt-3">
+            <TypoHeaderText :customClass="'!font-normal'">
+              Milestone 1
+            </TypoHeaderText>
+
+            <div
+              class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
+            >
+              <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
+                <IconAdd :width="14" :height="14" />
+              </span>
+
+              <span> Add entry </span>
+            </div>
+          </div>
+
+          <div class="w-full pt-4 flex flex-col">
             <Button
               type="submit"
               text="Submit"
-              class="!w-full flex-1 !py-2.5 !px-6 my-2"
-              customClass="!bg-[#D6D6D6]  !text-bouhaws-dark !text-white"
-            />
+              customClass="!bg-bouhaws-blue-main text-white w-full"
+              :useSlot="true"
+              :padding="'py-3'"
+            >
+              <TypoNormalText
+                :custom-class="'!font-normal'"
+                :color="'text-white'"
+                >Submit</TypoNormalText
+              >
+            </Button>
           </div>
         </form>
-
-        <div class="rounded-lg box-shadow p-2 pb-4 bg-white">
-          <h5 class="text-xl mb-3 p-3">Submission requirements</h5>
-
-          <div class="flex flex-col space-y-2 text-sm">
-            <p
-              v-for="requirement in requirements"
-              :key="requirement.title"
-              class="flex space-x-3 items-center font-light py-1 px-2"
-            >
-              <span class="h-1.5 w-1.5 rounded-full bg-bouhaws-purple"></span>
-              <span>
-                {{ requirement.title }}
-              </span>
-            </p>
-          </div>
-        </div>
       </section>
     </div>
+    <div class="h-[100px]"></div>
   </div>
 </template>
 
-<script setup lang="ts">  
-const router = useRouter()
+<script setup lang="ts">
+const router = useRouter();
 const project = ref({
   id: "1",
-  title: `Project title`,
-  username: "ArchyScript",
-  entryType: 'single',
-  entryRange: '1-4',
+  title: `Mother’s Day`,
+  type: "challenge",
+  user: {
+    name: "Brand",
+    photo_url: "/images/avatar-3.png",
+  },
+  entryType: "single",
+  entryRange: "1-4",
   entry: {
-    type: 'multiple',
+    type: "multiple",
     range: {
       min: 1,
-      max: 6
-    }
+      max: 6,
+    },
   },
   points: {
     min: 200,
-    max: 500
+    max: 500,
   },
-  dataPosted: `Posted 2h ago `,
-  description: `Short description of the project and how the teacher is expecting from the student entries. Also anything they think would be helpful.`,
+  dataPosted: `Posted 2 hours ago`,
+  description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
   milestone: 2,
   memberOfTeam: 4,
-  deadline: `20/23/2022`,
-  imagUrl: '~/assets/images/profile-picture.svg',
+  deadline: `Deadline in 15 days`,
   completed: true,
-})
+});
 
-const showProjectDetailsModal = ref(false)
-
+const showProjectDetailsModal = ref(false);
 
 const requirements = ref([
   { title: "Project entries must be less than 5MB." },
   { title: "Images resolution should be at least 150 pixels." },
-])
+]);
 
 const payload = ref({
   title: "",
-  description: ""
-})
+  description: "",
+});
 
 const uploadForm = () => {
-  console.log(payload.value)
-}
+  console.log(payload.value);
+};
 
+const exhibitions = ref([
+  {
+    id: "1",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-1.png",
+    },
+    image_url: `/images/entry-1.png`,
+  },
+  {
+    id: "2",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-2.png",
+    },
+    image_url: `/images/entry-2.png`,
+  },
+  {
+    id: "3",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-3.png",
+    },
+    image_url: `/images/entry-3.png`,
+  },
+  {
+    id: "4",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-4.png",
+    },
+    image_url: `/images/entry-4.png`,
+  },
+  {
+    id: "5",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-5.png",
+    },
+    image_url: `/images/entry-5.png`,
+  },
+  {
+    id: "6",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-1.png",
+    },
+    image_url: `/images/entry-6.png`,
+  },
+  {
+    id: "7",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-2.png",
+    },
+    image_url: `/images/entry-7.png`,
+  },
+  {
+    id: "8",
+    user: {
+      name: "Student",
+      photo_url: "/images/avatar-3.png",
+    },
+    image_url: `/images/entry-8.png`,
+  },
+]);
 </script>
- 

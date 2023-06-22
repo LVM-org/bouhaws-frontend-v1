@@ -56,9 +56,7 @@
             />
           </div>
 
-          <div
-            class="max-h-[16rem] mt-4 py-2 space-y-6 overflow-scroll no-scrollbar"
-          >
+          <div class="max-h-[16rem] mt-4 py-2 space-y-6">
             <CardComment
               v-for="comment in comments"
               :key="comment.id"
@@ -72,19 +70,23 @@
     <div class="mt-8 space-y-4 w-full">
       <h5 class="text-2xl text-center">More like this</h5>
 
-      <div class="flex space-x-4 overflow-auto no-scrollbar">
-        <CardExhibition
-          v-for="exhibition in exhibitions"
-          :key="exhibition"
-          :exhibition="exhibition"
-          class="!h-40 !w-40"
-        />
+      <div
+        class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto no-scrollbar"
+      >
+        <div class="flex flex-row space-x-3 py-2 pr-4">
+          <CardExhibition
+            v-for="exhibition in exhibitions"
+            :key="exhibition"
+            :exhibition="exhibition"
+            class="!h-40 !w-[230px]"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"> 
+<script setup lang="ts">
 const comments = ref([
   {
     id: "1",
@@ -142,79 +144,79 @@ const comments = ref([
     datePosted: "2 hours ago",
     imageUrl: "",
   },
-])
+]);
 const exhibitions = ref([
   {
     id: "1",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "2",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "3",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "4",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "5",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "6",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "7",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "8",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "9",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "10",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "11",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
   {
     id: "12",
     username: `ArchyScript`,
     profilePicture: ``,
-    artWork: ``
+    artWork: ``,
   },
-])
+]);
 </script>

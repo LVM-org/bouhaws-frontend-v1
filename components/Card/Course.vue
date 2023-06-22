@@ -29,11 +29,11 @@
   </div>
 </template>
 
-<script setup lang="ts">  
+<script setup lang="ts">
 const props = defineProps({
   course: {
     type: Object,
-    default: () => { }
-  }
-})
+    default: () => {},
+  },
+});
 </script>

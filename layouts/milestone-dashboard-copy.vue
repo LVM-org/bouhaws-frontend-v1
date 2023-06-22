@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#E3E3D9]">
+  <div class="bg-[#E3E3D9] font-Kanit">
     <PartialsTopBar />
 
     <div
@@ -18,8 +18,8 @@
   </div>
 </template>
 
-<script setup lang="ts">   </script>
- 
+<script setup lang="ts"></script>
+
 <style>
 * {
   font-family: Kanit, Arial, Helvetica, sans-serif;
@@ -41,5 +41,9 @@
 /*  */
 .box-shadow {
   box-shadow: 0px 10px 34px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  background: linear-gradient(287.56deg, #d8d8c7 0%, #ebebe5 100%);
 }
 </style>

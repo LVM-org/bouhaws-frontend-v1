@@ -1,10 +1,10 @@
 <template>
   <div
-    class="fixed top-0 left-0 !w-screen !h-screen overflow-auto z-50 bg-bouhaws-light-gray-2 bg-opacity-50 py-8"
+    class="fixed top-0 left-0 !w-screen !h-screen overflow-auto z-50 flex flex-col items-center bg-bouhaws-light-gray-2 bg-opacity-50 py-8"
     @click="closeModal"
   >
     <section
-      class="relative modal h-auto mx-auto bg-white p-6 rounded-lg box-shadow"
+      class="relative modal h-auto md:!w-[50%] w-full bg-white p-6 rounded-lg box-shadow"
       :style="`width: ${modalSizes} !important;`"
     >
       <div class="relative flex pb-4" :class="centered && 'justify-center'">
@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script setup lang='ts'> 
+<script setup lang="ts">
 const props = defineProps({
   id: {
     type: String,
@@ -53,37 +53,39 @@ const props = defineProps({
   },
   hasHeader: {
     type: Boolean,
-    default: true
-  }
-})
+    default: true,
+  },
+});
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(["close"]);
 const modalSizes = computed(() => {
-  if (props.size == 'xs') return "18.75rem"
-  if (props.size == 'sm') return "29.25rem"
-  if (props.size == 'md') return "31.25rem"
-  if (props.size == 'lg') return "44rem"
-  if (props.size == 'xl') return "71.25rem"
-  else props.size
-})
-
+  if (props.size == "xs") return "18.75rem";
+  if (props.size == "sm") return "29.25rem";
+  if (props.size == "md") return "31.25rem";
+  if (props.size == "lg") return "44rem";
+  if (props.size == "xl") return "71.25rem";
+  else props.size;
+});
 
 window.addEventListener("keyup", (e) => {
-  if (e.key == 'Escape') return close()
+  if (e.key == "Escape") return close();
 });
 
 const closeModal = () => {
-  window.addEventListener("click", (event) => {
-    if (!event.target.closest(".modal")) { close() }
-  },
+  window.addEventListener(
+    "click",
+    (event) => {
+      if (!event.target.closest(".modal")) {
+        close();
+      }
+    },
     false
-  )
-}
+  );
+};
 const close = () => {
-  emit("close", props.id)
-} 
+  emit("close", props.id);
+};
 </script>
-
 
 <style lang="scss" scoped>
 .box-shadow {

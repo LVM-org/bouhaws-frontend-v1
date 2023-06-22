@@ -38,12 +38,10 @@
     </div>
 
     <!-- others -->
-    <div
-      class="grid grid-cols-3 max-h-screen overflow-scroll no-scrollbar gap-4"
-    >
+    <div class="grid grid-cols-3 gap-4">
       <nuxt-link
         :to="`events/${x}`"
-        class="p-4 col-span-1 min-h-[12.5rem] bg-white box-shadow rounded-lg"
+        class="p-4 col-span-1 min-h-[12.5rem] bg-white rounded-lg"
         v-for="x in 16"
         :key="x"
       >
