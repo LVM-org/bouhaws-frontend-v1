@@ -4,7 +4,7 @@
 
     <!--  challenges sidebar -->
     <div
-      class="fixed lg:!w-[20%] mdlg:!w-[22%] lg:!left-[5%] mdlg:!left-[2%] lg:!top-[14%] mdlg:!top-[17%] flex flex-col lg:!h-[85%] mdlg:!h-[83%] pb-6"
+      class="fixed lg:!w-[20%] mdlg:!w-[22%] lg:!left-[5%] mdlg:!left-[2%] lg:!top-[16%] mdlg:!top-[17%] flex flex-col lg:!h-[85%] mdlg:!h-[83%] pb-6"
     >
       <PartialsSideBar />
     </div>

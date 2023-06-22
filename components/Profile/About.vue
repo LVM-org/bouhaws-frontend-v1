@@ -16,7 +16,7 @@
       </div> 
 
       <span>
-        <Button text="Edit" customClass="!font-light !text-sm" padding="py-2 px-4" > </Button>
+        <Button text="Edit" customClass="!font-light !text-xs" padding="py-1.5 px-4" />
       </span>
     </div>
 
@@ -34,7 +34,7 @@
         </div>
 
         <span>
-          <Button text="Edit" customClass="!font-light !text-sm" padding="py-2 px-4" > </Button>
+          <Button text="Edit" customClass="!font-light !text-xs" padding="py-1.5 px-4"  /> 
         </span>
       </div> 
 

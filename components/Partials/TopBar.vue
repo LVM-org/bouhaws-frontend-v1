@@ -22,7 +22,7 @@
               class="py-2 capitalize space-x-2 px-4 flex flex-row items-center"
             >
               <IconLoader
-                :name="`${item.icon} ${
+                :name="`${item.icon}${
                   tabIsActive(item.routeTag) ? '-active' : ''
                 }`"
                 :customClass="item.icon_size"
