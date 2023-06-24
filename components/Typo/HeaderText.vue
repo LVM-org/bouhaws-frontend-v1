@@ -1,6 +1,6 @@
 <template>
   <h3
-    :class="`font-bold 
+    :class="`font-normal 
     ${size == 'lg' ? 'lg:text-lg mdlg:text-lg text-sm' : ''}
     ${size == 'xl' ? 'lg:text-lg mdlg:text-lg text-lg' : ''}
     ${size == 'base' ? 'lg:text-base mdlg:text-[13px] text-sm' : ''}

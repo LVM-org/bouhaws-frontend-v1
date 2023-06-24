@@ -1,8 +1,9 @@
 <template>
   <image-loader
     :photo-url="photoUrl"
-    :custom-class="`rounded-md flex text-xs uppercase font-semibold bg-opacity-10 flex-row items-center justify-center ${customClass} `"
+    :custom-class="`rounded-md flex text-xs uppercase font-semibold bg-opacity-10 flex-row items-center cursor-pointer justify-center ${customClass} `"
     :custom-style="`width: ${size}px; height: ${size}px;`"
+    @click.stop="goToRoute('/profile/id')"
   >
     <template v-if="photoUrl == ''">
       <slot />
@@ -36,6 +37,16 @@ export default defineComponent({
     },
   },
   name: "Avatar",
-  setup() {},
+  setup() {
+    const router = useRouter();
+
+    const goToRoute = (path: string) => {
+      router.push(path);
+    };
+
+    return {
+      goToRoute,
+    };
+  },
 });
 </script>

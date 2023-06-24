@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
-    :to="`projects/${project.id}`"
-    class="flex px-3 py-3 flex-row items-center w-full space-x-4"
+    :to="`/projects/${project.id}`"
+    class="flex py-5 px-5 rounded-[10px] flex-row items-center w-full space-x-4 bg-white box-shadow"
   >
     <div class="w-[170px] flex flex-col">
       <ImageLoader

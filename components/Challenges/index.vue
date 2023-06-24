@@ -40,7 +40,7 @@
       </div>
 
       <div class="grid grid-cols-2 gap-4 mt-6 pb-16">
-        <CardChallengeTypeA 
+        <CardChallengeTypeA
           v-for="challenge in challenges"
           :key="challenge"
           :challenge="challenge"
@@ -66,31 +66,31 @@ const challenges = ref([
   {
     id: "1",
     brandName: "Brand",
-    picture: `/images/gallery-project-1.png`, 
-    deadline: 'Deadline in 15 days',
-    posted: 'Posted 2 hours ago',
-    milestone: 1, 
+    picture: `/images/gallery-project-1.png`,
+    deadline: "Deadline in 15 days",
+    posted: "Posted 2 hours ago",
+    milestone: 1,
     title: "ArchyScript",
     gift: "100",
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-  },  
+  },
   {
-    id: "4", 
+    id: "4",
     brandName: "Brand",
-    picture: `/images/gallery-project-2.png`, 
-    deadline: 'Deadline in 15 days',
-    posted: 'Posted 2 hours ago',
+    picture: `/images/gallery-project-2.png`,
+    deadline: "Deadline in 15 days",
+    posted: "Posted 2 hours ago",
     milestone: 4,
     title: "ArchyScript",
     gift: "100",
     description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-  },  
+  },
   {
-    id: "2", 
+    id: "2",
     brandName: "Brand",
-    picture: `/images/gallery-project-2.png`, 
-    deadline: 'Deadline in 15 days',
-    posted: 'Posted 2 hours ago',
+    picture: `/images/gallery-project-2.png`,
+    deadline: "Deadline in 15 days",
+    posted: "Posted 2 hours ago",
     milestone: 1,
     title: "ArchyScript",
     gift: "100",
