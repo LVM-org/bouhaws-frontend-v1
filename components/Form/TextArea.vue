@@ -19,7 +19,7 @@
         <span>
           <slot name="inner-prefix" />
         </span>
-        <input
+        <textarea
           v-model="content"
           :placeholder="placeholder"
           @focus="isFocused = true"
@@ -31,19 +31,22 @@
           :disabled="disabled"
           :autofocus="autoFocus"
           :type="fieldType"
-          :class="` text-bodyDark flex-grow bg-transparent !font-light placeholder-[#61656D] focus input w-full focus:outline-none lg:text-sm mdlg:text-[12px] text-xs `"
-        />
+          :class="` text-bodyDark leading-8 flex-grow no-scrollbar resize-none bg-transparent !font-light placeholder-[#61656D] focus input w-full focus:outline-none lg:text-sm mdlg:text-[12px] text-xs `"
+          rows="3"
+        >
         <slot name="inner-suffix" />
+
         <IconLoader
           :name="`${fieldType == 'password' ? 'show' : 'hide'}`"
           :customClass="`${fieldType == 'password' ? 'h-[20px]' : 'h-[19px]'}`"
           v-if="type == 'password'"
           @click.stop="
-            fieldType == 'password'
+            fieldType == 'password' 
               ? (fieldType = 'text')
               : (fieldType = 'password')
           "
         />
+        </textarea>
       </div>
       <slot name="outer-suffix" />
     </div>

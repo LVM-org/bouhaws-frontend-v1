@@ -25,7 +25,7 @@
         </div>
     </div>
     
-    <div class="sti cky overflow-scroll flex-1 no-scrollbar max-h-screen top-0">
+    <div class="sti cky overflow-scroll flex-1 no-scrollbar max-h-screen top-0 pb-10">
       <ProfilePersonal v-if="activeNav == 'personal'" /> 
       <ProfileContacts v-if="activeNav == 'contacts'" /> 
       <ProfileNotifications v-if="activeNav == 'notifications'" /> 
