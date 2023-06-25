@@ -47,10 +47,10 @@
         <Button
           text=""
           :use-slot="true"
-          customClass="h-9 !px-4 !font-normal text-center"
+          customClass="h-9 !px-4 !font-normal text-center !bg-[#1A52E4] !rounded-[5px]"
         >
           <TypoNormalText :customClass="'!text-white'">
-            Share your art
+            Share your artwork
           </TypoNormalText>
         </Button>
 

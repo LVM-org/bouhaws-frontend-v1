@@ -6,13 +6,15 @@
   >
     <TypoNormalText
       v-for="(tab, index) in tabs"
-      :key="index" 
+      :key="index"
       :custom-class="`${
         activeTab == tab.title ? 'bg-bouhaws-semi-dark z-10' : 'bg-white'
-      } ${isFullSpan && 'flex-1'} ${isBtnLarge ? 'py-3 px-6 font-medium' : 'py-2 px-5'} mx-auto shadow-custom  rounded-[10px] capitalize cursor-pointer flex justify-center`"
+      } ${isFullSpan && 'flex-1'} ${
+        isBtnLarge ? 'py-3 px-6 font-medium' : 'py-2 px-5'
+      } mx-auto shadow-custom  select-none rounded-[5px] capitalize cursor-pointer flex justify-center`"
       :color="`${
         activeTab == tab.title ? 'text-white' : 'text-bouhaws-text-black'
-      }`" 
+      }`"
       @click="selectTab(tab.title)"
     >
       {{ tab.title }}
@@ -36,12 +38,12 @@ const props = defineProps({
   },
   isFullSpan: {
     type: Boolean,
-    default: false
+    default: false,
   },
-   isBtnLarge: {
+  isBtnLarge: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 
 const emit = defineEmits(["selectTab"]);

@@ -44,7 +44,7 @@ module.exports = {
       mdlg: "1000px",
       // => @media (min-width: 768px) { ... }
 
-      lg: "1580px",
+      lg: "1600px",
       // => @media (min-width: 1024px) { ... }
 
       xl: "1280px",

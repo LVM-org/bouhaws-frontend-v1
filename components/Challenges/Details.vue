@@ -1,4 +1,3 @@
-import { CardChallenge } from '../../.nuxt/components';
 <template>
   <div>
     <!-- Modals here -->
@@ -83,12 +82,17 @@ import { CardChallenge } from '../../.nuxt/components';
             <TypoNormalText :color="'text-[#FF3333]'">
               {{ project.deadline }}
             </TypoNormalText>
+
+            <div class="flex items-center space-x-1"> 
+          <IconLoader name="gift-active" :customClass="'!h-4'"/>  
+          <TypoNormalText customClass="!text-[#27BA8E]"> ${{ project.giftPrice }} </TypoNormalText>
+        </div> 
           </div>
 
-          <TypoNormalText :customClass="'!text-left !leading-relaxed'">
+          <TypoNormalText :customClass="'!tecxt-left !leading-relaxed'">
             {{ project.description }}
           </TypoNormalText>
-          
+
           <div
             class="w-full flex flex-row no-scrollbar space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
           >
@@ -132,11 +136,12 @@ import { CardChallenge } from '../../.nuxt/components';
             Entries ({{ exhibitions.length }})
           </TypoHeaderText>
 
-          <div class="grid grid-cols-3 gap-3">
+          <div class="grid grid-cols-4 gap-3">
             <CardImgUser
               v-for="(exhibition, index) in exhibitions"
               :key="index"
               :item="exhibition"
+              class="!h-[10rem]"
             />
           </div>
         </div>
@@ -144,95 +149,21 @@ import { CardChallenge } from '../../.nuxt/components';
 
       <!-- section 2 -->
       <section class="col-span-1 w-full space-y-5 relative">
-        <form
-          @submit.prevent="uploadForm"
+        <div
           class="rounded-[10px] box-shadow bg-white px-5 py-5 flex flex-col space-y-3 sticky top-0"
         >
           <TypoHeaderText :size="'3xl'" :customClass="'!font-normal'">
-            Submit entry
+            Join challenge
           </TypoHeaderText>
 
-          <div class="py-2 space-y-2.5 border-b-2 border-[#EBEBE5]">
-            <div>
-              <label for="title" class="font-light"> Title </label>
-              <input
-                type="text"
-                id="title"
-                class="border-0 w-full placeholder:text-bouhaws-dark placeholder:text-sm placeholder:font-extralight font-light py-2 px-0.5 text-sm border-b border-[#EBEBE5] outline-none"
-                placeholder="Name your entry"
-                v-model="payload.title"
-              />
-            </div>
+          
+          <TypoNormalText :customClass="'!text-left leading-5'">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore commodi harum omnis illum quas, velit ab! Possimus inventore reiciendis repudiandae at voluptate, quos id numquam harum iste, ipsum illo illum.
+          </TypoNormalText> 
 
-            <div>
-              <label for="description" class="font-light"> Description </label>
-
-              <textarea
-                id="description"
-                v-model="payload.description"
-                class="border-0 resize-none w-full placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light py-2 px-0.5 text-sm outline-none"
-                placeholder="Give a short description"
-                rows="2"
-              ></textarea>
-            </div>
-          </div>
-
-          <div class="w-full flex flex-col space-y-2">
-            <TypoHeaderText :customClass="'!font-normal'">
-              Milestone 1
-            </TypoHeaderText>
-
-            <div
-              class="w-full flex flex-row no-scrollbar space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
-            >
-              <div class="flex flex-row space-x-3 py-2 pr-4">
-                <ImageLoader
-                  v-for="x in 4"
-                  :key="x"
-                  :photoUrl="'/images/add-image.png'"
-                  :customClass="'h-[90px] w-[90px] rounded-[7px] relative'"
-                >
-                  <span class="absolute top-0 right-0 cursor-pointer">
-                    <IconLoader
-                      :name="'remove-image'"
-                      :customClass="'h-[25px]'"
-                    />
-                  </span>
-                </ImageLoader>
-              </div>
-            </div>
-
-            <div
-              class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light"
-            >
-              <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
-                <IconAdd :width="14" :height="14" />
-              </span>
-
-              <TypoNormalText> Add entry</TypoNormalText>
-            </div>
-          </div>
-
-          <div class="w-full flex flex-col space-y-4 pt-3">
-            <TypoHeaderText :customClass="'!font-normal'">
-              Milestone 1
-            </TypoHeaderText>
-
-            <div
-              class="flex items-center cursor-pointer w-auto text-sm space-x-1.5 font-light mt-3"
-            >
-              <span class="p-1 bg-bouhaws-blue-main text-white rounded-md">
-                <IconAdd :width="14" :height="14" />
-              </span>
-
-              <span> Add entry </span>
-            </div>
-          </div>
-
-          <div class="w-full pt-4 flex flex-col">
+          <div class="w-full py-3">
             <Button
-              type="submit"
-              text="Submit"
+              type="submit" 
               customClass="!bg-bouhaws-blue-main text-white w-full"
               :useSlot="true"
               :padding="'py-3'"
@@ -240,11 +171,12 @@ import { CardChallenge } from '../../.nuxt/components';
               <TypoNormalText
                 :custom-class="'!font-normal'"
                 :color="'text-white'"
-                >Submit</TypoNormalText
-              >
+              > 
+                Join
+              </TypoNormalText>
             </Button>
           </div>
-        </form>
+        </div>
       </section>
     </div>
     <div class="h-[100px]"></div>
@@ -278,8 +210,8 @@ const project = ref({
   description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
   milestone: 2,
   memberOfTeam: 4,
-  deadline: `Deadline in 15 days`,
-  completed: true,
+  deadline: `Deadline in 15 days`, 
+    giftPrice: 900, 
 });
 
 const showProjectDetailsModal = ref(false);
@@ -287,8 +219,17 @@ const showProjectDetailsModal = ref(false);
 const requirements = ref([
   { title: "Project entries must be less than 5MB." },
   { title: "Images resolution should be at least 150 pixels." },
+  { title: "Images resolution should be at least 150 pixels." },
 ]);
 
+const payload = ref({
+  title: "",
+  description: "",
+});
+
+const uploadForm = () => {
+  console.log(payload.value);
+};
 
 const images = ref([ 
   { url: `/images/entry-1.png` },
@@ -300,14 +241,6 @@ const images = ref([
   { url: `/images/entry-3.png` }, 
 ]);
 
-const payload = ref({
-  title: "",
-  description: "",
-});
-
-const uploadForm = () => {
-  console.log(payload.value);
-};
 
 const exhibitions = ref([
   {

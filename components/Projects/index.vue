@@ -1,27 +1,19 @@
 <template>
-  <section
-    class="col-span-3 py-6 px-6 bg-white box-shadow rounded-[10px] flex flex-col space-y-3"
-  >
-    <div class="flex flex-row justify-between items-center">
-      <TypoHeaderText :custom-class="'!text-2xl !font-normal'">
-        Projects
-      </TypoHeaderText>
+  <section class="col-span-3 flex flex-col space-y-3 relative">
+    <div class="flex flex-row justify-between items-center sticky top-0">
+      <Tabs
+        :tabs="filterOptions1"
+        :activeTab="activeOption1"
+        @selectTab="selectActiveTab"
+      />
 
       <div class="flex items-center flex-row bg-[#EBEBE5] rounded-[5px]">
-        <TypoNormalText
-          v-for="filterOption in filterOptions"
-          :custom-class="`capitalize !px-4 py-2 text-sm cursor-pointer text-[#61656D] rounded-[5px] ${
-            activeOption == filterOption.title ? 'bg-bouhaws-semi-dark' : ''
-          }`"
-          :color="`${
-            activeOption == filterOption.title
-              ? 'text-white '
-              : 'text-bouhaws-text-black'
-          }`"
-          @click="activeOption = filterOption.title"
-        >
-          {{ filterOption.title }}
-        </TypoNormalText>
+        <Tabs
+          :tabs="filterOptions"
+          :activeTab="activeOption"
+          @selectTab="selectActiveOption"
+          :is-spaced="false"
+        />
       </div>
     </div>
 
@@ -33,18 +25,20 @@
       />
     </div>
   </section>
+  
   <div class="h-[100px]"></div>
 </template>
 
 <script setup lang="ts">
-const activeOption = ref("all");
-const filterOptions = reactive([
+const activeOption = ref("active");
+const activeOption1 = ref("all");
+const filterOptions = reactive([{ title: "active" }, { title: "completed" }]);
+const filterOptions1 = reactive([
   { title: "all" },
   { title: "class" },
   { title: "challenge" },
-  { title: "active" },
-  { title: "completed" },
 ]);
+
 const projects = ref([
   {
     id: "1",
@@ -119,4 +113,13 @@ const projects = ref([
     completed: true,
   },
 ]);
+
+
+
+const selectActiveTab =  (value: string) => {
+  activeOption1.value = value
+}
+const selectActiveOption =  (value: string) => {
+  activeOption.value = value
+}
 </script>

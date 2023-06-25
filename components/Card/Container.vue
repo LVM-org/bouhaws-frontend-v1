@@ -1,5 +1,5 @@
 <template>
-  <div :class="`rounded-2xl  box-shadow  bg-white ${customClass}`">
+  <div :class="`rounded-2xl  box-shadow bg-white ${customClass}`">
     <slot/>
   </div>
 </template>
