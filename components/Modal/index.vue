@@ -74,7 +74,7 @@ window.addEventListener("keyup", (e) => {
 const closeModal = () => {
   window.addEventListener(
     "click",
-    (event) => {
+    (event: any) => {
       if (!event.target.closest(".modal")) {
         close();
       }

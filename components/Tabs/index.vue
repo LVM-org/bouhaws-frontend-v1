@@ -11,7 +11,7 @@
         activeTab == tab.title ? 'bg-bouhaws-semi-dark z-10' : 'bg-white'
       } ${isFullSpan && 'flex-1'} ${
         isBtnLarge ? 'py-3 px-6 font-medium' : 'py-2 px-5'
-      } mx-auto shadow-custom  rounded-[5px] capitalize cursor-pointer flex justify-center`"
+      } mx-auto shadow-custom  select-none rounded-[5px] capitalize cursor-pointer flex justify-center`"
       :color="`${
         activeTab == tab.title ? 'text-white' : 'text-bouhaws-text-black'
       }`"

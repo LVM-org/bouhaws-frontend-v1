@@ -4,7 +4,7 @@
           :custom-class="'!font-normal'"
           :size="'3xl'"
         >
-         Security
+         Notifications
         </TypoHeaderText>
 
         <div>

@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="`exhibition/${exhibition?.id}`"
+    :to="`/exhibition/${exhibition?.id}`"
     :class="`relative box-shadow ${customClass} w-[200px] h-[200px] rounded-b-[10px] flex flex-col`"
   >
     <ImageLoader

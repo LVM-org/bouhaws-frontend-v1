@@ -4,13 +4,14 @@
       <Tabs
         :tabs="filterOptions1"
         :activeTab="activeOption1"
-        @selectTab="selectTab1"
+        @selectTab="selectActiveTab"
       />
+
       <div class="flex items-center flex-row bg-[#EBEBE5] rounded-[5px]">
         <Tabs
           :tabs="filterOptions"
           :activeTab="activeOption"
-          @selectTab="selectTab1"
+          @selectTab="selectActiveOption"
           :is-spaced="false"
         />
       </div>
@@ -24,18 +25,20 @@
       />
     </div>
   </section>
+  
   <div class="h-[100px]"></div>
 </template>
 
 <script setup lang="ts">
 const activeOption = ref("active");
-const filterOptions = reactive([{ title: "active" }, { title: "completed" }]);
 const activeOption1 = ref("all");
+const filterOptions = reactive([{ title: "active" }, { title: "completed" }]);
 const filterOptions1 = reactive([
   { title: "all" },
   { title: "class" },
   { title: "challenge" },
 ]);
+
 const projects = ref([
   {
     id: "1",
@@ -110,4 +113,13 @@ const projects = ref([
     completed: true,
   },
 ]);
+
+
+
+const selectActiveTab =  (value: string) => {
+  activeOption1.value = value
+}
+const selectActiveOption =  (value: string) => {
+  activeOption.value = value
+}
 </script>

@@ -1,15 +1,14 @@
 <template>
- <div>
-     <div class="grid grid-cols-4 gap-6 mt-4 pb-16">
-          <CardExhibition
-            v-for="exhibition in exhibitions"
-            :key="exhibition"
-            :exhibition="exhibition"
-            :hasSection="true"
-          />
-        </div>
-        
- </div>
+  <div>
+    <div class="grid grid-cols-4 gap-6 mt-4 pb-16">
+      <CardExhibition
+        v-for="exhibition in exhibitions"
+        :key="exhibition"
+        :exhibition="exhibition"
+        :hasSection="true"
+      />
+    </div> 
+  </div>
 </template>
 
 <script setup lang="ts"> 

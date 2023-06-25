@@ -1,35 +1,46 @@
 <template>
-  <div class="px-4"> 
-    <div class="mb-6"> 
-      <Tabs 
-        :tabs="navs"
-        :activeTab="activeNav"
-        @selectTab="selectTab"
-        :isFullSpan="true"
-        :isBtnLarge="true"
-      />
-    </div>
+  <div class="flex space-x-6 sticky top-[60%]"> 
+    <div class="rounded-md space-y-4 box-shadow p-8  !w-[360px] h-fit bg-white">
+        <TypoHeaderText
+          :custom-class="'!font-normal'"
+          :size="'3xl'"
+        >
+         Settings
+        </TypoHeaderText>
 
-    <div class="my-2">
-      <ProfileAbout v-if="activeNav == 'about'" /> 
-      <ProfileCourses v-if="activeNav == 'courses'" /> 
-      <ProfileExhibition v-if="activeNav == 'exhibition'" /> 
-      <ProfileAchievements v-if="activeNav == 'achievements'" /> 
-      <ProfileWallet v-if="activeNav == 'wallet'" /> 
-      <ProfileSettings v-if="activeNav == 'settings'" /> 
+        <div class=" flex-col space-y-1 border-b border-[#EBEBE5] pb-3">
+          <TypoHeaderText 
+            v-for="nav in navs"
+            :key="nav.title" 
+            :customClass="`p-1.5 !font-normal cursor-pointer hover:text-[#1A52E4] text-sm capitalize ${nav.title == activeNav ? 'text-[#1A52E4]' : 'text-[#61656D] hover:pl-3 hover:opacity-70' }`"
+            @click="selectTab(nav.title)">
+            {{nav.title}}
+          </TypoHeaderText>
+        </div>
+
+          <div class=" border-[#EBEBE5] pb-2">
+          <TypoHeaderText  customClass="py-1.5 !font-normal cursor-pointer text-[#F33] text-sm capitalize ">
+            delete account
+          </TypoHeaderText>
+        </div>
+    </div>
+    
+    <div class="sti cky overflow-scroll flex-1 no-scrollbar max-h-screen top-0">
+      <ProfilePersonal v-if="activeNav == 'personal'" /> 
+      <ProfileContacts v-if="activeNav == 'contacts'" /> 
+      <ProfileNotifications v-if="activeNav == 'notifications'" /> 
+      <ProfileSecurity v-if="activeNav == 'security'" />  
     </div> 
   </div>
 </template>
 
 <script   setup lang="ts">  
-const activeNav = ref("about");
+const activeNav = ref("personal");
 const navs = ref([
-  { title: "about" },
-  { title: "courses" },
-  { title: "exhibition" },
-  { title: "achievements" },
-  { title: "wallet" },
-  { title: "settings" },
+  { title: "personal" },
+  { title: "contacts" },
+  { title: "notifications" },
+  { title: "security" }, 
 ]); 
 
 const selectTab = (activeTab: string) => {

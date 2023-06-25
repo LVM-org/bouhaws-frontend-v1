@@ -12,14 +12,14 @@
         </TypoHeaderText>
 
         <div
-          class="w-2/5 mx-auto text-[#61656D] flex items-center space-x-4 px-5 bg-white rounded-[10px]"
+          class="w-2/5 max-w-lg mx-auto text-[#61656D] flex items-center space-x-4 px-5 bg-white rounded-[8px]"
         >
           <IconSearch />
 
           <input
             type="search"
             placeholder="Search"
-            class="flex-1 w-full text-sm py-3 bg-transparent outline-none placeholder:font-light"
+            class="flex-1 w-full text-sm py-3.5 bg-transparent outline-none placeholder:font-light"
           />
         </div>
       </div>
