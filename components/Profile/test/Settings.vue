@@ -81,4 +81,4 @@ const isPushNotification = ref(false)
 const togglePushNotification = (value: boolean) => {
     isPushNotification.value = value
 }
-</script>
+</script>``
