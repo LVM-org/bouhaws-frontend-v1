@@ -29,6 +29,7 @@
         </TypoNormalText>
       </div>
     </ImageLoader>
+    
     <template v-if="hasMoreInfo">
       <div
         class="w-full flex flex-row items-center justify-between space-x-3 bg-white rounded-b-[10px] py-4 px-4"

@@ -1,222 +1,450 @@
 <template>
-  <div>
-    <div
-      class="grid grid-cols-3 gap-6 items-start text-[#0E1011] p-2 w-5/6 mx-auto"
-    >
-      <section class="w-full col-span-1 h-full">
-        <img src="~/assets/images/art.svg" class="!h-fit !w-full" />
+  <div class=" space-y-8"> 
+    <section>
+      image slider
+    </section>
+
+    <div class="grid grid-cols-3 gap-5">
+      <section class="col-span-2 space-y-5" > 
+        <div class="rounded-[10px] px-6 py-5 bg-white flex flex-col space-y-3 shadow-custom" >
+          <TypoHeaderText :size="'2xl'" :custom-class="'!font-normal'">
+            Star light academy
+          </TypoHeaderText>
+
+          <div class="flex items-center space-x-6 flex-row w-full">
+            <div class="flex items-center space-x-1">
+              <Avatar 
+              photoUrl="/images/avatar-3.png"
+                :size="'20'"
+              ></Avatar>
+
+              <TypoNormalText :customClass="'!font-medium'">
+                Vincent Van Gogh
+              </TypoNormalText>
+            </div>
+
+              <TypoNormalText>
+                Posted 2 hours ago
+              </TypoNormalText>  
+          </div>
+
+            <TypoNormalText :custom-class="'!text-left !leading-relaxed'">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+              minim veniam, quis nostrud exercitation ullamco laborisM Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua ullamco laborisM Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua
+          </TypoNormalText>
+
+          <div
+            class="w-full flex flex-row items-center justify-between space-x-3 bg-white rounded-b-[10px]"
+          >
+            <div class="flex flex-row items-center space-x-3">
+              <div class="flex flex-row items-center space-x-1.5">
+                <IconLoader :name="'like'" :custom-class="'h-[17px]'" />
+                <TypoNormalText
+                  :color="'text-progress-bar-gray'"
+                  :custom-class="'!text-xs'"
+                >
+                  3500
+                </TypoNormalText>
+              </div>
+
+              <div class="flex flex-row items-center space-x-1.5">
+                <IconLoader :name="'comment'" :custom-class="'h-[17px]'" />
+                <TypoNormalText
+                  :color="'text-progress-bar-gray'"
+                  :custom-class="'!text-xs'"
+                >
+                  4000
+                </TypoNormalText>
+              </div>
+
+              <IconLoader :name="'chat-send-fill'" :customClass="'h-[21px]'" />
+            </div>
+
+            <div>
+              <IconLoader :name="'bookmark'" :custom-class="'h-[19px]'" />
+            </div>
+          </div>
+        </div> 
+
+        <!--  -->
+        <div class="rounded-[10px] px-6 py-5 bg-white flex flex-col space-y-2 shadow-custom" >
+          <TypoHeaderText :size="'2xl'" :custom-class="'!font-normal'">
+            Details
+          </TypoHeaderText> 
+
+          <div class="space-y-1">  
+            <div class="flex items-center space-x-2">
+              <TypoNormalText :customClass="'!font-medium'">
+                Title:
+              </TypoNormalText>
+
+              <TypoNormalText :customClass="'!font-normal'">
+               {{details.title}}
+              </TypoNormalText>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <TypoNormalText :customClass="'!font-medium'">
+                Created:
+              </TypoNormalText>
+
+              <TypoNormalText :customClass="'!font-normal'">
+               {{details.created}}
+              </TypoNormalText>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <TypoNormalText :customClass="'!font-medium'">
+                Project:
+              </TypoNormalText>
+
+              <TypoNormalText :customClass="'!font-normal'">
+               {{details.project}}
+              </TypoNormalText>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <TypoNormalText :customClass="'!font-medium'">
+                Type:
+              </TypoNormalText>
+
+              <TypoNormalText :customClass="'!font-normal'">
+               {{details.type}}
+              </TypoNormalText>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <TypoNormalText :customClass="'!font-medium'">
+                Medium:
+              </TypoNormalText>
+
+              <TypoNormalText :customClass="'!font-normal'">
+               {{details.medium}}
+              </TypoNormalText>
+            </div>
+
+            <div class="flex items-center space-x-2">
+              <TypoNormalText :customClass="'!font-medium'">
+                Dimensions:
+              </TypoNormalText>
+
+              <TypoNormalText :customClass="'!font-normal'">
+               {{details.dimensions}}
+              </TypoNormalText>
+            </div>
+            
+            <div class="flex items-center space-x-2">
+              <TypoNormalText :customClass="'!font-medium'">
+                Painter:
+              </TypoNormalText>
+
+              <TypoNormalText :customClass="'!font-normal'">
+               {{details.painter}}
+              </TypoNormalText>
+            </div> 
+          </div>
+        </div>
       </section>
 
-      <section class="col-span-2 w-full space-y-5">
-        <div class="w-full py-3 px-4 bg-white rounded-lg box-shadow space-y-3">
-          <h4 class="flex items-center text-2xl space-x-3">
-            <IconArrow type="left" class="text-bouhaws-blue-main" />
-            <span> Project Title </span>
-          </h4>
+      <section class="col-span-1">
+        <div class="rounded-[10px] space-y-6 relative h-full px-6 pt-5 bg-white flex flex-col space-y-2 shadow-custom" >
+          <TypoHeaderText :size="'2xl'" :custom-class="'!font-normal'">
+            Comments
+          </TypoHeaderText>
 
-          <div class="flex items-center space-x-6 text-sm mb-3">
-            <span class="flex items-center space-x-2">
-              <img
-                src="~/assets/images/profile-picture.svg"
-                class="!h-7 !w-7 rounded-full"
-              />
-              <span> ArchyScript </span>
-            </span>
+          <div class="!h-full">
+            <div class="space-y-2">
+              <div class="flex justify-between space-x-2" v-for="detail in details"  :key="detail.id"> 
+                 <!-- <Avatar 
+                    :photoUrl="detail?.profilePicture"
+                    size="40"
+                  ></Avatar> -->
 
-            <span class="font-light"> Posted 2hr ago </span>
+                  <div class="flex-col flex-1 space-y-1">
+                    <TypoNormalText size="sm" :customClass="'!font-medium'">
+                      tesv
+                      <!-- {{detail.username}}  -->
+                    </TypoNormalText> 
+
+                     <TypoNormalText size="sm" :customClass="'!font-normal'">
+                      <!-- {{detail.comment}} -->
+                    </TypoNormalText> 
+
+                     <TypoNormalText  :customClass="'!font-light !text-[#61656D]'">
+                      <!-- {{detail.timePosted}} -->
+                    </TypoNormalText> 
+
+                    <!-- <div v-if="detail?.replies?.length" class="flex items-center space-x-2"> 
+                      <TypoNormalText :customClass="'!font-light !text-[#61656D]'">
+                        View more replies (2)
+                      </TypoNormalText> 
+
+                      <IconLoader :name="'alt-arrow-down'" :custom-class="'h-[19px]'" />
+                    </div> -->
+                </div>
+              </div>
+            </div>
           </div>
 
-          <p class="text-sm font-light">
-            Short description of the project and different techniques they used
-            to create the entry. Also anything they think would be helpful.
-          </p>
+          <div class=" absolute pr-8  bottom-0 left-0 w-full  justify-between flex flex-row space-x-3 items-center rounded-b-[10px] border-t-[1px] border-[#EBEBE5]"> 
+            <div class="flex flex-row  flex-1 ">
+              <span
+                :contenteditable="true"
+                role="textbox"
+                :class="`w-full textarea cursor-pointer  !font-light resize-none !min-h-[48px] text-bodyBlack whitespace-pre-wrap focus:outline-none !max-h-[80px] overflow-x-hidden bg-transparent rounded-[8px] py-3 px-3 items-start text-left overflow-y-auto`"
+                id="messageContainer"
+              >
+              </span>
+            </div>
 
-          <p class="flex items-center space-x-5 text-bouhaws-light py-2">
-            <IconArrow type="upvote" />
-
-            <span class="text-bouhaws-dark"> 360 </span>
-
-            <IconArrow type="downvote" />
-          </p>
-        </div>
-
-        <div class="w-full py-3 px-4 bg-white rounded-lg box-shadow space-y-3">
-          <h5 class="text-2xl">Comments</h5>
-
-          <div class="flex items-center space-x-3">
-            <img
-              src="~/assets/images/profile-picture.svg"
-              class="!h-7 !w-7 rounded-full"
-            />
-
-            <input
-              id="Comments"
-              class="border-0 resize-none w-3/4 bg-transparent border-b border-[#EBEBE5] placeholder:text-bouhaws-dark no-scrollbar placeholder:text-sm placeholder:font-extralight overflow-auto font-light mt-1 py-1.5 px-2 text-sm outline-none"
-              placeholder="Add a comment..."
-            />
-          </div>
-
-          <div class="max-h-[16rem] mt-4 py-2 space-y-6">
-            <CardComment
-              v-for="comment in comments"
-              :key="comment.id"
-              :comment="comment"
-            />
+            <div class="w-[35px] absolute right-0" >
+              <IconLoader :name="'chat-send-fill'" :customClass="'h-[21px] rotate-45'" />
+            </div>
           </div>
         </div>
       </section>
     </div>
 
-    <div class="mt-8 space-y-4 w-full">
-      <h5 class="text-2xl text-center">More like this</h5>
+    <div class="w-full flex flex-col space-y-4">
+      <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
+        Recommended
+      </TypoHeaderText>
 
       <div
-        class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto no-scrollbar"
+        class="w-full flex flex-row no-scrollbar space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
       >
         <div class="flex flex-row space-x-3 py-2 pr-4">
-          <CardExhibition
-            v-for="exhibition in exhibitions"
-            :key="exhibition"
-            :exhibition="exhibition"
-            class="!h-40 !w-[230px]"
-          />
-        </div>
+        <CardExhibition
+          v-for="(exhibition, index) in exhibitions"
+          :key="index"
+          :custom-class="'col-span-1 !w-auto !h-[240px] !w-[240px]'"
+          :exhibition="exhibition"
+          :has-more-info="true"
+        />
       </div>
     </div>
+    </div>
   </div>
-</template>
-
+</template>  
 <script setup lang="ts">
+const activeDetailCommentId = ref('')
+
+const details = ref({
+  title: "Call me NOW!!!",
+  created: "Dec 40, 2096 ",
+  project: "Personal",
+  type: "Painting",
+  medium: "Oil on canvas",
+  dimensions: "80 cm x 20 cm ",
+  painter: "ARTyScript"
+})
+
 const comments = ref([
   {
-    id: "1",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
-  },
-  {
     id: "2",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
+    profilePicture: "/images/avatar-3.png",
+    username: "Jeff King",
+    comment: "Great work Daniel, thank you",
+    timePosted: "7:30pm",
+    replies: [
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Jeff King",
+        comment: "Great work Daniel, thank you", 
+      },
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Tom Cruise",
+        comment: "Great work", 
+      }, 
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Archy Script",
+        comment: "Thank you", 
+      },  
+    ] 
   },
   {
     id: "3",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
+    profilePicture: "/images/avatar-3.png",
+    username: "Samuel King",
+    comment: "Great work Daniel, thank you",
+    timePosted: "7:30pm",
+    replies: [
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Jeff King",
+        comment: "Great work Daniel, thank you", 
+      },
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Tom Cruise",
+        comment: "Great work", 
+      }, 
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Archy Script",
+        comment: "Thank you", 
+      },  
+    ] 
   },
   {
     id: "4",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
+    profilePicture: "/images/avatar-3.png",
+    username: "Jeff Samuel",
+    comment: "Great work Daniel, thank you",
+    timePosted: "7:30pm",
+    replies: [ 
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Tom Cruise",
+        comment: "Great work", 
+      }, 
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Archy Script",
+        comment: "Thank you", 
+      },  
+    ] 
+  },
+  {
+    id: "4",
+    profilePicture: "/images/avatar-3.png",
+    username: "Jeff King",
+    comment: "Great work Daniel, thank you",
+    timePosted: "7:30pm",
+    replies: [] 
   },
   {
     id: "5",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
+    profilePicture: "/images/avatar-3.png",
+    username: "Jeff King",
+    comment: "Great work Daniel, thank you",
+    timePosted: "7:30pm",
+    replies: [
+      {
+        profilePicture: "/images/avatar-3.png",
+        username: "Jeff King",
+        comment: "Great work Daniel, thank you", 
+      }, 
+    ] 
   },
-  {
-    id: "6",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
-  },
-  {
-    id: "7",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
-  },
-  {
-    id: "8",
-    comment: `I'm glad that Michelle's art is getting better and better 👍🏾 She's really doing very well 😁`,
-    username: "Archycript",
-    datePosted: "2 hours ago",
-    imageUrl: "",
-  },
-]);
+])
+
 const exhibitions = ref([
   {
     id: "1",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    username: "Username",
+    title: "Heart over stained glass",
+    image_url: "/images/gallery-project-1.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
     id: "2",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    username: "Username",
+    title: "Cultural woman",
+    image_url: "/images/gallery-project-2.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
     id: "3",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    username: "Username",
+    title: "From the other side",
+    image_url: "/images/gallery-project-3.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
     id: "4",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    username: "Username",
+    title: "Mother and son connection",
+    image_url: "/images/top-exhibition-2.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
-    id: "5",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    id: "4",
+    username: "Username",
+    title: "Mother and son connection",
+    image_url: "/images/top-exhibition-2.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
-    id: "6",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    id: "4",
+    username: "Username",
+    title: "Mother and son connection",
+    image_url: "/images/top-exhibition-2.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
-    id: "7",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    id: "4",
+    username: "Username",
+    title: "Mother and son connection",
+    image_url: "/images/top-exhibition-2.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
-    id: "8",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    id: "4",
+    username: "Username",
+    title: "Mother and son connection",
+    image_url: "/images/top-exhibition-2.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
   {
-    id: "9",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
-  },
-  {
-    id: "10",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
-  },
-  {
-    id: "11",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
-  },
-  {
-    id: "12",
-    username: `ArchyScript`,
-    profilePicture: ``,
-    artWork: ``,
+    id: "4",
+    username: "Username",
+    title: "Mother and son connection",
+    image_url: "/images/top-exhibition-2.png",
+    stats: {
+      likes: 200,
+      shares: 30,
+      comments: 34,
+    },
   },
 ]);
-</script>
+
+ </script>
+
+
+
+<style scoped>
+.textarea[contenteditable]:empty::before {
+  content: "Add a comment";
+  color: #61656d;
+}
+</style>

@@ -138,9 +138,7 @@
 </template>
 
 <script setup lang="ts">  
-definePageMeta({
-  layout: "auth",
-});
+definePageMeta({ layout: "auth" });
 
 const router = useRouter()
 const payload = ref({
