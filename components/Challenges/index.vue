@@ -1,11 +1,9 @@
 <template>
-  <div class="w-full flex flex-col space-y-5 relative"> 
+  <div class="w-full flex flex-col space-y-5 relative">
     <div
       class="w-full flex flex-col py-4 sticky lg:!top-[9%] mdlg:!top-[10%] items-center justify-center z-30"
     >
-      <div
-        class="mdlg:!w-[90%] lg:!w-[80%] w-full flex flex-row items-center justify-between space-x-4"
-      >
+      <div class="w-full flex flex-row items-center justify-between space-x-4">
         <Tabs
           :tabs="filterOptions1"
           :activeTab="activeOption1"
@@ -21,7 +19,7 @@
       </div>
     </div>
 
-   <div class="flex flex-col space-y-5 container mx-auto">
+    <div class="flex flex-col space-y-5 container mx-auto">
       <CardChallenge
         v-for="challenge in challenges"
         :key="challenge.id"
@@ -29,14 +27,14 @@
       />
     </div>
 
-    <div class="h-[100px]"></div> 
+    <div class="h-[100px]"></div>
   </div>
 </template>
 
 <script setup lang="ts">
 const activeOption1 = ref("all");
 const activeOption2 = ref("popular");
-  const filterOptions2 = ref([{ title: "popular" }, { title: "recent" }]);
+const filterOptions2 = ref([{ title: "popular" }, { title: "recent" }]);
 const filterOptions1 = ref([
   { title: "all" },
   { title: "painting" },
@@ -44,7 +42,7 @@ const filterOptions1 = ref([
   { title: "photography" },
   { title: "sculpture" },
 ]);
- 
+
 const challenges = ref([
   {
     id: "1",
@@ -59,7 +57,7 @@ const challenges = ref([
       photo_url: "/images/icons/brandname.svg",
     },
     image_url: "/images/gallery-project-2.png",
-    giftPrice: 100, 
+    giftPrice: 100,
   },
   {
     id: "1",
@@ -73,8 +71,8 @@ const challenges = ref([
       name: "Brand",
       photo_url: "/images/icons/brandname.svg",
     },
-    image_url: "/images/event-gallery.png", 
-    giftPrice: 100, 
+    image_url: "/images/event-gallery.png",
+    giftPrice: 100,
   },
   {
     id: "1",
@@ -89,7 +87,7 @@ const challenges = ref([
       photo_url: "/images/icons/brandname.svg",
     },
     image_url: "/images/gallery-project-3.png",
-    giftPrice: 100, 
+    giftPrice: 100,
   },
   {
     id: "1",
@@ -104,16 +102,14 @@ const challenges = ref([
       photo_url: "/images/icons/brandname.svg",
     },
     image_url: "/images/event-gallery.png",
-    giftPrice: 100, 
+    giftPrice: 100,
   },
 ]);
 
- 
 const selectTab1 = (activeTab: string) => {
   activeOption1.value = activeTab;
 };
 const selectTab2 = (activeTab: string) => {
   activeOption2.value = activeTab;
 };
- 
 </script>
