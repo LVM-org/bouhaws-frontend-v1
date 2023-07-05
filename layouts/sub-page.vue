@@ -4,7 +4,7 @@
 
     <div class="w-full flex flex-col items-center justify-center">
       <div
-        class="lg:!w-[72%] mdlg:!w-[85%] flex flex-col lg:!pt-[54px] mdlg:!pt-[50px]"
+        class="lg:!w-[72%] mdlg:!w-[85%] flex flex-col lg:!pt-[25px] mdlg:!pt-[50px]"
       >
         <slot />
       </div>
@@ -37,6 +37,6 @@
 }
 
 body {
-  background: linear-gradient(287.56deg, #d8d8c7 0%, #ebebe5 100%);
+  background: #e3e3d9 !important;
 }
 </style>

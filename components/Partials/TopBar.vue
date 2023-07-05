@@ -72,7 +72,7 @@ const navTabs = ref([
     name: "Home",
     path: "/",
     icon: "home",
-    routeTag: "base",
+    routeTag: "home",
     icon_size: "h-[19px] ",
   },
   {

@@ -1,53 +1,58 @@
 <template>
-  <div class="flex space-x-6 sticky top-[60%]"> 
-    <div class="rounded-md space-y-4 box-shadow p-8  !w-[360px] h-fit bg-white">
-        <TypoHeaderText
-          :custom-class="'!font-normal'"
-          :size="'3xl'"
+  <div class="flex space-x-6 sticky top-[60%]">
+    <div
+      class="rounded-[10px] space-y-1 flex flex-col box-shadow px-6 py-6 !w-[360px] h-fit bg-white"
+    >
+      <TypoHeaderText :custom-class="'!font-normal'" :size="'2xl'">
+        Settings
+      </TypoHeaderText>
+
+      <div
+        class="w-full flex flex-col space-y-1 border-b border-[#EBEBE5] pb-3"
+      >
+        <TypoNormalText
+          v-for="nav in navs"
+          :key="nav.title"
+          :customClass="` !font-light cursor-pointer  hover:text-[#1A52E4] py-2 !text-[14px]  capitalize ${
+            nav.title == activeNav ? '!text-[#1A52E4]' : '!text-[#61656D] '
+          }`"
+          @click="selectTab(nav.title)"
         >
-         Settings
-        </TypoHeaderText>
+          {{ nav.title }}
+        </TypoNormalText>
+      </div>
 
-        <div class=" flex-col space-y-1 border-b border-[#EBEBE5] pb-3">
-          <TypoHeaderText 
-            v-for="nav in navs"
-            :key="nav.title" 
-            :customClass="`p-1.5 !font-normal cursor-pointer hover:text-[#1A52E4] text-sm capitalize ${nav.title == activeNav ? 'text-[#1A52E4]' : 'text-[#61656D] hover:pl-3 hover:opacity-70' }`"
-            @click="selectTab(nav.title)">
-            {{nav.title}}
-          </TypoHeaderText>
-        </div>
-
-          <div class=" border-[#EBEBE5] pb-2">
-          <TypoHeaderText  customClass="py-1.5 !font-normal cursor-pointer text-[#F33] text-sm capitalize ">
-            delete account
-          </TypoHeaderText>
-        </div>
+      <div class="border-[#EBEBE5]">
+        <TypoNormalText
+          customClass="py-2 !font-normal  cursor-pointer !text-[#FF3333] capitalize "
+        >
+          delete account
+        </TypoNormalText>
+      </div>
     </div>
-    
-    <div class="sti cky overflow-scroll flex-1 no-scrollbar max-h-screen top-0 pb-10">
-      <ProfilePersonal v-if="activeNav == 'personal'" /> 
-      <ProfileContacts v-if="activeNav == 'contacts'" /> 
-      <ProfileNotifications v-if="activeNav == 'notifications'" /> 
-      <ProfileSecurity v-if="activeNav == 'security'" />  
-    </div> 
+
+    <div class="sticky overflow-scroll flex-1 no-scrollbar max-h-screen top-0">
+      <ProfilePersonal v-if="activeNav == 'personal'" />
+      <ProfileContacts v-if="activeNav == 'contacts'" />
+      <ProfileNotifications v-if="activeNav == 'notifications'" />
+      <ProfileSecurity v-if="activeNav == 'security'" />
+    </div>
   </div>
 </template>
 
-<script   setup lang="ts">  
+<script setup lang="ts">
 const activeNav = ref("personal");
 const navs = ref([
   { title: "personal" },
   { title: "contacts" },
   { title: "notifications" },
-  { title: "security" }, 
-]); 
+  { title: "security" },
+]);
 
 const selectTab = (activeTab: string) => {
   activeNav.value = activeTab;
-  console.log(activeTab)
+  console.log(activeTab);
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
