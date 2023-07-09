@@ -344,6 +344,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import { SwiperSlide } from "swiper/vue";
 
@@ -435,29 +436,7 @@ const comments = ref([
         message: "Thank you",
       },
     ],
-  },
-  // {
-  //   id: "4",
-  //   profilePicture: "/images/avatar-2.png",
-  //   username: "Jeff King",
-  //   message: "Great work Daniel, thank you",
-  //   timePosted: "7:30pm",
-  //   replies: []
-  // },
-  // {
-  //   id: "5",
-  //   profilePicture: "/images/avatar-1.png",
-  //   username: "Jeff King",
-  //   message: "Great work Daniel, thank you",
-  //   timePosted: "7:30pm",
-  //   replies: [
-  //     {
-  //       profilePicture: "/images/avatar-2.png",
-  //       username: "Jeff King",
-  //       message: "Great work Daniel, thank you",
-  //     },
-  //   ]
-  // },
+  }, 
 ]);
 
 const exhibitions = ref([

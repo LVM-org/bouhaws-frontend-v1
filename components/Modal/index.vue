@@ -11,13 +11,13 @@
         <h3 v-show="hasHeader" class="text-2xl text-bouhaws-semi-dark">
           {{ title }}
         </h3>
-
-        <span
-          class="absolute cursor-pointer top-0 right-0 p-2 bg-bouhaws-blue-main text-white rounded-md"
+ 
+        <IconLoader
+          :name="'remove-image-dark'"
+          class="absolute cursor-pointer top-0 right-0"
+          :customClass="'h-8'"
           @click="close"
-        >
-          <IconClose />
-        </span>
+        /> 
       </div>
 
       <div class="overflow-auto font-light text-sm mt-3">

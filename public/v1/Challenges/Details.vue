@@ -31,7 +31,7 @@
         </ul>
 
         <div
-          class="w-full flex flex-row space-x-3 flex-nowrap overflow-x-auto scrollbar-hide"
+          class="w-full flex flex-row space-x-3 flex-nowrap no-scrollbar overflow-x-auto scrollbar-hide"
         >
           <div class="flex flex-row space-x-3 py-2 pr-4">
             <CardExhibition
@@ -167,6 +167,7 @@
               customClass="!bg-bouhaws-blue-main text-white w-full"
               :useSlot="true"
               :padding="'py-3'"
+              @click="showProjectDetailsModal = true"
             >
               <TypoNormalText
                 :custom-class="'!font-normal'"
