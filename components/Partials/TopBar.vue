@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="w-screen text-neutral-800 bg-white mx-auto sticky z-40 top-0 -mt-0 shadow-md"
+    class="w-screen text-neutral-800 bg-white mx-auto sticky !z-10 top-0 -mt-0 shadow-md"
   >
     <div
       class="w-full flex container relative bg-white px-8 mx-auto items-center justify-between py-4"

@@ -2,7 +2,7 @@
   <div>
     <PartialsTopBar />
 
-    <div class="min-h-screen">
+    <div class="container mx-auto">
       <slot />
     </div>
   </div>

@@ -46,7 +46,7 @@
     </Modal>
 
     <!-- Project info  -->
-    <div class="grid grid-cols-3 gap-x-5 mx-auto relative">
+    <div class="grid grid-cols-3 gap-x-6 mx-auto relative">
       <section class="col-span-2 space-y-6 w-full">
         <div class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4">
           <div class="flex justify-between items-center">

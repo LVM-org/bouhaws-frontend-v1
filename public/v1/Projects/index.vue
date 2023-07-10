@@ -1,5 +1,5 @@
 <template>
-  <section class="col-span-3 flex flex-col space-y-3 relative">
+  <section class="space-y-5">
     <div class="flex flex-row justify-between items-center sticky top-0">
       <Tabs
         :tabs="filterOptions1"

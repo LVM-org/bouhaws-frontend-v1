@@ -1,19 +1,15 @@
-<template>
-  <ClassesDetails />
+<template> 
   <section class="w-full flex flex-col space-y-5 relative">
-    <div class="flex flex-row justify-between items-center sticky top-0">
+    <div class="flex flex-row justify-between items-center sticky top-[6rem]">
       <TypoHeaderText :custom-class="'!font-normal'" :size="'3xl'">
         Class Name
       </TypoHeaderText>
+
       <div class="flex items-center">
         <Tabs
           :tabs="filterOptions"
           :activeTab="activeOption"
-          @selectTab="
-            (option) => {
-              activeOption = option;
-            }
-          "
+          @selectTab="(option) => {activeOption = option}"
         />
       </div>
     </div>
@@ -89,6 +85,7 @@
 
 <script setup lang="ts">
 definePageMeta({ layout: "sub-page" });
+
 const activeOption = ref("projects");
 const filterOptions = reactive([
   { title: "projects" },

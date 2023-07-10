@@ -1,10 +1,10 @@
 <template>
   <div
-    class="fixed top-0 left-0 !w-screen !h-screen overflow-auto z-50 flex flex-col items-center bg-bouhaws-light-gray-2 bg-opacity-50 py-8"
+    class="fixed top-0 left-0 x !w-screen !h-screen overflow-auto flex flex-col items-center bg-bouhaws-light-gray-2 bg-opacity-50 "
     @click="closeModal"
   >
     <section
-      class="relative modal h-auto md:!w-[50%] w-full bg-white p-6 rounded-lg box-shadow"
+      class="relative top-20 modal h-auto  w-full space-y-4  bg-white p-6 rounded-lg  box-shadow"
       :style="`width: ${modalSizes} !important;`"
     >
       <div class="relative flex pb-4" :class="centered && 'justify-center'">
@@ -20,10 +20,12 @@
         /> 
       </div>
 
-      <div class="overflow-auto font-light text-sm mt-3">
+      <div class="overflow-auto font-light text-sm">
         <slot></slot>
       </div>
     </section>
+
+    <div class="!h-[100px]"></div>
   </div>
 </template>
 
@@ -89,6 +91,6 @@ const close = () => {
 
 <style lang="scss" scoped>
 .box-shadow {
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.04); 
 }
 </style>

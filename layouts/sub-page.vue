@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#E3E3D9] h-screen relative font-Kanit w-full flex flex-col">
+  <div class="bg-[#E3E3D9] relative font-Kanit w-full flex flex-col">
     <PartialsTopBar />
 
     <div class="w-full flex flex-col items-center justify-center">
