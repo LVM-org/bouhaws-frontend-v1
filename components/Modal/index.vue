@@ -1,10 +1,10 @@
 <template>
   <div
-    class="fixed top-0 left-0 x !w-screen !h-screen overflow-auto flex flex-col items-center bg-bouhaws-light-gray-2 bg-opacity-50 "
+    class="fixed top-0 left-0 x !w-screen !h-screen overflow-auto flex flex-col py-28 items-center bg-bouhaws-light-gray-2 bg-opacity-50 "
     @click="closeModal"
   >
     <section
-      class="relative top-20 modal h-auto  w-full space-y-4  bg-white p-6 rounded-lg  box-shadow"
+      class="sticky top-0 modal h-auto  w-full space-y-4  !z-50 bg-white p-6  rounded-lg  box-shadow"
       :style="`width: ${modalSizes} !important;`"
     >
       <div class="relative flex pb-4" :class="centered && 'justify-center'">

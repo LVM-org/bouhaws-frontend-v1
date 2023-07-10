@@ -46,7 +46,7 @@
     </Modal>
 
     <!-- Project info  -->
-    <div class="grid grid-cols-3 gap-x-5 mx-auto relative">
+    <div class="grid grid-cols-3 gap-x-5 mx-auto">
       <section class="col-span-2 space-y-6 w-full">
         <div class="w-full py-5 px-5 bg-white rounded-lg box-shadow space-y-4">
           <div class="flex justify-between items-center">
@@ -101,7 +101,7 @@
                 v-for="image in images"
                 :key="image"
                 :photoUrl="image.url"
-                :customClass="'h-[10rem] w-[10rem] rounded-[7px] relative'"
+                :customClass="'h-[10rem] w-[10rem] rounded-[7px]  '"
               > 
               </ImageLoader>
             </div>

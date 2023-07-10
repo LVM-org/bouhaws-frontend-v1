@@ -1,9 +1,9 @@
 <template>
   <nav
-    class="w-screen text-neutral-800 bg-white mx-auto sticky !z-10 top-0 -mt-0 shadow-md"
+    class="w-screen text-neutral-800 bg-white mx-auto relative !z-10 top-0 -mt-0 shadow-md"
   >
     <div
-      class="w-full flex container relative bg-white px-8 mx-auto items-center justify-between py-4"
+      class="w-full flex container sticky bg-white px-8 mx-auto items-center justify-between py-4"
     >
       <div class="flex-shrink-0 flex items-center justify-between">
         <nuxt-link
