@@ -74,21 +74,6 @@ const leaderboardUsers = reactive([
     photo_url: "/images/avatar-3.png",
     name: "Alex22",
     points: 1280,
-  },
-  {
-    photo_url: "/images/avatar-2.png",
-    name: "VitaliiVItalii",
-    points: 1000,
-  },
-  {
-    photo_url: "/images/avatar-3.png",
-    name: "Alex22",
-    points: 1280,
-  },
-  {
-    photo_url: "/images/avatar-2.png",
-    name: "VitaliiVItalii",
-    points: 1000,
-  },
+  }, 
 ]);
 </script>

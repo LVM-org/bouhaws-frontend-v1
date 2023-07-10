@@ -3,18 +3,19 @@
     class="max-w-md m-auto text-white p-20 flex flex-col px-8 justify-center space-y-6 items-center bg-gradient-to-b from-[#16120F] to-[#292F33] rounded-3xl rounded-tl-none"
   >
     <div class="flex justify-center mb-6 items-center">
-      <div class="w-40 h-32 bg-[#16120F] rounded-2xl rounded-tl-none">
-        <!--  -->
+      <div class="w-40 h-32 bg-[#16120F] rounded-2xl rounded-tl-none"> 
         <div class="w-32 h-32 rounded-full bg-[#E6D6FF] -mt-12 -ml-12"></div>
       </div>
     </div>
 
-    <div class="text-white pt-5 mx-auto">
-      <p>“{{ quotes[0].quote }}</p>
-
-      <span class="flex justify-end font-medium">
-        ~ {{ quotes[0].author }}
-      </span>
+    <div class="pt-5 mx-auto">
+       <TypoNormalText  customClass="!font-light !text-base !text-white leading-6">
+          “{{ quotes[0].quote }}
+        </TypoNormalText>  
+        
+       <TypoNormalText  customClass="flex justify-end !font-normal !text-base !text-white leading-6">
+          ~ {{ quotes[0].author }}
+        </TypoNormalText>   
     </div>
   </div>
 </template>

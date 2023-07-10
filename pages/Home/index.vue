@@ -1,6 +1,6 @@
-<template> <div class="container grid grid-cols-3 gap-6 px-2 relative">
-    <!-- main content -->
-    <section class="col-span-2 space-y-5">
+<template> <div class="grid grid-cols-3 gap-x-6 relative">
+    <!-- main content --> 
+    <section class="col-span-2 relative top-0  sticky overflow-scroll  no-scrollbar top-0 col-span-2 space-y-5">
       <!--  -->
       <div
         class="flex justify-between items-center space-x-4 bg-bouhaws-blue-main text-white rounded-xl py-6 px-6"
@@ -119,8 +119,8 @@
     </section>
 
     <!-- right side  -->
-    <section class="col-span-1 h-fit pb-5 sticky top-0">
-      <PartialsLeaderboard />
+    <section class="col-span-1  h-fit sticky top-0 max-h-full"> 
+      <PartialsLeaderboard /> 
     </section>
   </div>
 </template>

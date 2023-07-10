@@ -12,7 +12,7 @@
       </div>
 
       <!-- page content -->
-      <div class="flex-1 ml-72 ">
+      <div class="flex-1 ml-72 overflow-scroll no-scrollbar">
         <slot />
       </div>
     </div>

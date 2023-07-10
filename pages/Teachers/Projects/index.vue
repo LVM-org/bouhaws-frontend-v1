@@ -17,8 +17,7 @@
       </div>
     </div>
 
-    <div class="flex flex-col space-y-5">
-     
+    <div class="flex flex-col space-y-5"> 
        <nuxt-link
           v-for="project in projects"
           :key="project.id"

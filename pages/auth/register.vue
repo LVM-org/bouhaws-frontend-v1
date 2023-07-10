@@ -1,137 +1,106 @@
 <template>
-  <div class="flex flex-col mx-auto max-w-xl w-3/5">
-    <div class="mb-4">
-      <h1 class="mb-1.5 pb-1 relative">
-        <span class="text-5xl font-medium">
-          {{ isReadyToRegister ? "Almost done..." : "Register" }}
-        </span>
+  <div class="flex flex-col space-y-5 mx-auto py-8 max-w-xl w-3/5"> 
+    <div class="space-y-2">
+    <div class="-ml-8 flex items-center space-x-2"> 
+      <IconLoader 
+        name="arrow-back-blue"
+        customClass="!h-[1.7rem] cursor-pointer" 
+        @click="isReadyToRegister ? (isReadyToRegister = false) : router.go(-1)"
+      />
 
-        <span
-          class="absolute text-bouhaws-blue-main left-0 bottom-1/2 h-full flex justify-center -m-8"
-        >
-          <IconArrow
-            type="left"
-            class="flex justify-center w-full h-full items-center cursor-pointer"
-            @click="
-              isReadyToRegister ? (isReadyToRegister = false) : router.go(-1)
-            "
-          />
-        </span>
-      </h1>
-
-      <p class="text-base">
-        {{
-          isReadyToRegister
-            ? "Tell us about your school"
-            : "Let’s set up your account"
-        }}
-      </p>
+      <TypoHeaderText  customClass="!font-medium tracking-wide !text-4xl">
+        {{ isReadyToRegister ? "Almost done..." : "Register" }}
+      </TypoHeaderText>   
     </div>
 
-    <div class="w-full mt-1">
+      <TypoNormalText customClass="!font-normal !text-base leading-6">
+        {{ isReadyToRegister ? "Tell us about your school" : "Let’s set up your account" }}
+      </TypoNormalText>  
+    </div>
+
+    <div class="w-full">
       <!-- first registration phase -->
       <div v-if="!isReadyToRegister" class="space-y-5">
-        <div>
-          <input
-            id="username"
-            type="text"
-            class="px-5 py-4 rounded-tl-none w-full bg-[#EBEBE5] text-[#A0A1A3] rounded-lg border-0 outline-none"
-            name="username"
-            placeholder="Username"
-            v-model="payload.username"
-          />
-        </div>
+        <FormTextField
+          v-model="payload.username"
+          placeholder="Username"
+          customClass="!bg-[#EBEBE5]  !outline-none !focus:bg-[#EBEBE5] !rounded-[10px] !rounded-tl-[0px] "
+          padding="p-4"
+        />  
 
-        <div>
-          <input
-            id="email"
-            type="email"
-            class="px-5 py-4 rounded-tl-none w-full bg-[#EBEBE5] text-[#A0A1A3] rounded-lg border-0 outline-none"
-            name="email"
-            placeholder="Email"
-            v-model="payload.email"
-          />
-        </div>
+        <FormTextField
+          v-model="payload.email"
+          placeholder="Email"
+          customClass="!bg-[#EBEBE5]  !outline-none !focus:bg-[#EBEBE5] !rounded-[10px] !rounded-tl-[0px] "
+          padding="p-4"
+        />  
 
-        <div>
-          <input
-            id="password"
-            type="password"
-            class="flex-grow px-5 py-4 w-full rounded-tl-none bg-[#EBEBE5] text-[#A0A1A3] rounded-lg border-0 outline-none"
-            name="password"
-            v-model="payload.password"
-            placeholder="Password"
-          />
-        </div>
+        <FormTextField 
+          v-model="payload.password"
+          placeholder="Password"
+          :type="'password'"
+          customClass="!bg-[#EBEBE5]  !outline-none !focus:bg-[#EBEBE5] !rounded-[10px] !rounded-tl-[0px] "
+          padding="p-4"
+        /> 
+  
+        <Button  
+          customClass="!bg-bouhaws-blue-main !w-full text-white w-full !rounded-[7px]"
+          :useSlot="true"
+          :padding="'!py-4'"
+          @click="isReadyToRegister = true" 
+        >
+          <TypoNormalText :custom-class="'!font-light'" :color="'text-white'">
+            Continue
+          </TypoNormalText>
+        </Button> 
+   
+        <div class="flex justify-center items-center space-x-1 mt-3"> 
+          <TypoNormalText> Already have an account? </TypoNormalText>
 
-        <div class="flex flex-col mt-8">
-          <Button text="Continue" @click="isReadyToRegister = true" />
-        </div>
-
-        <!--  -->
-        <p class="text-sm text-center text-bouhaws-gray mt-3">
-          Already have an account?
-          <nuxt-link to="/auth/login" class="no-underline text-[#336DFF]">
-            Log in
+          <nuxt-link to="/auth/login">
+            <TypoNormalText custom-class="!font-normal !text-[#336DFF] ">  Log in </TypoNormalText> 
           </nuxt-link>
-        </p>
+        </div>
       </div>
 
       <!-- final registration process -->
-      <form v-else class="space-y-5" @submit.prevent="register">
-        <div class="relative">
-          <select
-            name="school_name"
-            id="school_name"
-            placeholder="Password"
-            class="px-5 py-4 rounded-tl-none w-full bg-[#EBEBE5] text-[#A0A1A3] rounded-lg border-0 outline-none"
-          >
-            <option selected disabled>School name</option>
-            <option value="US">United States</option>
-            <option value="DE">Germany</option>
-          </select>
-        </div>
-
-        <div>
-          <input
-            id="student_number"
-            type="text"
-            class="flex-grow px-5 py-4 w-full rounded-tl-none bg-[#EBEBE5] text-[#A0A1A3] rounded-lg border-0 outline-none"
-            name="student_number"
-            v-model="payload.student_number"
-            placeholder="Student number"
-          />
-        </div>
-
-        <div class="relative">
-          <select
-            name="year_of_enrollment"
-            id="year_of_enrollment"
-            placeholder="Year of enrollment<"
-            class="px-5 py-4 rounded-tl-none w-full bg-[#EBEBE5] text-[#A0A1A3] rounded-lg border-0 outline-none"
-          >
-            <option selected disabled>Year of enrollment</option>
-            <option value="US">2012</option>
-            <option value="DE">2013</option>
-          </select>
-        </div>
-        <!--  -->
-        <p class="text-sm text-center mt-3 text-bouhaws-gray">
-          <nuxt-link to="/policy/terms" class="no-underline text-[#336DFF]">
-            Conditions of Use
+      <form v-else class="space-y-5" @submit.prevent="register"> 
+        <FormTextField 
+          v-model="payload.student_name"
+          name="student_name" 
+          placeholder="Studdent name"
+          customClass="!bg-[#EBEBE5] !outline-none !focus:bg-[#EBEBE5] !rounded-[10px] !rounded-tl-[0px] "
+          padding="p-4"
+        />  
+        
+        <FormSelect
+          :placeholder="'Years  of experience'"
+          custom-class="w-full space-x-2  !outline-none bg-[#EBEBE5] text-[#A0A1A3] rounded-tl-none "
+          :padding="'py-4 px-4'" 
+        /> 
+  
+        <div class="flex justify-center items-center space-x-1 pt-6">  
+          <nuxt-link to="/policy/terms">
+            <TypoNormalText custom-class="!font-normal !text-[#336DFF] ">  Conditions of Use </TypoNormalText> 
           </nuxt-link>
-          and
-          <nuxt-link
-            to="/policy/conditions"
-            class="no-underline text-[#336DFF]"
-          >
-            Terms
-          </nuxt-link>
-        </p>
+          
+          <TypoNormalText> and </TypoNormalText>
 
-        <div class="flex w-full mt-8">
-          <Button type="submit" text="Done" />
+          <nuxt-link to="/policy/conditions">
+            <TypoNormalText custom-class="!font-normal !text-[#336DFF] "> Terms </TypoNormalText> 
+          </nuxt-link>
         </div>
+ 
+        <Button
+          type="submit" 
+          customClass="!bg-bouhaws-blue-main !w-full text-white w-full !rounded-[7px]"
+          :useSlot="true"
+          :padding="'!py-4'"
+        >
+          <TypoNormalText :custom-class="'!font-light'" :color="'text-white'">
+            Done
+          </TypoNormalText>
+        </Button> 
       </form>
     </div>
   </div>
@@ -149,7 +118,7 @@ const payload = ref({
 
 const studentDetails = ref({
   school_name: "",
-  student_number: "",
+  student_name: "",
   year_of_enrollment: ""
 })
 

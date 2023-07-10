@@ -35,8 +35,9 @@
         />
         <slot name="inner-suffix" />
         <IconLoader
-          :name="`${fieldType == 'password' ? 'show' : 'hide'}`"
-          :customClass="`${fieldType == 'password' ? 'h-[20px]' : 'h-[19px]'}`"
+          class="!cursor-pointer"
+          :name="`${fieldType == 'password' ? 'eye-open' : 'eye-close'}`"
+          :customClass="`${fieldType == 'password' ? 'h-[15px]' : 'h-[15px]'} `"
           v-if="type == 'password'"
           @click.stop="
             fieldType == 'password'

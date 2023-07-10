@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full flex flex-col px-0 py-0 flex-grow">
+  <div class="w-full max-h-[100%] flex flex-col px-0 py-0 flex-grow">
     <div
       class="w-full flex flex-col space-y-4 bg-bouhaws-semi-dark rounded-[10px] items-center justify-center px-5 py-5 border-b-[3px] border-[#EBEBE5]"
     >
@@ -40,7 +40,7 @@
 
       <div class="w-full flex flex-row items-center justify-center space-x-1">
         <TypoNormalText :color="'text-bouhaws-green'"
-          >2,500 points</TypoNormalText
+          > 2,500 points</TypoNormalText
         >
         <TypoNormalText :color="'text-white'">to reach LEVEL 4</TypoNormalText>
       </div>
@@ -129,12 +129,6 @@ const activeItems = ref([
     total_point: 1000,
     current_point: 0,
     image_url: "/images/victory-day.png",
-  },
-  {
-    title: "Project Title",
-    total_point: 2500,
-    current_point: 2500,
-    image_url: "/images/project-title-2.png",
-  },
+  }, 
 ]);
 </script>

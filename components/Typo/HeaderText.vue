@@ -6,7 +6,7 @@
     ${size == 'base' ? 'lg:text-base mdlg:text-[13px] text-sm' : ''}
     ${size == 'xs' ? 'mdlg:!text-[12px] text-xs' : ''}
     ${size == '2xl' ? ' text-xl' : ''}
-    ${size == '3xl' ? ' text-2xl' : ''}
+    ${size == '3xl' ? ' text-2xl' : ''} 
     ${customClass}
     ${color}`"
   >
